@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Activités du SPS</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">      
+</head>
+
+<body>
+
+    <div class="page visible-page" id="page0">
+        <div class="question"><h1 class="question-h1">Découvrez les activités du <br>Service de Promotion des Sciences</h1></div>
+        <div class="btn-group question" role="group">
+            <button value="parent" type="button" class="intro-btn btn btn-light btn-lg">C'est parti !</button>
+        </div>
+    </div> <!-- page 0 -->
+
+    <div class="page" id="page1">
+        <div class="question"><h1 class="question-h1">Vous êtes</h1></div>
+        <div id="question_who" class="btn-group question" role="group">
+            <button value="parent" type="button" class="who-btnChoice btn btn-light btn-lg">un parent</button>
+            <button value="teacher" type="button" class="who-btnChoice btn btn-light btn-lg">un·e professeur·e</button>
+        </div>
+    </div> <!-- page 1 -->
+
+    <div class="page" id="page2">
+        <div><h1 class="question-h1" class="question">Vous venez du canton de</h1></div>
+        <div id="question_where" class="btn-group" role="group">
+            <button value="vaud" type="button" class="where-btnChoice btn btn-light btn-lg">Vaud</button>
+            <button value="geneve" type="button" class="where-btnChoice btn btn-light btn-lg">Genève</button>
+            <button value="fribourg" type="button" class="where-btnChoice btn btn-light btn-lg">Fribourg</button>
+            <button value="neuchatel" type="button" class="where-btnChoice btn btn-light btn-lg">Neuchâtel</button>
+            <button value="jura" type="button" class="where-btnChoice btn btn-light btn-lg">Jura</button>
+            <button value="valais" type="button" class="where-btnChoice btn btn-light btn-lg">Valais</button>
+        </div>
+    </div> <!-- page 2 -->
+
+    <div class="page" id="page3">
+        <h1 class="question-h1">Quel âge a votre enfant ?</h1>
+        <div id="question_age" class="btn-group" role="group">
+            <input id="question_age-val" type="range" class="form-range" min="6" max="16" value="12" step="1">
+        </div>
+        <h2 class="question-h2"><span id="age-val">12</span> ans</h2>
+        <div><button id="question_age-next" type="button" class="btn btn-light btn-lg">Suivant</button></div>
+    </div> <!-- page 3 -->
+
+    <div class="page" id="page4">
+        <h1 class="question-h1">Votre enfant est</h1>
+        <div id="question_gender" class="btn-group" role="group">
+            <button value="girl" type="button" class="gender-btnChoice btn btn-light btn-lg">une fille</button>
+            <button value="boy" type="button" class="gender-btnChoice btn btn-light btn-lg">un garçon</button>
+        </div>
+    </div> <!-- page4 -->
+
+    <div class="page auto-height" id="results">
+        <div><h1 class="results-h1">Ces activités pourraient vous plaire</h1></div>
+        <div id="result-div"></div>
+
+        <div class="container">
+
+            <div id="result-row" class="row justify-content-md-center">
+                
+                <!-- Cards are dynamically loaded here ... -->
+
+            </div> <!-- result-row -->
+        </div> <!-- container -->
+
+    </div> <!-- result -->
+
+    <div id="previousButton"><a class="previousButton">&#8249;</a></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="var.js"></script> 
+    <script src="script.js"></script> 
+
+</body>
+</html> 

@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div{
+  display: block;
+  text-align: center;
+}
+
+.page {
+  /* Page is full windows size */
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color:#38a8cc;
+  z-index: 1;
+
+  /* By default all pages are hiden on the right of the screen */
+  float: left;
+  margin-left: 100%;
+  display: none;
+}
+
+.visible-page {
+  display: block;
+  margin-left: 0%;
+}
+
+
+.auto-height {
+  height: auto;
+}
+
+.question {
+  display: block;
+}
+
+.results-h1 {
+  color: white;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 3em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.question-h1 {
+  color: white;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 3em;
+  padding-top: 3em;
+  padding-bottom: 1em;
+}
+
+.question-h2 {
+  color: white;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+
+/*
+ * Result cards
+ */ 
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-h1 {
+  color:black;
+  font-family: arial;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.animate {
+  animation-duration: 0.5s;
+  animation-name: animate-fade;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+    
+@keyframes animate-fade {
+    0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate.slide { animation-name: animate-slide; }
+
+@keyframes animate-slide {
+  0% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/*
+ *  RETURN BUTTON
+ */
+#previousButton {
+  position: fixed;
+  visibility: hidden;
+  bottom: 50px;
+  left: 50px;
+  z-index: 50;
+}
+
+.previousButton  {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.3em 1em;  
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.previousButton:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previousButton {
+  background-color: #f1f1f1;
+  color: black;
+  border-radius: 50%;
+}
