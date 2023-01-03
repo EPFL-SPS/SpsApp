@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "spsapp"
+version = "0.1.0"
+description = ""
+authors = ["Jonathan Michel <michel.jonath@pm.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+google-api-python-client = "^2.70.0"
+google-auth-httplib2 = "^0.1.0"
+google-auth-oauthlib = "^0.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
