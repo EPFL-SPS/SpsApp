@@ -21,7 +21,7 @@ var cardTemplate = (title, description, imgSrc, animationDelay) => `
 
 searchResults = {
   "results":[
-    {"title":"Ateliers semestriels MINT", "description":"Les ateliers -ou cours- de mathématiques, informatique et sciences techniques pour les jeunes filles et garçons curieux.", "imgSrc": "mint.jpg"},
+    {"title":"Ateliers semestriels MINT", "description":"Les ateliers -ou cours- de mathématiques, informatique et sciences techniques pour les jeunes filles et garçons curieux.", "imgSrc": "default.jpg"},
     {"title":"Ateliers polythèmes", "description":"Ateliers d’expériences scientifiques proposés aux jeunes de 7 à 15 ans.", "imgSrc": "polythemes.jpg"},
     {"title":"Championnat de sciences", "description":"Tournoi scientifique pour les jeunes de 8 à 15 ans à réaliser en équipe", "imgSrc": "championnat.jpg"},
     {"title":"Le Coding club des filles", "description":"Un club gratuit de programmation pour les filles de 11 à 16 ans", "imgSrc": "codingClub.jpg"},

@@ -172,21 +172,22 @@ function showResults() {
     }
 
     activities = findActivities("FR", filters["who"], filters["where"], filters["age"], gender)
-
-    console.log("Filter duplicates")
-    activities = filterDuplicatedActivities(activities)
-
     console.log(activities)
 
-    console.log(searchResults)
-    
-    searchResults["results"].forEach(function(activity) { 
-        card = cardTemplate(activity["title"], activity["description"], activity["imgSrc"], animationDelay);
+    // console.log("Filter duplicates")
+    // activities = filterDuplicatedActivities(activities)
+
+    activities.forEach(function(activity) { 
+        card = cardTemplate(activity["Activité"], activity["Description"], activity["ImgSrc"] ? activity["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
         $("#result-row").append(card)
+        console.log(card)
         animationDelay += 0.1
     })
 
-    console.log("Results loaded")
-    console.log(searchResults)
+    // console.log(searchResults)
+    // searchResults["results"].forEach(function(activity) { 
+    //     card = cardTemplate(activity["title"], activity["description"], activity["imgSrc"], animationDelay);
+    //     $("#result-row").append(card)
+    //     animationDelay += 0.1
+    // })
 }
-

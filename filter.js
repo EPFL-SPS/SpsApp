@@ -148,8 +148,14 @@ function filterDuplicatedActivities(jsonArray, key) {
 
 // Get all editions and append details from the corresponding activity
 allNonScolarActivities = addDetailsToEditions(nonScolarEditions, nonScolarActivities, "Activité")
+
+console.log(allNonScolarActivities)
+
 // Simplified the list with only usefull keys
-allNonScolarActivities = filterKeys(allNonScolarActivities, ["ID", "Activité", "Age max", "Age min", "Canton", "Genre", "Langue", "Lieu", "Dates"])
+allNonScolarActivities = filterKeys(allNonScolarActivities, ["ID", "Activité", "Age max", "Age min", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscription", "Remarques"])
+
+console.log(allNonScolarActivities)
+
 
 function findActivities(language, who, where, age, gender) {
 
