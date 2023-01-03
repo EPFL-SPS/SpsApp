@@ -15,6 +15,14 @@
 <body>
 
     <div class="page visible-page" id="page0">
+        <div class="dropdown" style="text-align: right; padding: 15px;">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                🇫🇷
+                </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button" id="languagesDE">🇩</button>
+            </div>
+        </div>
         <div class="question"><h1 class="question-h1">Découvrez les activités du <br>Service de Promotion des Sciences</h1></div>
         <div class="btn-group question" role="group">
             <button value="parent" type="button" class="intro-btn btn btn-light btn-lg">C'est parti !</button>
@@ -32,12 +40,12 @@
     <div class="page" id="page2">
         <div><h1 class="question-h1" class="question">Vous venez du canton de</h1></div>
         <div id="question_where" class="btn-group" role="group">
-            <button value="vaud" type="button" class="where-btnChoice btn btn-light btn-lg">Vaud</button>
-            <button value="geneve" type="button" class="where-btnChoice btn btn-light btn-lg">Genève</button>
-            <button value="fribourg" type="button" class="where-btnChoice btn btn-light btn-lg">Fribourg</button>
-            <button value="neuchatel" type="button" class="where-btnChoice btn btn-light btn-lg">Neuchâtel</button>
-            <button value="jura" type="button" class="where-btnChoice btn btn-light btn-lg">Jura</button>
-            <button value="valais" type="button" class="where-btnChoice btn btn-light btn-lg">Valais</button>
+            <button value="VD" type="button" class="where-btnChoice btn btn-light btn-lg">Vaud</button>
+            <button value="GE" type="button" class="where-btnChoice btn btn-light btn-lg">Genève</button>
+            <button value="FR" type="button" class="where-btnChoice btn btn-light btn-lg">Fribourg</button>
+            <button value="NE" type="button" class="where-btnChoice btn btn-light btn-lg">Neuchâtel</button>
+            <button value="JU" type="button" class="where-btnChoice btn btn-light btn-lg">Jura</button>
+            <button value="VS" type="button" class="where-btnChoice btn btn-light btn-lg">Valais</button>
         </div>
     </div> <!-- page 2 -->
 
@@ -76,8 +84,11 @@
     <div id="previousButton"><a class="previousButton">&#8249;</a></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="var.js"></script> 
+    <script src="db.js"></script>
+    <script src="filter.js"></script> 
     <script src="script.js"></script> 
 
 </body>

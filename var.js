@@ -1,5 +1,5 @@
 var cardTemplate = (title, description, imgSrc, animationDelay) => `
-<div class="col-md-4 col-sm-6 col-lg-3 d-flex align-items-stretch animate slide" style=\"animation-delay: ${animationDelay}s;\">
+<div class="col-md-4 col-sm-4 col-lg-3 d-flex align-items-stretch animate slide" style=\"animation-delay: ${animationDelay}s;\">
     <div class="card mb-4 box-shadow">
         <img class="bd-placeholder-img card-img-top" width="100%" height="160" src="src/thumbs/${imgSrc}"></img>
 

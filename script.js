@@ -4,7 +4,7 @@ let filters = {}
 // Pages (div) to load, order has meaning
 const pages = ["page0", "page1", "page2", "page3", "page4", "results"]
 // Current page (div) loaded 
-let currentIndex = 0
+let currentIndex = 5
 
 /**
  * Slide in a page from the right
@@ -17,8 +17,6 @@ function slideInPage(pageIndex) {
     $(pageId).animate({
         marginLeft: "0%"
     }, transisionDuration);
-
-    console.log(pageId + " slided in")
 }
 
 /**
@@ -36,8 +34,6 @@ function slideOutPage(pageIndex) {
     setTimeout(function() {
         $(pageId).css({display: "none"})
     }, transisionDuration)    
-
-    console.log(pageId + " slided out")
 }
 
 /**
@@ -51,7 +47,6 @@ function slideNextPage() {
 
     slideInPage(currentIndex + 1)
     currentIndex += 1
-    console.log("Current index is now " + currentIndex)
 
     if (currentIndex > 0) {
         $("#previousButton").css({visibility: "visible"})
@@ -71,17 +66,14 @@ function slidePreviousPage() {
 
     slideOutPage(currentIndex)
     currentIndex -= 1
-
-    console.log("Current index is now " + currentIndex)
-
 }
 
 /**
  * Slide the first page when document is loaded 
  */
 $(document).ready(function() {
-    // slideInPage(currentIndex)
-    // showResults()
+    slideInPage(currentIndex)
+    showResults()
 });
 
 /**
@@ -107,6 +99,7 @@ $('.who-btnChoice').on('click', function(event) {
 
     who = $(this).attr('value')
     filters["who"] = who
+    console.log(filters)
 
     slideNextPage()
 });
@@ -119,6 +112,7 @@ $('.where-btnChoice').on('click', function(event) {
 
     where = $(this).attr('value')
     filters["where"] = where
+    console.log(filters)
 
     slideNextPage()
 });
@@ -129,14 +123,15 @@ $('.where-btnChoice').on('click', function(event) {
 // Update age value during user interraction
 $('#question_age-val').on('input', function change(e){
     age = $(this).val()
-
     $('#age-val').html(age);
-
-    filters["age"] = age
 }); 
 
-// Go to the next question
+// Save age value and go to the next question
 $('#question_age-next').on('click', function(event) {
+    age = $('#question_age-val').val()
+    filters["age"] = age
+    console.log(filters)
+
     slideNextPage()
 });
 
@@ -146,6 +141,7 @@ $('#question_age-next').on('click', function(event) {
 $('.gender-btnChoice').on('click', function(event) {
     gender = $(this).attr('value')
     filters["gender"] = gender
+    console.log(filters)
 
     slideNextPage()
     showResults()
@@ -156,6 +152,34 @@ $('.gender-btnChoice').on('click', function(event) {
  */
 function showResults() {
     animationDelay = 0.6
+
+    console.log(filters)
+
+    // TEMP - Test
+    filters = {
+        "who": "parent",
+        "where": "VD",
+        "age": "13",
+        "gender": "girl"
+      }
+
+    // TEMP - Convert gender to french - Find a place to adapt keys
+    gender = "Mixte"
+    if (filters["gender"] == "boy") {
+        gender = "Garçon"
+    } else if (filters["gender"] == "girl") {
+        gender = "Fille"
+    }
+
+    activities = findActivities("FR", filters["who"], filters["where"], filters["age"], gender)
+
+    console.log("Filter duplicates")
+    activities = filterDuplicatedActivities(activities)
+
+    console.log(activities)
+
+    console.log(searchResults)
+    
     searchResults["results"].forEach(function(activity) { 
         card = cardTemplate(activity["title"], activity["description"], activity["imgSrc"], animationDelay);
         $("#result-row").append(card)
@@ -165,3 +189,4 @@ function showResults() {
     console.log("Results loaded")
     console.log(searchResults)
 }
+
