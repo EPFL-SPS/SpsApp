@@ -20,12 +20,15 @@ var cardTemplate = (title, description, imgSrc, animationDelay) => `
 `;
 
 function truncateString(str, num) {
-    if (str.length > num) {
-      let truncatedString = str.slice(0, num);
-      let lastSpaceIndex = truncatedString.lastIndexOf(" ");
-      truncatedString = truncatedString.slice(0, lastSpaceIndex);
-      return truncatedString + "...";
-    } else {
-      return str;
+    if (str) {
+        if (str.length > num) {
+        let truncatedString = str.slice(0, num);
+        let lastSpaceIndex = truncatedString.lastIndexOf(" ");
+        truncatedString = truncatedString.slice(0, lastSpaceIndex);
+        return truncatedString + "...";
+        } else {
+        return str;
+        }
     }
+    return ""
   }
