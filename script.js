@@ -13,17 +13,17 @@ const pages = ["page0", "page1", "page2", "page3", "page4", "results"]
  * Correct page is displayed on load and when hash changes
  */
 $(document).ready(function() {
-    displayPage()
+    updatePage()
 });
 
 $(window).on('hashchange',function(){
-    displayPage()
+    updatePage()
 });
 
 /**
  * Generate and display page according to hash
  */
-function displayPage() {
+function updatePage() {
     // Get current search status from URL params if existing
     if (document.location.hash) {
         search_status = parseParms(document.location.hash)
@@ -34,6 +34,9 @@ function displayPage() {
 
     console.log("Display page " + search_status["page"] + " from current page " + currentPage)
     if (currentPage > search_status["page"]) {
+        if (currentPage > 0) {
+            displayPage(currentPage - 1)
+        }
         slideOutPage(currentPage)
     } else if (currentPage < search_status["page"]) {
         slideInPage(search_status["page"])
@@ -105,6 +108,10 @@ function decrementPage() {
     updateHash()
 }
 
+function displayPage(pageIndex) {
+    pageId = "#" + pages[pageIndex]
+    $(pageId).css({display: "block", marginLeft : "0%"})
+}
 
 /**
  * Slide in a page from the right
