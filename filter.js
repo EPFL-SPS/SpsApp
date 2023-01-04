@@ -1,55 +1,80 @@
-function addDetailsToEditions(editions, activities_list, keyToMatch) {
-  // Pour chaque élément du tableau de dictionnaires
+// Define here column name used in the Google Sheets 
+const ACTIVITY_NAME_COLUMN = "Activité"
+
+// Get all editions and append details from the corresponding activity
+allNonScolarActivities = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
+
+// Simplified the list with only useful keys
+allNonScolarActivities = filterKeys(allNonScolarActivities, ["ID", ACTIVITY_NAME_COLUMN, "Age max", "Age min", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscription", "Remarques"])
+
+
+/**
+ * Complete an edition array with details from the parent activity by matching
+ * its activity name
+ * @param {array[{ACTIVITY_NAME_COLUMN: name, ...}]} editions List of editions 
+ * @param {array[{ACTIVITY_NAME_COLUMN: name, ...}]} activities List of parent activity
+ * @returns {array[{ACTIVITY_NAME_COLUMN: name, ...}]} with all parents keys containing details on the activity
+ */
+function addDetailsToEditions(editions, activities) {
+  // Go through all the editions
   for (let i = 0; i < editions.length; i++) {
-    // Récupération de la valeur de la clé à associer
-    let keyToMatchValue = editions[i][keyToMatch];
-    // Pour chaque élément du tableau des éditions avec le détail de clés
-    for (let j = 0; j < activities_list.length; j++) {
-      // Si la clé à associer correspond à la valeur de la clé du tableau des éditions avec le détail
-      if (activities_list[j][keyToMatch] === keyToMatchValue) {
-        // Pour chaque clé du tableau des éditions avec le détail
-        for (let newKey in activities_list[j]) {
-          // Si la clé n'existe pas dans l'ancien tableau ou qu'elle a la valeur null
+    // Get the name of the edition 
+    let keyToMatchValue = editions[i][ACTIVITY_NAME_COLUMN];
+    // Now go through all the activities
+    for (let j = 0; j < activities.length; j++) {
+      // Find the corresponding parent activity for the edition
+      if (activities[j][ACTIVITY_NAME_COLUMN] === keyToMatchValue) {
+        // Add details from the parent activity to the edition array
+        for (let newKey in activities[j]) {
           if (!editions[i].hasOwnProperty(newKey) || editions[i][newKey] === null) {
-            // Ajout de la clé/valeur à l'élément de l'ancien tableau
-            editions[i][newKey] = activities_list[j][newKey];
+            editions[i][newKey] = activities[j][newKey];
           }
         }
       }
     }
   }
-  // Renvoi de l'ancien tableau avec les nouvelles clés ajoutées
+  // Return editions array with details
   return editions;
 }
 
+/**
+ * Filter a JSON according to multiple filters. Used to filter activities
+ * with a specific value for a set of given keys
+ * @param {[...]} jsonArray containing all the activities
+ * @param {{"key": value}} filters 
+ * @returns {[...]} Only activity that correspond to the filters
+ */
 function filterActivities(jsonArray, filters) {
-  // Utilisation de la méthode filter() de l'objet Array
-  // pour retourner un nouveau tableau contenant uniquement les éléments
-  // qui respectent tous les filtres spécifiés dans le dictionnaire
   return jsonArray.filter(function(item) {
-    // Initialisation de la variable de contrôle à true
     let match = true;
-    // Pour chaque clé/valeur du dictionnaire de filtres
     for (let key in filters) {
-      // Si la valeur de l'élément ne correspond pas à la valeur du filtre
       if (item[key] !== filters[key]) {
-        // Mise à false de la variable de contrôle
         match = false;
-        // Sortie de la boucle
         break;
       }
     }
-    // Renvoi de la variable de contrôle
     return match;
   });
 }
 
+/**
+ * Filter activities for a given age
+ * @param {[...]} jsonArray containing all the activities
+ * @param {number} age Age to filter
+ * @returns {[...]} Only activity that correspond to that age
+ */
 function filterActivities_age(jsonArray, age) {
   return jsonArray.filter(function(entry) {
     return entry["Age min"] <= age && entry["Age max"] >= age ;
   });
 }
 
+/**
+ * Filter activities for a given gender
+ * @param {[...]} jsonArray containing all the activities
+ * @param {str} gender Gender to filter ("Garçon", "Fille")
+ * @returns {[...]} Only activity that correspond to that gender
+ */
 function filterActivities_gender(jsonArray, gender) {
   return jsonArray.filter(function(entry) {
     return entry["Genre"] == "Mixte" || entry["Genre"] == gender;
@@ -57,106 +82,56 @@ function filterActivities_gender(jsonArray, gender) {
 }
 
 
-// Fonction de filtrage des clés d'un tableau de dictionnaires
-function filterKeys(jsonArray, keysToKeep) {
-  // Utilisation de la méthode map() de l'objet Array
-  // pour créer un nouveau tableau avec les éléments filtrés
-  return jsonArray.map(function(item) {
-    // Création d'un nouveau dictionnaire vide
-    let filteredItem = {};
-    // Pour chaque clé spécifiée à conserver
-    for (let i = 0; i < keysToKeep.length; i++) {
-      // Si la clé existe dans l'élément du tableau
-      if (item.hasOwnProperty(keysToKeep[i])) {
-        // Ajout de la clé/valeur au dictionnaire filtré
-        filteredItem[keysToKeep[i]] = item[keysToKeep[i]];
-      }
-    }
-    // Renvoi du dictionnaire filtré
-    return filteredItem;
-  });
-}
-
-function mergeActivities(jsonArray, key) {
-  let result = {};
-  jsonArray.forEach(function(entry) {
-    let value = entry[key];
-    if (!result[value]) {
-      result[value] = [];
-    }
-    result[value].push(entry);
-  });
-  return result;
-}
-
-function mergeByKey(jsonArray, key) {
+/**
+ * Groups activites that have the same name and keep an array of all the editions
+ * @param {*} jsonArray Activities array
+ * @returns 
+ */
+function groupSameActivities(jsonArray) {
   let result = [];
   jsonArray.forEach(function(entry) {
-    let value = entry[key];
+    let value = entry[ACTIVITY_NAME_COLUMN];
     let found = false;
     result.forEach(function(group) {
-      if (group.key === value) {
+      if (group.ACTIVITY_NAME_COLUMN === value) {
         group.values.push(entry);
         found = true;
       }
     });
     if (!found) {
-      result.push({key: value, values: [entry]});
+      result.push({ACTIVITY_NAME_COLUMN: value, values: [entry]});
     }
   });
   return result;
 }
 
-// Filter an array of objects to avoid duplicates based on a key and store other non-duplicated values in the same object by keeping their key
-function filterDuplicatedActivities(jsonArray, key) {
-  // Create a new array
-  let result = [];
-  // For each element of the array
-  jsonArray.forEach(function(entry) {
-    // Get the value of the key
-    let value = entry[key];
-    // Initialisation of the variable to check if the value already exists
-    let found = false;
-    // For each element of the new array
-    result.forEach(function(group) {
-      // If the value already exists
-      if (group.key === value) {
-        // For each key of the element of the array
-        for (let key in entry) {
-          // If the key doesn't exist in the new array
-          if (!group.values.hasOwnProperty(key)) {
-            // print type of var
-            print(typeof group.values[key])
-            // Add the key/value to the new array
-            group.values[key] = entry[key];
-          }
-        }
-        // Set the variable to true to stop the loop
-        found = true;
+/**
+ * Filter an array to keep only useful keys
+ * @param {*} jsonArray 
+ * @param {array} keysToKeep 
+ * @returns jsonArray with only the required keys 
+ */
+function filterKeys(jsonArray, keysToKeep) {
+  return jsonArray.map(function(item) {
+    let filteredItem = {};
+    for (let i = 0; i < keysToKeep.length; i++) {
+      if (item.hasOwnProperty(keysToKeep[i])) {
+        filteredItem[keysToKeep[i]] = item[keysToKeep[i]];
       }
-    });
-    // If the value doesn't exist
-    if (!found) {
-      // Add the element to the new array
-      result.push({key: value, values: entry});
     }
+    return filteredItem;
   });
-  // Return the new array
-  return result;
 }
 
-
-// Get all editions and append details from the corresponding activity
-allNonScolarActivities = addDetailsToEditions(nonScolarEditions, nonScolarActivities, "Activité")
-
-console.log(allNonScolarActivities)
-
-// Simplified the list with only usefull keys
-allNonScolarActivities = filterKeys(allNonScolarActivities, ["ID", "Activité", "Age max", "Age min", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscription", "Remarques"])
-
-console.log(allNonScolarActivities)
-
-
+/**
+ * Find activities according to filters
+ * @param {str} language "FR", "DE", "IT"
+ * @param {str} who "parent", "teacher"
+ * @param {str} where canton abreviation
+ * @param {number} age Child age 
+ * @param {str} gender "Garçon", "Fille"
+ * @returns 
+ */
 function findActivities(language, who, where, age, gender) {
 
   if (who =="parent") {

@@ -19,6 +19,11 @@ var cardTemplate = (title, description, imgSrc, animationDelay) => `
 </div>
 `;
 
+/**
+ * Troncate a given string to a given length by ensuing to end on a word, and add "..." at the end
+ * @param {string} str Strinf to truncate
+ * @param {number} num Number of characters to keep
+ */
 function truncateString(str, num) {
     if (str) {
         if (str.length > num) {
