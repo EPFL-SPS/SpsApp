@@ -178,16 +178,8 @@ function showResults() {
     // activities = filterDuplicatedActivities(activities)
 
     activities.forEach(function(activity) { 
-        card = cardTemplate(activity["Activité"], activity["Description"], activity["ImgSrc"] ? activity["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
+        card = cardTemplate(activity["Activité"], truncateString(activity["Description"], 150), activity["ImgSrc"] ? activity["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
         $("#result-row").append(card)
-        console.log(card)
         animationDelay += 0.1
     })
-
-    // console.log(searchResults)
-    // searchResults["results"].forEach(function(activity) { 
-    //     card = cardTemplate(activity["title"], activity["description"], activity["imgSrc"], animationDelay);
-    //     $("#result-row").append(card)
-    //     animationDelay += 0.1
-    // })
 }
