@@ -13,7 +13,7 @@ div{
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color:#38a8cc;
+  background-color:#FFFFFF;
   z-index: 1;
 
   /* By default all pages are hiden on the right of the screen */
@@ -37,8 +37,7 @@ div{
 }
 
 .results-h1 {
-  color: white;
-  font-family: arial;
+  color: #191919;
   font-weight: bold;
   font-size: 3em;
   padding-top: 1em;
@@ -46,8 +45,7 @@ div{
 }
 
 .question-h1 {
-  color: white;
-  font-family: arial;
+  color: #191919;
   font-weight: bold;
   font-size: 3em;
   padding-top: 3em;
@@ -55,8 +53,7 @@ div{
 }
 
 .question-h2 {
-  color: white;
-  font-family: arial;
+  color: #191919;
   font-weight: bold;
   font-size: 2em;
   padding-top: 1em;
@@ -74,8 +71,7 @@ div{
 }
 
 .card-h1 {
-  color:black;
-  font-family: arial;
+  color:191919;
   font-size: 1em;
   font-weight: bold;
 }
@@ -125,12 +121,12 @@ div{
 }
 
 .previousButton:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: #373737;
+  color: white;
 }
 
 .previousButton {
-  background-color: #f1f1f1;
-  color: black;
+  background-color: #2d2d2d;
+  color: white;
   border-radius: 50%;
 }
