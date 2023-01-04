@@ -81,11 +81,11 @@ function filterActivities_age(jsonArray, age) {
 /**
  * Filter activities for a given gender
  * @param {[...]} jsonArray containing all the activities
- * @param {str} gender Gender to filter ("Garçon", "Fille")
+ * @param {str} gender Gender to filter ("Garçon", "Fille", "Mixte")
  * @returns {[...]} Only activity that correspond to that gender
  */
 function filterActivities_gender(jsonArray, gender) {
-  if (!gender) {
+  if (!gender || gender == "Mixte") {
     return jsonArray
   }
 
@@ -106,13 +106,17 @@ function groupSameActivities(jsonArray) {
     let value = entry[ACTIVITY_NAME_COLUMN];
     let found = false;
     result.forEach(function(group) {
-      if (group.ACTIVITY_NAME_COLUMN === value) {
+      if (group[ACTIVITY_NAME_COLUMN] === value) {
         group.values.push(entry);
         found = true;
       }
     });
+    console.log(ACTIVITY_NAME_COLUMN)
     if (!found) {
-      result.push({ACTIVITY_NAME_COLUMN: value, values: [entry]});
+      var obj = {};
+      obj[ACTIVITY_NAME_COLUMN] = value;
+      obj["values"] = [entry];
+      result.push(obj);
     }
   });
   return result;
@@ -150,7 +154,7 @@ function findActivities(language, who, where, age, gender) {
   if (who =="parent") {
     list = allNonScolarActivities
   } else {
-    list = []
+    list = allNonScolarActivities // TODO: change to allScolarActivities
   }
 
   console.log("All activities")

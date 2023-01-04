@@ -20,6 +20,9 @@ $(window).on('hashchange',function(){
     displayPage()
 });
 
+/**
+ * Generate and display page according to hash
+ */
 function displayPage() {
     // Get current search status from URL params if existing
     if (document.location.hash) {
@@ -76,6 +79,9 @@ function displayPage() {
     }
 }
 
+/**
+ * Increment page in status and update hash
+ */
 function incrementPage() {
     if (search_status["page"] == pages.length) {
         return
@@ -86,6 +92,9 @@ function incrementPage() {
     updateHash()
 }
 
+/**
+ * Decrement page in status and update hash
+ */
 function decrementPage() {
     if (search_status["page"] == 0) {
         return
@@ -203,7 +212,6 @@ $('.gender-btnChoice').on('click', function(event) {
  *   RESULTS
  */
 function showResults() {
-    animationDelay = 0.6
 
     console.log(search_status)
 
@@ -215,18 +223,24 @@ function showResults() {
         gender = "Fille"
     }
 
+    // Find activities corresponding to search criteria
     activities = findActivities("FR", search_status["who"], search_status["where"], search_status["age"], gender)
 
+    // Group same activities
     console.log("Group same activities")
     activities = groupSameActivities(activities)
     console.log(activities)
 
-    console.log("Unique activities")
-
+    
+    // Generate cards from results
+    let animationDelay = 0.6
+    
     $("#result-row").empty()
     if (activities.length > 0) {
+        console.log("Unique activities")
         activities.forEach(function(activity) { 
             editions = activity["values"]
+
             console.log(editions)
 
             card = cardTemplate(editions[0][ACTIVITY_NAME_COLUMN], truncateString(editions[0]["Description"], 150), editions[0]["ImgSrc"] ? editions[0]["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
@@ -235,28 +249,8 @@ function showResults() {
             animationDelay += 0.1
         })
     } else {
+        // If not activity is found, display a default card
         card = cardTemplate("Aucune activité trouvée pour ces filtres", "Plus d'informations sur le site du SPS", "default.jpg", animationDelay);
         $("#result-row").append(card)
-    }
-}
-
-
-function parseParms(search) {
-    result = {}
-    search = search.replace('#', '')
-    search.split('&').forEach(item => {
-        result[item.split('=')[0]] = decodeURIComponent(item.split('=')[1]);
-    });
-    return result
-}
-
-function generateHash(params) {
-    return $.param(params);
-}
-
-function updateHash() {
-    if (search_status) {
-        hash = generateHash(search_status)
-        document.location.hash = hash
     }
 }
