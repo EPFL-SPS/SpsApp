@@ -15,18 +15,20 @@
 <body>
 
     <div id="EPFL_logo">
-        <img alt="EPFL Logo" height="50" src="assets/img/EPFL_Logo_Digital_RGB_PROD.png"></img>
+        <a href="index.html"><img alt="EPFL Logo" height="50" src="assets/img/EPFL_Logo_Digital_RGB_PROD.png"></img></a>
     </div>
 
     <div class="page visible-page" id="page0">
-        <div class="dropdown" style="text-align: right; padding: 15px;">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown-center" style="text-align: right; padding: 15px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 🇫🇷
-                </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button" id="languagesDE">🇩</button>
-            </div>
+            </button>
+            <ul class="dropdown-menu" style="min-width: auto;">
+                <li><button class="dropdown-item" id="languagesDE" type="button">🇩🇪</button></li>
+                <li><button class="dropdown-item" id="languagesIT" type="button">🇮🇹</button></li>
+            </ul>
         </div>
+
         <div class="question"><h1 class="question-h1">Découvrez les activités du <br>Service de Promotion des Sciences</h1></div>
         <div class="btn-group question" role="group">
             <button value="parent" type="button" class="intro-btn btn btn-dark btn-lg">C'est parti !</button>

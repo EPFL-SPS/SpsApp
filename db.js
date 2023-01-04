@@ -136,7 +136,7 @@ nonScolarActivities = [
     },
     {
         "ID": "10",
-        "Activité": "JOM (journée oser tous les métiers)",
+        "Activité": "JOM (Journée Oser Tous Les Métiers)",
         "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
