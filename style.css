@@ -75,12 +75,6 @@ div{
 /*
  * Result cards
  */ 
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
 .card-h1 {
   color:191919;
   font-size: 1em;
