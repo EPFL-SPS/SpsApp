@@ -60,6 +60,17 @@ div{
   padding-bottom: 1em;
 }
 
+/*
+ * EPFL Logo
+ */
+#EPFL_logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 15px;
+  margin-bottom: 50px;
+  z-index: 50;
+}
 
 /*
  * Result cards
