@@ -23,9 +23,9 @@ $(window).on('hashchange',function(){
 function displayPage() {
     // Get current search status from URL params if existing
     if (document.location.hash) {
-        console.log(document.location.hash)
         search_status = parseParms(document.location.hash)
         console.log("Load status from hash")
+        console.log(document.location.hash)
         console.log(search_status)
     }
 
@@ -38,7 +38,6 @@ function displayPage() {
     currentPage = search_status["page"]
 
     // Execute page specific code
-    console.log("Execute code for page " + currentPage)
     switch(parseInt(currentPage)) {
         case 0:
             // Reset search if on first page
@@ -62,8 +61,6 @@ function displayPage() {
             showResults()
             break
     }
-
-    console.log("code executed")
 
     updateHash()
 
@@ -101,7 +98,7 @@ function decrementPage() {
  * @param {number} pageIndex Page index according to pages global array
 */
 function slideInPage(pageIndex) {
-    console.log("Slide in page " + pageIndex)
+    // console.log("Slide in page " + pageIndex)
 
     pageId = "#" + pages[pageIndex]
 
@@ -117,7 +114,8 @@ function slideInPage(pageIndex) {
  * @param {number} pageIndex Page index according to pages global array
  */
 function slideOutPage(pageIndex) {
-    console.log("Slide out page " + pageIndex)
+    // console.log("Slide out page " + pageIndex)
+    
     pageId = "#" + pages[pageIndex]
 
     $(pageId).css({display: "block", marginLeft : "0%"})
@@ -222,14 +220,20 @@ function showResults() {
     console.log("Unique activities")
 
     $("#result-row").empty()
-    activities.forEach(function(activity) { 
-        editions = activity["values"]
-        console.log(editions)
-        card = cardTemplate(editions[0][ACTIVITY_NAME_COLUMN], truncateString(editions[0]["Description"], 150), editions[0]["ImgSrc"] ? editions[0]["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
-        $("#result-row").append(card)
+    if (activities.length > 0) {
+        activities.forEach(function(activity) { 
+            editions = activity["values"]
+            console.log(editions)
 
-        animationDelay += 0.1
-    })
+            card = cardTemplate(editions[0][ACTIVITY_NAME_COLUMN], truncateString(editions[0]["Description"], 150), editions[0]["ImgSrc"] ? editions[0]["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
+            $("#result-row").append(card)
+
+            animationDelay += 0.1
+        })
+    } else {
+        card = cardTemplate("Aucune activité trouvée pour ces filtres", "Plus d'informations sur le site du SPS", "default.jpg", animationDelay);
+        $("#result-row").append(card)
+    }
 }
 
 
