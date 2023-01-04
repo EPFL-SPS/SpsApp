@@ -44,19 +44,23 @@ function displayPage() {
             search_status = {"page": 0}
             break
         // Remove filters from future pages otherwise
-        case 1:
+        case 1: // Who
             delete search_status['who']
             break
-        case 2:
+        case 2: // Where
             delete search_status['where']
             break
-        case 3:
+        case 3: // Age
             delete search_status['age']
+
+            age = $("#question_age-val").val()
+            $('#age-val').html(age);
+
             break
-        case 4:
+        case 4: // Gender
             delete search_status['gender']
             break
-        case 5:
+        case 5: // Results
             // Load results on the last page
             showResults()
             break
