@@ -1,15 +1,108 @@
 let transisionDuration = 650;
-let filters = {}
+
+currentPage = 0
+
+let search_status = {
+    "page": 0
+}
 
 // Pages (div) to load, order has meaning
 const pages = ["page0", "page1", "page2", "page3", "page4", "results"]
-// Current page (div) loaded 
-let currentIndex = 0
+
+/**
+ * Correct page is displayed on load and when hash changes
+ */
+$(document).ready(function() {
+    displayPage()
+});
+
+$(window).on('hashchange',function(){
+    displayPage()
+});
+
+function displayPage() {
+    // Get current search status from URL params if existing
+    if (document.location.hash) {
+        console.log(document.location.hash)
+        search_status = parseParms(document.location.hash)
+        console.log("Load status from hash")
+        console.log(search_status)
+    }
+
+    console.log("Display page " + search_status["page"] + " from current page " + currentPage)
+    if (currentPage > search_status["page"]) {
+        slideOutPage(currentPage)
+    } else if (currentPage < search_status["page"]) {
+        slideInPage(search_status["page"])
+    }
+    currentPage = search_status["page"]
+
+    // Execute page specific code
+    console.log("Execute code for page " + currentPage)
+    switch(parseInt(currentPage)) {
+        case 0:
+            // Reset search if on first page
+            search_status = {"page": 0}
+            break
+        // Remove filters from future pages otherwise
+        case 1:
+            delete search_status['who']
+            break
+        case 2:
+            delete search_status['where']
+            break
+        case 3:
+            delete search_status['age']
+            break
+        case 4:
+            delete search_status['gender']
+            break
+        case 5:
+            // Load results on the last page
+            showResults()
+            break
+    }
+
+    console.log("code executed")
+
+    updateHash()
+
+    // Update preivous button visibility
+    if (search_status["page"] > 0) {
+        $("#previousButton").css({visibility: "visible"})
+    } else {
+        $("#previousButton").css({visibility: "hidden"})
+    }
+}
+
+function incrementPage() {
+    if (search_status["page"] == pages.length) {
+        return
+    }
+
+    search_status["page"]++
+
+    updateHash()
+}
+
+function decrementPage() {
+    if (search_status["page"] == 0) {
+        return
+    }
+
+    search_status["page"]--
+
+    updateHash()
+}
+
 
 /**
  * Slide in a page from the right
- */
+ * @param {number} pageIndex Page index according to pages global array
+*/
 function slideInPage(pageIndex) {
+    console.log("Slide in page " + pageIndex)
+
     pageId = "#" + pages[pageIndex]
 
     $(pageId).css({display: "block", marginLeft : "100%"})
@@ -21,8 +114,10 @@ function slideInPage(pageIndex) {
 
 /**
  * Slide out a page to the right
+ * @param {number} pageIndex Page index according to pages global array
  */
 function slideOutPage(pageIndex) {
+    console.log("Slide out page " + pageIndex)
     pageId = "#" + pages[pageIndex]
 
     $(pageId).css({display: "block", marginLeft : "0%"})
@@ -33,54 +128,14 @@ function slideOutPage(pageIndex) {
 
     setTimeout(function() {
         $(pageId).css({display: "none"})
-    }, transisionDuration)    
+    }, transisionDuration)
 }
-
-/**
- * According to the global page array,
- * slide in the next page
- */
-function slideNextPage() {
-    if (currentIndex == pages.length) {
-        return
-    }
-
-    slideInPage(currentIndex + 1)
-    currentIndex += 1
-
-    if (currentIndex > 0) {
-        $("#previousButton").css({visibility: "visible"})
-    } else {
-        $("#previousButton").css({visibility: "hidden"})
-    }
-}
-
-/**
- * According to the global page array, slide
- * out current page to reveal the previous one
- */
-function slidePreviousPage() {
-    if (currentIndex == 0) {
-        return
-    }
-
-    slideOutPage(currentIndex)
-    currentIndex -= 1
-}
-
-/**
- * Slide the first page when document is loaded 
- */
-$(document).ready(function() {
-    // slideInPage(currentIndex)
-    // showResults()
-});
 
 /**
  * Previous button action
  */
 $("#previousButton").on('click', function(event) {
-    slidePreviousPage()
+    decrementPage()
 })
 
 /*
@@ -88,7 +143,7 @@ $("#previousButton").on('click', function(event) {
  */
 $('.intro-btn').on('click', function(event) {
     event.preventDefault();
-    slideNextPage()
+    incrementPage()
 });
 
 /*
@@ -98,10 +153,9 @@ $('.who-btnChoice').on('click', function(event) {
     event.preventDefault();
 
     who = $(this).attr('value')
-    filters["who"] = who
-    console.log(filters)
+    search_status["who"] = who
 
-    slideNextPage()
+    incrementPage()
 });
 
 /*
@@ -111,10 +165,9 @@ $('.where-btnChoice').on('click', function(event) {
     event.preventDefault();
 
     where = $(this).attr('value')
-    filters["where"] = where
-    console.log(filters)
+    search_status["where"] = where
 
-    slideNextPage()
+    incrementPage()
 });
 
 /*
@@ -129,10 +182,9 @@ $('#question_age-val').on('input', function change(e){
 // Save age value and go to the next question
 $('#question_age-next').on('click', function(event) {
     age = $('#question_age-val').val()  
-    filters["age"] = age
-    console.log(filters)
+    search_status["age"] = age
 
-    slideNextPage()
+    incrementPage()
 });
 
 /*
@@ -140,11 +192,9 @@ $('#question_age-next').on('click', function(event) {
  */
 $('.gender-btnChoice').on('click', function(event) {
     gender = $(this).attr('value')
-    filters["gender"] = gender
-    console.log(filters)
+    search_status["gender"] = gender
 
-    slideNextPage()
-    showResults()
+    incrementPage()
 });
 
 /*
@@ -153,17 +203,17 @@ $('.gender-btnChoice').on('click', function(event) {
 function showResults() {
     animationDelay = 0.6
 
-    console.log(filters)
+    console.log(search_status)
 
     // TEMP - Convert gender to french - Find a place to adapt keys
     gender = "Mixte"
-    if (filters["gender"] == "boy") {
+    if (search_status["gender"] == "boy") {
         gender = "Garçon"
-    } else if (filters["gender"] == "girl") {
+    } else if (search_status["gender"] == "girl") {
         gender = "Fille"
     }
 
-    activities = findActivities("FR", filters["who"], filters["where"], filters["age"], gender)
+    activities = findActivities("FR", search_status["who"], search_status["where"], search_status["age"], gender)
 
     console.log("Group same activities")
     activities = groupSameActivities(activities)
@@ -171,6 +221,7 @@ function showResults() {
 
     console.log("Unique activities")
 
+    $("#result-row").empty()
     activities.forEach(function(activity) { 
         editions = activity["values"]
         console.log(editions)
@@ -179,4 +230,25 @@ function showResults() {
 
         animationDelay += 0.1
     })
+}
+
+
+function parseParms(search) {
+    result = {}
+    search = search.replace('#', '')
+    search.split('&').forEach(item => {
+        result[item.split('=')[0]] = decodeURIComponent(item.split('=')[1]);
+    });
+    return result
+}
+
+function generateHash(params) {
+    return $.param(params);
+}
+
+function updateHash() {
+    if (search_status) {
+        hash = generateHash(search_status)
+        document.location.hash = hash
+    }
 }

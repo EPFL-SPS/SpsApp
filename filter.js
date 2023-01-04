@@ -48,6 +48,11 @@ function filterActivities(jsonArray, filters) {
   return jsonArray.filter(function(item) {
     let match = true;
     for (let key in filters) {
+      // If the filter is undefined or null, skip it
+      if (!filters[key]) {
+        return true
+      }
+
       if (item[key] !== filters[key]) {
         match = false;
         break;
@@ -64,6 +69,10 @@ function filterActivities(jsonArray, filters) {
  * @returns {[...]} Only activity that correspond to that age
  */
 function filterActivities_age(jsonArray, age) {
+  if (!age) {
+    return jsonArray
+  }
+
   return jsonArray.filter(function(entry) {
     return entry["Age min"] <= age && entry["Age max"] >= age ;
   });
@@ -76,6 +85,10 @@ function filterActivities_age(jsonArray, age) {
  * @returns {[...]} Only activity that correspond to that gender
  */
 function filterActivities_gender(jsonArray, gender) {
+  if (!gender) {
+    return jsonArray
+  }
+
   return jsonArray.filter(function(entry) {
     return entry["Genre"] == "Mixte" || entry["Genre"] == gender;
   });
