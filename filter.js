@@ -74,7 +74,10 @@ function filterActivities_age(jsonArray, age) {
   }
 
   return jsonArray.filter(function(entry) {
-    return entry["Age min"] <= age && entry["Age max"] >= age ;
+    min = parseInt(entry["Age min"])
+    max = parseInt(entry["Age max"])
+    ret =  min <= age && max >= age ;
+    return ret;
   });
 }
 
