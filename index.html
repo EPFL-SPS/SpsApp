@@ -14,40 +14,47 @@
 
 <body>
 
+    <div id="EPFL_logo">
+        <a href="index.html"><img alt="EPFL Logo" height="50" src="assets/img/EPFL_Logo_Digital_RGB_PROD.png"></img></a>
+    </div>
+
     <div class="page visible-page" id="page0">
-        <div class="dropdown" style="text-align: right; padding: 15px;">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown-center" style="text-align: right; padding: 15px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 🇫🇷
-                </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button" id="languagesDE">🇩</button>
-            </div>
+            </button>
+            <ul class="dropdown-menu" style="min-width: auto;">
+                <li><button class="dropdown-item" id="languagesDE" type="button">🇩🇪</button></li>
+                <li><button class="dropdown-item" id="languagesIT" type="button">🇮🇹</button></li>
+            </ul>
         </div>
-        <div class="question"><h1 class="question-h1">Découvrez les activités du <br>Service de Promotion des Sciences</h1></div>
+
+        <div class="question"><h1 class="question-h1">Découvrez les activités du <br>Service de promotion des sciences</h1></div>
         <div class="btn-group question" role="group">
-            <button value="parent" type="button" class="intro-btn btn btn-light btn-lg">C'est parti !</button>
+            <button value="parent" type="button" class="intro-btn btn btn-dark btn-lg">C'est parti !</button>
         </div>
-    </div> <!-- page 0 -->
+    </div> <!-- page 0 - who -->
 
     <div class="page" id="page1">
         <div class="question"><h1 class="question-h1">Vous êtes</h1></div>
         <div id="question_who" class="btn-group question" role="group">
-            <button value="parent" type="button" class="who-btnChoice btn btn-light btn-lg">un parent</button>
-            <button value="teacher" type="button" class="who-btnChoice btn btn-light btn-lg">un·e professeur·e</button>
+            <button value="parent" type="button" class="who-btnChoice btn btn-dark btn-lg">un parent</button>
+            <button value="teacher" type="button" class="who-btnChoice btn btn-dark btn-lg">un·e enseignant·e</button>
         </div>
-    </div> <!-- page 1 -->
+    </div> <!-- page 1 - where -->
 
     <div class="page" id="page2">
         <div><h1 class="question-h1" class="question">Vous venez du canton de</h1></div>
         <div id="question_where" class="btn-group" role="group">
-            <button value="VD" type="button" class="where-btnChoice btn btn-light btn-lg">Vaud</button>
-            <button value="GE" type="button" class="where-btnChoice btn btn-light btn-lg">Genève</button>
-            <button value="FR" type="button" class="where-btnChoice btn btn-light btn-lg">Fribourg</button>
-            <button value="NE" type="button" class="where-btnChoice btn btn-light btn-lg">Neuchâtel</button>
-            <button value="JU" type="button" class="where-btnChoice btn btn-light btn-lg">Jura</button>
-            <button value="VS" type="button" class="where-btnChoice btn btn-light btn-lg">Valais</button>
+            <button value="VD" type="button" class="where-btnChoice btn btn-dark btn-lg">Vaud</button>
+            <button value="GE" type="button" class="where-btnChoice btn btn-dark btn-lg">Genève</button>
+            <button value="FR" type="button" class="where-btnChoice btn btn-dark btn-lg">Fribourg</button>
+            <button value="NE" type="button" class="where-btnChoice btn btn-dark btn-lg">Neuchâtel</button>
+            <button value="JU" type="button" class="where-btnChoice btn btn-dark btn-lg">Jura</button>
+            <button value="VS" type="button" class="where-btnChoice btn btn-dark btn-lg">Valais</button>
+            <button value="BE" type="button" class="where-btnChoice btn btn-dark btn-lg">Berne</button>
         </div>
-    </div> <!-- page 2 -->
+    </div> <!-- page 2 - age -->
 
     <div class="page" id="page3">
         <h1 class="question-h1">Quel âge a votre enfant ?</h1>
@@ -55,24 +62,23 @@
             <input id="question_age-val" type="range" class="form-range" min="6" max="16" value="12" step="1">
         </div>
         <h2 class="question-h2"><span id="age-val">12</span> ans</h2>
-        <div><button id="question_age-next" type="button" class="btn btn-light btn-lg">Suivant</button></div>
-    </div> <!-- page 3 -->
+        <div><button id="question_age-next" type="button" class="btn btn-dark btn-lg">Suivant</button></div>
+    </div> <!-- page 3 - gender -->
 
     <div class="page" id="page4">
         <h1 class="question-h1">Votre enfant est</h1>
         <div id="question_gender" class="btn-group" role="group">
-            <button value="girl" type="button" class="gender-btnChoice btn btn-light btn-lg">une fille</button>
-            <button value="boy" type="button" class="gender-btnChoice btn btn-light btn-lg">un garçon</button>
+            <button value="girl" type="button" class="gender-btnChoice btn btn-dark btn-lg">une fille</button>
+            <button value="boy" type="button" class="gender-btnChoice btn btn-dark btn-lg">un garçon</button>
         </div>
-    </div> <!-- page4 -->
+    </div> <!-- page4 - results-->
 
     <div class="page auto-height" id="results">
-        <div><h1 class="results-h1">Ces activités pourraient vous plaire</h1></div>
-        <div id="result-div"></div>
+        <div style="margin-top: 25px;"><h1 class="results-h1">Ces activités pourraient vous plaire</h1></div>
 
         <div class="container">
 
-            <div id="result-row" class="row justify-content-md-center">
+            <div id="result-row" class="row justify-content-center">
                 
                 <!-- Cards are dynamically loaded here ... -->
 
@@ -88,6 +94,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="var.js"></script> 
     <script src="db.js"></script>
+    <script src="utils.js"></script> 
     <script src="filter.js"></script> 
     <script src="script.js"></script> 
 
