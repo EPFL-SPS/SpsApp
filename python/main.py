@@ -1,7 +1,7 @@
 import json
-from activities import ActivityParser
 from datetime import datetime
 
+from activities import ActivityParser
 from secret import GOOGLE_SHEET_API_KEY, SHEET_ID
 
 fileName = "db.js"
