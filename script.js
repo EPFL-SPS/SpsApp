@@ -251,7 +251,7 @@ function showResults() {
             // console.log(editions)
 
 
-            card = cardTemplate(ed[ACTIVITY_NAME_COLUMN], truncateString(ed["Description"], 150), "", ed["ImgSrc"] ? ed["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
+            card = cardTemplate(ed[ACTIVITY_NAME_COLUMN], truncateString(ed["Description"], 150), ed["Format"], ed["ImgSrc"] ? ed["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
             $("#result-row").append(card)
 
             animationDelay += 0.1

@@ -13,7 +13,7 @@ var cardTemplate = (title, description, more, imgSrc, animationDelay) => `
                 <div class="d-flex justify-content-between">
                     <div class="btn-group">
                     <!-- Add link that will open in a new tab -->
-                        <a href="https://sps.epfl.ch/" target="_blank"><button type="button" class="btn btn-sm btn-dark">Plus d'informations</button></a>
+                        <a href="https://sps.epfl.ch/" target="_blank"><button type="button" class="btn btn-sm btn-dark">Détails</button></a>
                     </div>
                     <small class="text-muted">${more}</small>
                 </div>  

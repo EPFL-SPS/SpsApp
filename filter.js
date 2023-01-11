@@ -5,7 +5,7 @@ const ACTIVITY_NAME_COLUMN = "Activité"
 allNonScolarActivities = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
 
 // Simplified the list with only useful keys
-allNonScolarActivities = filterKeys(allNonScolarActivities, ["ID", ACTIVITY_NAME_COLUMN, "Age max", "Age min", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscription", "Remarques"])
+allNonScolarActivities = filterKeys(allNonScolarActivities, ["ID", ACTIVITY_NAME_COLUMN, "Age max", "Age min", "Format", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscription", "Remarques"])
 
 
 /**

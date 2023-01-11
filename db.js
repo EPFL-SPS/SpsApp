@@ -1,456 +1,372 @@
-nonScolarActivities = [
+// Generated on 11/01/2023 15:37:47
+const nonScolarActivities = [
     {
         "ID": "1",
-        "Activité": "Ateliers Programme PLUS pendant les vacances scolaires",
-        "Cadre": "Extrascolaire",
+        "Activité": "Ateliers Programme PLUS",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "8",
         "Age max": "13",
-        "Public cible": "8-10 ans et 11-13 ans",
-        "Périodes": "20-24 février, 10-13 avril, octobre",
-        "Lieu": "campus",
+        "Format": "Vacances scolaires",
         "Inscriptions": "2 mois avant",
         "ImgSrc": "",
-        "Description": "Des ateliers dans les domaines des sciences, de l'informatique et des mathématiques pour les enfants du canton de Vaud",
+        "Description": "Des ateliers dans les domaines des sciences, de l'informatique et des mathématiques pour les enfants du canton de Vaud"
     },
     {
         "ID": "2",
         "Activité": "Ateliers scientifiques et techniques",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "11",
         "Age max": "12",
-        "Public cible": "11-12 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "mai",
         "ImgSrc": "campMateriaux",
-        "Description": "Par la réalisation d'expériences scientifiques et de constructions techniques, les élèves comprendront comment la science nous est utile dans la vie de tous les jours.",
+        "Description": "Par la réalisation d'expériences scientifiques et de constructions techniques, les élèves comprendront comment la science nous est utile dans la vie de tous les jours."
     },
     {
         "ID": "3",
         "Activité": "Camps de chimie et biochimie",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "11",
         "Age max": "13",
-        "Public cible": "11-13 ans",
-        "Périodes": "août",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "février",
         "ImgSrc": "campChimieFille",
-        "Description": "Aimerais-tu partir à la découverte de la matière ? Si tu veux manipuler du matériel scientifique dans un vrai laboratoire de chimie, réaliser des expériences en rapport avec la vie de tous les jours et découvrir le monde de la recherche, ce camp mixte de chimie t’est destiné !",
+        "Description": "Aimerais-tu partir à la découverte de la matière ? Si tu veux manipuler du matériel scientifique dans un vrai laboratoire de chimie, réaliser des expériences en rapport avec la vie de tous les jours et découvrir le monde de la recherche, ce camp mixte de chimie t’est destiné !"
     },
     {
         "ID": "4",
         "Activité": "Camps multisciences",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "11",
         "Age max": "13",
-        "Public cible": "11-13 ans",
-        "Périodes": "3 au 7 et 10 au 14 juillet",
-        "Lieu": "campus",
+        "Format": "Vacances février",
         "Inscriptions": "février",
         "ImgSrc": "campsScientifiquesTechniques",
-        "Description": "Les enfants auront l’occasion d’observer, de bricoler, de s’amuser, d’apprendre et de se familiariser avec les sciences et les  technologies. Ils/elles vont également visiter des laboratoires de l’EPFL et rencontrer des chercheuses et chercheurs.",
+        "Description": "Les enfants auront l’occasion d’observer, de bricoler, de s’amuser, d’apprendre et de se familiariser avec les sciences et les  technologies. Ils/elles vont également visiter des laboratoires de l’EPFL et rencontrer des chercheuses et chercheurs."
     },
     {
         "ID": "5",
         "Activité": "Coding club des filles",
-        "Cadre": "Extrascolaire",
         "Genre": "Fille",
         "Langue": "FR",
         "Age min": "11",
         "Age max": "15",
-        "Public cible": "11-15 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus et externe",
+        "Format": "Le samedi",
         "Inscriptions": "",
         "ImgSrc": "codingClub",
-        "Description": "Un club gratuit de programmation pour les filles de 11 à 16 ans",
+        "Description": "Un club gratuit de programmation pour les filles de 11 à 16 ans"
     },
     {
         "ID": "6",
         "Activité": "Coding club for girls (DE)",
-        "Cadre": "Extrascolaire",
         "Genre": "Fille",
         "Langue": "DE",
         "Age min": "11",
         "Age max": "15",
-        "Public cible": "11-15 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus et externe",
+        "Format": "Am samstag",
         "Inscriptions": "",
         "ImgSrc": "codingClub",
-        "Description": "(DE) Un club gratuit de programmation pour les filles de 11 à 16 ans",
+        "Description": "(DE) Un club gratuit de programmation pour les filles de 11 à 16 ans"
     },
     {
         "ID": "7",
         "Activité": "Coding club for girls (TI)",
-        "Cadre": "Extrascolaire",
         "Genre": "Fille",
         "Langue": "IT",
         "Age min": "11",
         "Age max": "15",
-        "Public cible": "11-15 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus et externe",
+        "Format": "Il sabato",
         "Inscriptions": "",
         "ImgSrc": "codingClub",
-        "Description": "(IT) Un club gratuit de programmation pour les filles de 11 à 16 ans",
+        "Description": "(IT) Un club gratuit de programmation pour les filles de 11 à 16 ans"
     },
     {
         "ID": "8",
         "Activité": "Internet & Code für Mädchen",
-        "Cadre": "Extrascolaire",
         "Genre": "Fille",
         "Langue": "DE",
         "Age min": "9",
         "Age max": "12",
-        "Public cible": "9-12 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus et externe",
+        "Format": "11 samedis",
         "Inscriptions": "mai et novembre",
         "ImgSrc": "internetEtCode",
-        "Description": "(DE) Cours d’informatique pour les filles 9 à 11 ans",
+        "Description": "(DE) Cours d’informatique pour les filles 9 à 11 ans"
     },
     {
         "ID": "9",
         "Activité": "Internet et code pour les filles",
-        "Cadre": "Extrascolaire",
         "Genre": "Fille",
         "Langue": "FR",
         "Age min": "9",
         "Age max": "12",
-        "Public cible": "9-12 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus et externe",
+        "Format": "11 samedis",
         "Inscriptions": "mai et novembre",
         "ImgSrc": "internetEtCode",
-        "Description": "Cours d’informatique pour les filles 9 à 11 ans",
+        "Description": "Cours d’informatique pour les filles 9 à 11 ans"
     },
     {
         "ID": "10",
-        "Activité": "JOM (Journée Oser Tous Les Métiers)",
-        "Cadre": "Extrascolaire",
+        "Activité": "JOM (journée oser tous les métiers)",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "10",
         "Age max": "12",
-        "Public cible": "7 et 8P, 9S",
-        "Périodes": "09/11/2022",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "octobre",
         "ImgSrc": "",
-        "Description": "Pour les jeunes de 10-13 ans qui passent la journée sur le campus avec un·e membre de l’EPFL.",
+        "Description": "Pour les jeunes de 10-13 ans qui passent la journée sur le campus avec un·e membre de l’EPFL."
     },
     {
         "ID": "11",
         "Activité": "Les maths en jeu",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "8",
         "Age max": "13",
-        "Public cible": "5-6P, 7-8P et 9-10S",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "mai",
         "ImgSrc": "mathsEnJeu",
-        "Description": "Ateliers semestriels de mathématiques pour les 8-15 ans",
+        "Description": "Ateliers semestriels de mathématiques pour les 8-15 ans"
     },
     {
         "ID": "12",
         "Activité": "Les maths, ça m'intéresse",
-        "Cadre": "Extrascolaire",
         "Genre": "Fille",
         "Langue": "FR",
         "Age min": "12",
         "Age max": "14",
-        "Public cible": "9-11S",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "mai",
         "ImgSrc": "mathCaMInteresse",
-        "Description": "Ateliers semestriels de mathématiques pour les filles de 9H à 11H",
+        "Description": "Ateliers semestriels de mathématiques pour les filles de 9H à 11H"
     },
     {
         "ID": "13",
         "Activité": "Les robots, c’est l’affaire des filles",
-        "Cadre": "Extrascolaire",
         "Genre": "Fille",
         "Langue": "FR",
         "Age min": "11",
         "Age max": "13",
-        "Public cible": "11-13 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus et externe",
+        "Format": "11 samedis",
         "Inscriptions": "mai et novembre",
         "ImgSrc": "CoursRoberta_filles",
-        "Description": "Cours de robotique pour filles de 11 à 13 ans",
+        "Description": "Cours de robotique pour filles de 11 à 13 ans"
     },
     {
         "ID": "14",
         "Activité": "Construire et programmer un robot",
-        "Cadre": "Extrascolaire",
         "Genre": "Garçon",
         "Langue": "FR",
         "Age min": "11",
         "Age max": "13",
-        "Public cible": "11-13 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus et externe",
+        "Format": "11 samedis",
         "Inscriptions": "mai et novembre",
         "ImgSrc": "",
-        "Description": "Cours de robotique pour les garçons de 11 à 13 ans",
+        "Description": "Cours de robotique pour les garçons de 11 à 13 ans"
     },
     {
         "ID": "15",
         "Activité": "Les robots, c’est l’affaire des filles (DE)",
-        "Cadre": "Extrascolaire",
         "Genre": "Fille",
         "Langue": "DE",
         "Age min": "11",
         "Age max": "13",
-        "Public cible": "11-13 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus et externe",
+        "Format": "11 Samstage",
         "Inscriptions": "mai et novembre",
         "ImgSrc": "",
-        "Description": "(DE) Cours de robotique pour filles de 11 à 13 ans",
+        "Description": "(DE) Cours de robotique pour filles de 11 à 13 ans"
     },
     {
         "ID": "16",
         "Activité": "Construire et programmer un robot (DE)",
-        "Cadre": "Extrascolaire",
         "Genre": "Garçon",
         "Langue": "DE",
         "Age min": "11",
         "Age max": "13",
-        "Public cible": "11-13 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus et externe",
+        "Format": "11 Samstage",
         "Inscriptions": "mai et novembre",
         "ImgSrc": "",
-        "Description": "(DE) Cours de robotique pour les garçons de 11 à 13 ans",
+        "Description": "(DE) Cours de robotique pour les garçons de 11 à 13 ans"
     },
     {
         "ID": "17",
         "Activité": "Mardimathiques",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "11",
         "Age max": "14",
-        "Public cible": "11-14 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus",
+        "Format": "Les mardis soir",
         "Inscriptions": "juin",
         "ImgSrc": "mardimathiques",
-        "Description": "Comment compter, un peu de géométrie plane cartésienne, quelques jeux de logique ainsi que des énigmes, l’infini et encore bien d’autres sujets intéressants.",
+        "Description": "Comment compter, un peu de géométrie plane cartésienne, quelques jeux de logique ainsi que des énigmes, l’infini et encore bien d’autres sujets intéressants."
     },
     {
         "ID": "18",
         "Activité": "Matériaux super géniaux",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "11",
         "Age max": "13",
-        "Public cible": "11-13 ans",
-        "Périodes": "août",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "février",
         "ImgSrc": "campMateriaux",
-        "Description": "Des matériaux qui changent de forme aux poudres qui cristallisent en passant par de surprenants liquides.",
+        "Description": "Des matériaux qui changent de forme aux poudres qui cristallisent en passant par de surprenants liquides."
     },
     {
         "ID": "19",
         "Activité": "Mon projet scientifique",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "13",
         "Age max": "15",
-        "Public cible": "13-15 ans",
-        "Périodes": "juillet",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "mai",
         "ImgSrc": null,
-        "Description": null,
+        "Description": null
     },
     {
         "ID": "20",
         "Activité": "Mon robot est malin",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "11",
         "Age max": "13",
-        "Public cible": "11-13 ans",
-        "Périodes": "août et octobre",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "février",
         "ImgSrc": "roberta",
-        "Description": "Ce camp, réservé aux jeunes filles et jeunes garçons de 11 à 13 ans, permet de découvrir la robotique et la programmation, ainsi que le campus de l’EPFL. Les jeunes construiront et programmeront des robots, afin d’exécuter certaines des missions du concours robotique FIRST LEGO League.",
+        "Description": "Ce camp, réservé aux jeunes filles et jeunes garçons de 11 à 13 ans, permet de découvrir la robotique et la programmation, ainsi que le campus de l’EPFL. Les jeunes construiront et programmeront des robots, afin d’exécuter certaines des missions du concours robotique FIRST LEGO League."
     },
     {
         "ID": "21",
         "Activité": "Passport Vacances",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "10",
         "Age max": "13",
-        "Public cible": "10-13 ans",
-        "Périodes": "juillet",
-        "Lieu": "campus Biotech Genève",
+        "Format": "Le mercredi après-midi",
         "Inscriptions": "",
         "ImgSrc": "passeportVacances",
-        "Description": "Des journées passeport-vacances avec des ateliers de sciences en lien avec la thématique de l'air, du temps, de l'informatique ou de la robotique.",
+        "Description": "Des journées passeport-vacances avec des ateliers de sciences en lien avec la thématique de l'air, du temps, de l'informatique ou de la robotique."
     },
     {
         "ID": "22",
         "Activité": "Petits engins pour petites mains",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "8",
         "Age max": "10",
-        "Public cible": "8-10 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "mai",
         "ImgSrc": "petitsEngins",
-        "Description": "Les élèves inventent des engins électroniques en utilisant des blocs aimantés (LittleBits), comme un dispositif à roulettes capable d’avancer seul. Ces LittlesBits peuvent être démontées et remontées en de différentes structures.",
+        "Description": "Les élèves inventent des engins électroniques en utilisant des blocs aimantés (LittleBits), comme un dispositif à roulettes capable d’avancer seul. Ces LittlesBits peuvent être démontées et remontées en de différentes structures."
     },
     {
         "ID": "23",
         "Activité": "Polythèmes",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "8",
         "Age max": "13",
-        "Public cible": "8-10 ans et 11-13 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus",
+        "Format": "3 mercredis après-midi",
         "Inscriptions": "mai et novembre",
         "ImgSrc": "polythemes",
-        "Description": "Ateliers d’expériences scientifiques proposés aux jeunes de 7 à 15 ans.",
+        "Description": "Ateliers d’expériences scientifiques proposés aux jeunes de 7 à 15 ans."
     },
     {
         "ID": "24",
         "Activité": "Programme ton jeu vidéo",
-        "Cadre": "Extrascolaire",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "13",
         "Age max": "15",
-        "Public cible": "13-15 ans",
-        "Périodes": "semestre automne et semestre printemps",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "mai",
         "ImgSrc": "programmJeuVideo",
-        "Description": "Introduction à l’informatique à travers la programmation de jeux développés en Python. Le cours commence avec des jeux simples comme Chatbot et Mastermind dans la console textuelle, pour ensuite passer aux jeux graphiques tels que Pong, Snake et Angry Bird.",
+        "Description": "Introduction à l’informatique à travers la programmation de jeux développés en Python. Le cours commence avec des jeux simples comme Chatbot et Mastermind dans la console textuelle, pour ensuite passer aux jeux graphiques tels que Pong, Snake et Angry Bird."
     },
     {
         "ID": "25",
         "Activité": "Toi aussi créé ton appli",
-        "Cadre": "Extrascolaire",
         "Genre": "Fille",
         "Langue": "FR",
         "Age min": "13",
         "Age max": "15",
-        "Public cible": "13-15 ans",
-        "Périodes": "août",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "mai",
         "ImgSrc": "toiAussiCreeTonAppli",
-        "Description": "Programmer une application pour téléphone portable. Comment ? En créant tout en s’amusant un programme pour partager et communiquer les informations entre copines.",
+        "Description": "Programmer une application pour téléphone portable. Comment ? En créant tout en s’amusant un programme pour partager et communiquer les informations entre copines."
     },
     {
         "ID": "26",
         "Activité": "Championnat de science «Curieux et inventif»",
-        "Cadre": "Extrascolaire/Grand public",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "7",
         "Age max": "16",
-        "Public cible": "7-16 ans",
-        "Périodes": "25/02/2022",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "décembre",
         "ImgSrc": "championnat",
-        "Description": "Tournoi scientifique pour les jeunes de 8 à 15 ans à réaliser en équipe",
+        "Description": "Tournoi scientifique pour les jeunes de 8 à 15 ans à réaliser en équipe"
     },
     {
         "ID": "27",
         "Activité": "First Lego League",
-        "Cadre": "Extrascolaire/Grand public",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "7",
         "Age max": "16",
-        "Public cible": "7-16 ans",
-        "Périodes": "17/12/2022",
-        "Lieu": "campus",
+        "Format": "",
         "Inscriptions": "août",
         "ImgSrc": "FLL",
-        "Description": "Championnat de robotique par équipes – jeunes de 6 à 16 ans",
+        "Description": "Championnat de robotique par équipes – jeunes de 6 à 16 ans"
     },
     {
         "ID": "28",
         "Activité": "World Robotics Olympiades",
-        "Cadre": "Extrascolaire/Grand public",
         "Genre": "Mixte",
         "Langue": "FR",
         "Age min": "7",
         "Age max": "16",
-        "Public cible": "7-16 ans",
-        "Périodes": "mai",
-        "Lieu": "EPFL Fribourg",
+        "Format": "",
         "Inscriptions": "2 mois avant",
         "ImgSrc": null,
-        "Description": null,
-    },
+        "Description": null
+    }
 ]
-
-nonScolarEditions = [
+const nonScolarEditions = [
     {
         "ID": "0",
         "Statut": "Disponible",
-        "Activité": "Ateliers Programme PLUS pendant les vacances scolaires",
+        "Activité": "Ateliers Programme PLUS",
         "Canton": "VD",
         "Lieu": "EPFL Lausanne",
         "Dates": "20-24 février 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "1",
         "Statut": "Disponible",
-        "Activité": "Ateliers Programme PLUS pendant les vacances scolaires",
+        "Activité": "Ateliers Programme PLUS",
         "Canton": "VD",
         "Lieu": "EPFL Lausanne",
         "Dates": "10-13 avril 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "2",
         "Statut": "Disponible",
-        "Activité": "Ateliers Programme PLUS pendant les vacances scolaires",
+        "Activité": "Ateliers Programme PLUS",
         "Canton": "VD",
         "Lieu": "EPFL Lausanne",
         "Dates": "Octobre 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "3",
@@ -460,7 +376,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "4",
@@ -470,7 +386,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "5",
@@ -480,7 +396,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Août 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "6",
@@ -490,7 +406,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "3-7 juillet 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "7",
@@ -500,7 +416,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "10-14 juillet 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "8",
@@ -508,9 +424,9 @@ nonScolarEditions = [
         "Activité": "Coding club des filles",
         "Canton": "VD",
         "Lieu": "EPFL Lausanne",
-        "Dates": "Dates CC Lausanne",
+        "Dates": "Dates CC EPFL",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "9",
@@ -520,7 +436,7 @@ nonScolarEditions = [
         "Lieu": "Yverdon",
         "Dates": "Dates CC Yverdon",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "10",
@@ -530,7 +446,7 @@ nonScolarEditions = [
         "Lieu": "Nyon",
         "Dates": "Dates CC Nyon",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "11",
@@ -540,7 +456,7 @@ nonScolarEditions = [
         "Lieu": "Martigny",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "12",
@@ -550,7 +466,7 @@ nonScolarEditions = [
         "Lieu": "Vouvry",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "13",
@@ -560,7 +476,7 @@ nonScolarEditions = [
         "Lieu": "Sierre",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "14",
@@ -570,7 +486,7 @@ nonScolarEditions = [
         "Lieu": "Neuchâtel",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "15",
@@ -580,7 +496,7 @@ nonScolarEditions = [
         "Lieu": "La Chaux-de-Fonds",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "16",
@@ -590,7 +506,7 @@ nonScolarEditions = [
         "Lieu": "St-Imier",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "17",
@@ -600,7 +516,7 @@ nonScolarEditions = [
         "Lieu": "Bienne",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "18",
@@ -610,7 +526,7 @@ nonScolarEditions = [
         "Lieu": "Fribourg",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "19",
@@ -620,7 +536,7 @@ nonScolarEditions = [
         "Lieu": "Sidders",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "20",
@@ -630,7 +546,7 @@ nonScolarEditions = [
         "Lieu": "Freiburg",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "21",
@@ -640,7 +556,7 @@ nonScolarEditions = [
         "Lieu": "Bern",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "22",
@@ -650,7 +566,7 @@ nonScolarEditions = [
         "Lieu": "Thun",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "23",
@@ -660,7 +576,7 @@ nonScolarEditions = [
         "Lieu": "Lugano",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "24",
@@ -670,7 +586,7 @@ nonScolarEditions = [
         "Lieu": "Astrona",
         "Dates": null,
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "25",
@@ -680,7 +596,7 @@ nonScolarEditions = [
         "Lieu": "Schaffhouse",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "26",
@@ -690,7 +606,7 @@ nonScolarEditions = [
         "Lieu": "Berne",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "27",
@@ -700,7 +616,7 @@ nonScolarEditions = [
         "Lieu": "Fribourg",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "28",
@@ -710,7 +626,7 @@ nonScolarEditions = [
         "Lieu": "Martigny",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "29",
@@ -720,7 +636,7 @@ nonScolarEditions = [
         "Lieu": "Genève",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "30",
@@ -730,7 +646,7 @@ nonScolarEditions = [
         "Lieu": "Sierre",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "31",
@@ -740,7 +656,7 @@ nonScolarEditions = [
         "Lieu": "Neuchâtel",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "32",
@@ -750,7 +666,7 @@ nonScolarEditions = [
         "Lieu": "Lausanne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "33",
@@ -760,7 +676,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "9 novembre 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "34",
@@ -770,7 +686,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "35",
@@ -780,7 +696,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "36",
@@ -790,7 +706,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "37",
@@ -800,7 +716,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "38",
@@ -810,7 +726,7 @@ nonScolarEditions = [
         "Lieu": "Sion",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "39",
@@ -820,7 +736,7 @@ nonScolarEditions = [
         "Lieu": "Genève",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "40",
@@ -830,7 +746,7 @@ nonScolarEditions = [
         "Lieu": "Lausanne",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "41",
@@ -840,7 +756,7 @@ nonScolarEditions = [
         "Lieu": "Fribourg",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "42",
@@ -850,7 +766,7 @@ nonScolarEditions = [
         "Lieu": "Neuchâtel",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "43",
@@ -860,7 +776,7 @@ nonScolarEditions = [
         "Lieu": "Lausanne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "44",
@@ -870,7 +786,7 @@ nonScolarEditions = [
         "Lieu": "Berne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "45",
@@ -880,7 +796,7 @@ nonScolarEditions = [
         "Lieu": "Bâle",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "46",
@@ -890,7 +806,7 @@ nonScolarEditions = [
         "Lieu": "Sion",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "47",
@@ -900,7 +816,7 @@ nonScolarEditions = [
         "Lieu": "Genève",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "48",
@@ -910,7 +826,7 @@ nonScolarEditions = [
         "Lieu": "Lausanne",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "49",
@@ -920,7 +836,7 @@ nonScolarEditions = [
         "Lieu": "Fribourg",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "50",
@@ -930,7 +846,7 @@ nonScolarEditions = [
         "Lieu": "Neuchâtel",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "51",
@@ -940,7 +856,7 @@ nonScolarEditions = [
         "Lieu": "Lausanne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "52",
@@ -950,7 +866,7 @@ nonScolarEditions = [
         "Lieu": "Berne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "53",
@@ -960,7 +876,7 @@ nonScolarEditions = [
         "Lieu": "Bâle",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "54",
@@ -970,7 +886,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "55",
@@ -980,7 +896,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "56",
@@ -990,7 +906,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Août 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "57",
@@ -1000,7 +916,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Juillet 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "58",
@@ -1010,7 +926,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Août 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "59",
@@ -1020,7 +936,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Octobre 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "60",
@@ -1030,7 +946,7 @@ nonScolarEditions = [
         "Lieu": "Campus Biotech Genève",
         "Dates": "Juillet 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "61",
@@ -1040,7 +956,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "62",
@@ -1050,7 +966,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "63",
@@ -1060,7 +976,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "23, 30 novembre et 07 décembre 2022",
         "Inscriptions": "Complet",
-        "Remarques": "Potions féériques",
+        "Remarques": "Potions féériques"
     },
     {
         "ID": "64",
@@ -1070,7 +986,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "18, 25 janvier et 01 février 2023",
         "Inscriptions": "Complet",
-        "Remarques": "Electricabrac",
+        "Remarques": "Electricabrac"
     },
     {
         "ID": "65",
@@ -1080,7 +996,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "14, 21 et 28 juin 2023",
         "Inscriptions": "Complet",
-        "Remarques": "Crocorobot",
+        "Remarques": "Crocorobot"
     },
     {
         "ID": "66",
@@ -1090,7 +1006,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "15, 22 et 29 mars 2023",
         "Inscriptions": "Complet",
-        "Remarques": "Cortex et matière grise",
+        "Remarques": "Cortex et matière grise"
     },
     {
         "ID": "67",
@@ -1100,7 +1016,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Printemps 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "68",
@@ -1110,7 +1026,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Automne 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "69",
@@ -1120,7 +1036,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "Août 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "70",
@@ -1130,7 +1046,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "25 février 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "71",
@@ -1140,7 +1056,7 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "17 décembre 2023",
         "Inscriptions": null,
-        "Remarques": null,
+        "Remarques": null
     },
     {
         "ID": "72",
@@ -1150,6 +1066,6 @@ nonScolarEditions = [
         "Lieu": "EPFL Lausanne",
         "Dates": "13 mai 2023",
         "Inscriptions": null,
-        "Remarques": null,
-    },
+        "Remarques": null
+    }
 ]
