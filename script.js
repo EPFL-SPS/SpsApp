@@ -219,9 +219,6 @@ $('.gender-btnChoice').on('click', function(event) {
  *   RESULTS
  */
 function showResults() {
-
-    console.log(search_status)
-
     // TEMP - Convert gender to french - Find a place to adapt keys
     gender = "Mixte"
     if (search_status["gender"] == "boy") {
@@ -231,6 +228,8 @@ function showResults() {
     }
 
     // Find activities corresponding to search criteria
+    console.log("Find activities with the following filters")
+    console.log(search_status)
     activities = findActivities("FR", search_status["who"], search_status["where"], search_status["age"], gender)
 
     // Group same activities
@@ -244,22 +243,55 @@ function showResults() {
     
     $("#result-row").empty()
     if (activities.length > 0) {
-        console.log("Unique activities")
         activities.forEach(function(activity) { 
             editions = activity["values"]
-
-            console.log(editions)
-
             ed = editions[0]
+            
+            // console.log("Activity " + ed[ACTIVITY_NAME_COLUMN] + " has following editions")
+            // console.log(editions)
+
 
             card = cardTemplate(ed[ACTIVITY_NAME_COLUMN], truncateString(ed["Description"], 150), "", ed["ImgSrc"] ? ed["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
             $("#result-row").append(card)
 
             animationDelay += 0.1
+
+            if (ed[ACTIVITY_NAME_COLUMN] == "Coding club des filles") {
+                analyseEditions(editions)
+            }
         })
     } else {
         // If not activity is found, display a default card
         card = cardTemplate("Aucune activité trouvée pour ces filtres", "Visitez le site du SPS pour plus voir toutes les activités", "", "default.jpg", animationDelay);
         $("#result-row").append(card)
     }
+}
+
+function analyseEditions(editions) {
+    console.log("Analyse editions")
+    console.log(editions)
+
+    ret = {
+        activity: {
+            name: editions[0][ACTIVITY_NAME_COLUMN],
+            description: editions[0]["Description"],
+            age_max: editions[0]["Age max"],
+            age_min: editions[0]["Age min"],
+            gender: editions[0]["Genre"],
+            language: editions[0]["Langue"],
+        }
+    }
+
+    editions.forEach(function(ed) {
+        ret[ed["ID"]] = {}
+
+        Object.keys(ed).forEach(key => {
+            ret[ed["ID"]]["Lieu"] = ed["Lieu"]
+            ret[ed["ID"]]["Canton"] = ed["Canton"]
+            ret[ed["ID"]]["Dates"] = ed["Dates"]
+        })
+
+    })
+
+    console.log(ret)
 }
