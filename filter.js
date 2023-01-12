@@ -1,12 +1,5 @@
 // Define here column name used in the Google Sheets 
-const ACTIVITY_NAME_COLUMN = "Activité"
-
-// Get all editions and append details from the corresponding activity
-allNonScolarActivities = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
-
-// Simplified the list with only useful keys
-allNonScolarActivities = filterKeys(allNonScolarActivities, ["ID", ACTIVITY_NAME_COLUMN, "Age max", "Age min", "Format", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscription", "Remarques"])
-
+const ACTIVITY_NAME_COLUMN = "Activité";
 
 /**
  * Complete an edition array with details from the parent activity by matching

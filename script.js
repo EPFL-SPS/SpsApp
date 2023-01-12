@@ -262,7 +262,7 @@ function showResults() {
         })
     } else {
         // If not activity is found, display a default card
-        card = cardTemplate("Aucune activité trouvée pour ces filtres", "Visitez le site du SPS pour plus voir toutes les activités", "", "default.jpg", animationDelay);
+        card = cardTemplate("Aucune activité trouvée pour ces filtres", "Visitez le site du SPS pour plus voir toutes les activités", "", "default.jpg", animationDelay, "Voir le site");
         $("#result-row").append(card)
     }
 }

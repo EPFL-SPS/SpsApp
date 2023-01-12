@@ -1,5 +1,54 @@
-// Generated on 11/01/2023 15:37:47
-const nonScolarActivities = [
+baseScriptUrl = 'https://script.google.com/macros/s/AKfycbwj-sD3MyZgLZo4e32h1c1Lrf6wIUoHEyedCNlhly70LPwiCvs5Axe7dBK9cK_Nhzjn-A/exec'
+
+function parseApiResponse(response) {
+    if (response.status_code == 200) {
+        return response.data
+    } else {
+        console.error("Error while fetching data from Google Sheets: " + response.status_code + " - " + response.data)
+        return undefined
+    }
+}
+
+async function fetchData(range) {
+    return await jQuery.ajax({
+        crossDomain: true,
+        url: baseScriptUrl + "?range=" + range,
+        method: "GET",
+        dataType: "jsonp",
+        error: function(response){
+            alert("Impossible de récupérer les activités du SPS - Réessayez plus tard");
+            console.log(response)
+            return undefined
+        }
+    })
+}
+
+nonScolarActivities_promise = fetchData("Extra-scolaire - Activités!A1:J101")
+nonScolarEditions_promise = fetchData("Extra-scolaire - Éditions!A1:I201")
+
+Promise.all([nonScolarActivities_promise, nonScolarEditions_promise]).then((values) => {
+    // Get received data
+    nonScolarActivities = parseApiResponse(values[0])
+    nonScolarEditions = parseApiResponse(values[1])
+
+    if(nonScolarActivities != undefined && nonScolarEditions != undefined) {
+        // Get all editions and append details from the corresponding activity
+        allNonScolarActivities = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
+
+        // Simplified the list with only useful keys
+        allNonScolarActivities = filterKeys(allNonScolarActivities, ["ID", ACTIVITY_NAME_COLUMN, "Age max", "Age min", "Format", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscriptions", "Remarques"])
+
+        console.log("Activités récupérées via l'API")
+        console.log(allNonScolarActivities)
+    } else {
+        console.error("Error with API response")
+        console.log(values)
+    }
+})
+
+/*
+Generated on 11/01/2023 15:37:47
+const nonScolarActivities0 = [
     {
         "ID": "1",
         "Activité": "Ateliers Programme PLUS",
@@ -337,7 +386,7 @@ const nonScolarActivities = [
         "Description": null
     }
 ]
-const nonScolarEditions = [
+const nonScolarEditions0 = [
     {
         "ID": "0",
         "Statut": "Disponible",
@@ -1069,3 +1118,20 @@ const nonScolarEditions = [
         "Remarques": null
     }
 ]
+
+
+// Get all editions and append details from the corresponding activity
+allNonScolarActivities0 = addDetailsToEditions(nonScolarEditions0, nonScolarActivities0)
+
+// // Simplified the list with only useful keys
+allNonScolarActivities0 = filterKeys(allNonScolarActivities0, ["ID", ACTIVITY_NAME_COLUMN, "Age max", "Age min", "Format", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscriptions", "Remarques"])
+
+
+console.log("nonScolarActivities0")
+console.log(nonScolarActivities0)
+console.log("nonScolarEditions0")
+console.log(nonScolarEditions0)
+
+console.log("allNonScolarActivities0")
+console.log(allNonScolarActivities0)
+*/
