@@ -26,7 +26,7 @@ function _sendResponse(e, status_code, status, data) {
 }
 
 function doGet(e) {
-  const spreadsheetId = '1KKGt9sQ9jyDB0DHLOx5kINOcjMNjenZyJWPR2p29Bug';
+  const spreadsheetId = '1GnVV3331x36aRqYSuNnlR4qPDdrDRhLvNV4WEyNZLAI';
 
   if(e) {
     var range = e.parameter.range

@@ -75,6 +75,10 @@ div{
 /*
  * Result cards
  */ 
+#results {
+  min-height: 100%;
+}
+
 .card-h1 {
   color:191919;
   font-size: 1em;
