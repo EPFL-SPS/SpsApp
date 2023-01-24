@@ -16,7 +16,7 @@ async function fetchData(range) {
         method: "GET",
         dataType: "jsonp",
         error: function(response){
-            alert("Impossible de récupérer les activités du SPS - Réessayez plus tard");
+            alert("Impossible de récupérer les activités du SPS - Votre navigateur de supporte pas cette application. Google Chrome ou Edge sont recommandés.");
             console.log(response)
             return undefined
         }
