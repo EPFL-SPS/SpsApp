@@ -34,10 +34,9 @@ function updatePage() {
 
     console.log("Display page " + search_status["page"] + " from current page " + currentPage)
     if (currentPage > search_status["page"]) {
-        if (currentPage > 0) {
-            displayPage(currentPage - 1)
-        }
+        // Ensure previous page is displayed before sliding 
         slideOutPage(currentPage)
+
     } else if (currentPage < search_status["page"]) {
         slideInPage(search_status["page"])
     }
@@ -108,9 +107,20 @@ function decrementPage() {
     updateHash()
 }
 
-function displayPage(pageIndex) {
+/**
+ * Toggle page visibility to show it
+ */
+function displayPage(pageIndex, marginLeft="0%") {
     pageId = "#" + pages[pageIndex]
-    $(pageId).css({display: "block", marginLeft : "0%"})
+    $(pageId).css({display: "block", marginLeft : marginLeft})
+}
+
+/**
+ * Toggle page visibility to hide it
+ */
+function hidePage(pageIndex) {
+    pageId = "#" + pages[pageIndex]
+    $(pageId).css({display: "none"})
 }
 
 /**
@@ -120,13 +130,21 @@ function displayPage(pageIndex) {
 function slideInPage(pageIndex) {
     // console.log("Slide in page " + pageIndex)
 
+    // Ensure page is visible outside of viewport to slide it in
+    displayPage(pageIndex, "100%")
+
+    // Slide in page
     pageId = "#" + pages[pageIndex]
-
-    $(pageId).css({display: "block", marginLeft : "100%"})
-
     $(pageId).animate({
         marginLeft: "0%"
     }, transisionDuration);
+
+    // Hide previous pages once slided in
+    setTimeout(function() {
+        for(let i = search_status["page"] - 1; i >= 0; i--) {
+            hidePage(i)
+        }
+    }, transisionDuration)
 }
 
 /**
@@ -135,17 +153,24 @@ function slideInPage(pageIndex) {
  */
 function slideOutPage(pageIndex) {
     // console.log("Slide out page " + pageIndex)
-    
+
+    // Ensure previous page is visible in order to see it after sliding out
+    if (pageIndex > 0) {
+        displayPage(pageIndex - 1, "0%")
+    }
+
+    // Ensure curent page is visible inside of viewport to slide it out
+    displayPage(pageIndex, "0%")
+
+    // Slide out page
     pageId = "#" + pages[pageIndex]
-
-    $(pageId).css({display: "block", marginLeft : "0%"})
-
     $(pageId).animate({
         marginLeft: "100%"
     }, transisionDuration);
 
+    // Hide page once slided out
     setTimeout(function() {
-        $(pageId).css({display: "none"})
+        hidePage(pageIndex)
     }, transisionDuration)
 }
 
