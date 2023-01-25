@@ -22,4 +22,4 @@ var cardTemplate = (title, description, more, imgSrc, animationDelay, buttonText
 </div>
 `;
 
-var publicTitle = "<div class=\"public-title animate slide\" style=\"margin-top: 25px;\"><h1 class=\"results-h1\">Activités grand-public</h1></div>"
+var publicTitle = "<div class=\"public-title animate slide\" style=\"margin-top: 25px;\"><h1 class=\"results-h1\">Activités grand public</h1></div>"

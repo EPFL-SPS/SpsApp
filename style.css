@@ -129,26 +129,11 @@ div{
 #previousButton {
   position: fixed;
   visibility: hidden;
-  bottom: 50px;
-  left: 50px;
+  bottom: 1em;
+  left: 1em;
   z-index: 50;
 }
 
-.previousButton  {
-  text-decoration: none;
-  display: inline-block;
-  padding: 0.3em 1em;  
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.previousButton:hover {
-  background-color: #373737;
-  color: white;
-}
-
-.previousButton {
-  background-color: #2d2d2d;
-  color: white;
-  border-radius: 50%;
+#previousButton img {
+  height: 2.5em; 
 }
