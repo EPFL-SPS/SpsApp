@@ -128,6 +128,8 @@ function hidePage(pageIndex) {
  * @param {number} pageIndex Page index according to pages global array
 */
 function slideInPage(pageIndex) {
+    $(window).scrollTop(0)
+    
     // console.log("Slide in page " + pageIndex)
 
     // Ensure page is visible outside of viewport to slide it in
@@ -152,6 +154,8 @@ function slideInPage(pageIndex) {
  * @param {number} pageIndex Page index according to pages global array
  */
 function slideOutPage(pageIndex) {
+    $(window).scrollTop(0)
+
     // console.log("Slide out page " + pageIndex)
 
     // Ensure previous page is visible in order to see it after sliding out
