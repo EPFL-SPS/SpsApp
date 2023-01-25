@@ -107,7 +107,7 @@ function groupSameActivities(jsonArray) {
         found = true;
       }
     });
-    console.log(ACTIVITY_NAME_COLUMN)
+
     if (!found) {
       var obj = {};
       obj[ACTIVITY_NAME_COLUMN] = value;
@@ -137,7 +137,7 @@ function filterKeys(jsonArray, keysToKeep) {
 }
 
 /**
- * Find activities according to filters
+ * Find scolar or non-scolar activities according to filters
  * @param {str} language "FR", "DE", "IT"
  * @param {str} who "parent", "teacher"
  * @param {str} where canton abreviation
@@ -145,14 +145,7 @@ function filterKeys(jsonArray, keysToKeep) {
  * @param {str} gender "Garçon", "Fille"
  * @returns 
  */
-function findActivities(language, who, where, age, gender) {
-
-  if (who =="parent") {
-    list = allNonScolarActivities
-  } else {
-    list = allNonScolarActivities // TODO: change to allScolarActivities
-  }
-
+function filterNonScolartActivities(list, language, where, age, gender) {
   console.log("All activities")
   console.log(list)
 
@@ -172,6 +165,23 @@ function findActivities(language, who, where, age, gender) {
   // Filter gender
   filtered_activities = filterActivities_gender(filtered_activities, gender)
   console.log("For gender: " + gender)
+  console.log(filtered_activities)
+
+  return filtered_activities
+}
+
+/**
+ * Find public activities according to filters
+ * @param {str} language "FR", "DE", "IT"
+ * @returns 
+ */
+function findPublicActivities(list, language) {
+  // Filter activities by language
+  filtered_activities = filterActivities(list, {
+    "Langue": language
+  })
+
+  console.log("For language " + language)
   console.log(filtered_activities)
 
   return filtered_activities

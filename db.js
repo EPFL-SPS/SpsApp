@@ -25,23 +25,45 @@ async function fetchData(range) {
 
 nonScolarActivities_promise = fetchData("Extra-scolaire - Activités!A1:J101")
 nonScolarEditions_promise = fetchData("Extra-scolaire - Éditions!A1:I201")
+publicActivities_promise = fetchData("Grand public - Activités!A1:G51")
 
-function completeEditionsWithDetails(promises_values) {
+function fetchPromisesData(promises_values) {
     // Get received data
     nonScolarActivities = parseApiResponse(promises_values[0])
     nonScolarEditions = parseApiResponse(promises_values[1])
+    publicActivities = parseApiResponse(promises_values[2])
+
+    // @todo TEMP
+    scolarActivities = []
 
     if(nonScolarActivities != undefined && nonScolarEditions != undefined) {
         // Get all editions and append details from the corresponding activity
-        allNonScolarActivities = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
+        nonScolarEditionsDetailed = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
 
         // Simplified the list with only useful keys
-        allNonScolarActivities = filterKeys(allNonScolarActivities, ["ID", ACTIVITY_NAME_COLUMN, "Age max", "Age min", "Format", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscriptions", "Remarques"])
+        nonScolarEditionsDetailed = filterKeys(nonScolarEditionsDetailed, ["ID", ACTIVITY_NAME_COLUMN, "Age max", "Age min", "Format", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscriptions", "Remarques"])
 
-        console.log("Activités récupérées via l'API")
-        console.log(allNonScolarActivities)
+        console.log("Non-scolar activities get from API")
+        console.log(nonScolarEditionsDetailed)
     } else {
-        console.error("Error with API response")
+        nonScolairActivities = []
+        console.error("Error with API response for non-scolar activities")
         console.log(values)
     }
+
+    if(publicActivities != undefined) {
+        console.log("Public activities get from API")
+        console.log(publicActivities)
+    } else {
+        publicActivities = []
+        console.error("Error with API response for pulic activities")
+        console.log(values)
+    }
+
+    return {
+        "scolar": scolarActivities,
+        "nonScolar": nonScolarEditionsDetailed,
+        "public": publicActivities
+    }
+
 }

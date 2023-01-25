@@ -76,12 +76,24 @@
     <div class="page auto-height" id="results">
         <div style="margin-top: 25px;"><h1 class="results-h1">Ces activités pourraient vous plaire</h1></div>
 
-        <div class="container">
+        <div id="loader">
+            <img alt="loader" height="110px" src="assets/img/loader.gif"></img>
+        </div>
 
-            <div id="result-row" class="row justify-content-center">
+        <div id="activities-container" class="container">
+
+            <div id="activities-div" class="row justify-content-center">
                 
                 <!-- Cards are dynamically loaded here ... -->
 
+            </div> <!-- result-row -->
+        </div> <!-- container -->
+
+
+        <div id="public-activities-container" class="container">
+            <div id="public-activities-div" class="row justify-content-center">
+
+       
             </div> <!-- result-row -->
         </div> <!-- container -->
 
@@ -96,6 +108,7 @@
     <script src="utils.js"></script> 
     <script src="filter.js"></script> 
     <script src="db.js"></script>
+    <script src="display.js"></script>
     <script src="script.js"></script> 
 
 </body>

@@ -219,9 +219,9 @@ $('.gender-btnChoice').on('click', function(event) {
  *   RESULTS
  */
 function showResults() {
-    Promise.all([nonScolarActivities_promise, nonScolarEditions_promise]).then((values) => {
+    Promise.all([nonScolarActivities_promise, nonScolarEditions_promise, publicActivities_promise]).then((values) => {
         // Complete each editions with details form its corresponding activity
-        completeEditionsWithDetails(values)
+        activities = fetchPromisesData(values)
 
         // TEMP - Convert gender to french - Find a place to adapt keys
         gender = "Mixte"
@@ -234,67 +234,58 @@ function showResults() {
         // Find activities corresponding to search criteria
         console.log("Find activities with the following filters")
         console.log(search_status)
-        activities = findActivities("FR", search_status["who"], search_status["where"], search_status["age"], gender)
+
+        if (search_status["who"] =="parent") {
+            filtered_activities = filterNonScolartActivities(
+                activities["nonScolar"], 
+                "FR", search_status["where"], search_status["age"], gender)
+        } else {
+            alert("Teacher not supported")
+        }
 
         // Group same activities
         console.log("Group same activities")
-        activities = groupSameActivities(activities)
-        console.log(activities)
+        unique_activities = groupSameActivities(filtered_activities)
+        console.log(unique_activities)
 
-        // Generate cards from results
-        let animationDelay = 0.6
-        
-        $("#result-row").empty()
-        if (activities.length > 0) {
-            activities.forEach(function(activity) { 
-                editions = activity["values"]
-                ed = editions[0]
-                
-                // console.log("Activity " + ed[ACTIVITY_NAME_COLUMN] + " has following editions")
-                // console.log(editions)
+        // Display results
+        hideLoader()
 
-                card = cardTemplate(ed[ACTIVITY_NAME_COLUMN], truncateString(ed["Description"], 150), ed["Format"], ed["ImgSrc"] ? ed["ImgSrc"] + ".jpg" : "default.jpg", animationDelay);
-                $("#result-row").append(card)
+        displayActivitiesCards(unique_activities)
 
-                animationDelay += 0.1
+        public_activities = findPublicActivities(activities["public"], "FR")
 
-                if (ed[ACTIVITY_NAME_COLUMN] == "Coding club des filles") {
-                    analyseEditions(editions)
-                }
-            })
-        } else {
-            // If not activity is found, display a default card
-            card = cardTemplate("Aucune activité trouvée pour ces filtres", "Visitez le site du SPS pour plus voir toutes les activités", "", "default.jpg", animationDelay, "Voir le site");
-            $("#result-row").append(card)
-        }
+        displayPublicActivitiesCards(public_activities)
+
+
     })
 }
 
-function analyseEditions(editions) {
-    console.log("Analyse editions")
-    console.log(editions)
+// function analyseEditions(editions) {
+//     console.log("Analyse editions")
+//     console.log(editions)
 
-    ret = {
-        activity: {
-            name: editions[0][ACTIVITY_NAME_COLUMN],
-            description: editions[0]["Description"],
-            age_max: editions[0]["Age max"],
-            age_min: editions[0]["Age min"],
-            gender: editions[0]["Genre"],
-            language: editions[0]["Langue"],
-        }
-    }
+//     ret = {
+//         activity: {
+//             name: editions[0][ACTIVITY_NAME_COLUMN],
+//             description: editions[0]["Description"],
+//             age_max: editions[0]["Age max"],
+//             age_min: editions[0]["Age min"],
+//             gender: editions[0]["Genre"],
+//             language: editions[0]["Langue"],
+//         }
+//     }
 
-    editions.forEach(function(ed) {
-        ret[ed["ID"]] = {}
+//     editions.forEach(function(ed) {
+//         ret[ed["ID"]] = {}
 
-        Object.keys(ed).forEach(key => {
-            ret[ed["ID"]]["Lieu"] = ed["Lieu"]
-            ret[ed["ID"]]["Canton"] = ed["Canton"]
-            ret[ed["ID"]]["Dates"] = ed["Dates"]
-        })
+//         Object.keys(ed).forEach(key => {
+//             ret[ed["ID"]]["Lieu"] = ed["Lieu"]
+//             ret[ed["ID"]]["Canton"] = ed["Canton"]
+//             ret[ed["ID"]]["Dates"] = ed["Dates"]
+//         })
 
-    })
+//     })
 
-    console.log(ret)
-}
+//     console.log(ret)
+// }

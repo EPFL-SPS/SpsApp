@@ -70,6 +70,14 @@ div{
   margin: 15px;
   margin-bottom: 50px;
   z-index: 50;
+  text-align: left;
+}
+
+/*
+ * Results loader
+ */
+ #EPFL_logo {
+  width: 50%;
 }
 
 /*
