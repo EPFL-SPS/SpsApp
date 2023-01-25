@@ -248,16 +248,13 @@ function showResults() {
         unique_activities = groupSameActivities(filtered_activities)
         console.log(unique_activities)
 
+        // Public activities processing
+        public_activities = filterPublicActivities(activities["public"], "FR")
+
         // Display results
         hideLoader()
-
         displayActivitiesCards(unique_activities)
-
-        public_activities = findPublicActivities(activities["public"], "FR")
-
         displayPublicActivitiesCards(public_activities)
-
-
     })
 }
 

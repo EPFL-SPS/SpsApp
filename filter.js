@@ -175,7 +175,7 @@ function filterNonScolartActivities(list, language, where, age, gender) {
  * @param {str} language "FR", "DE", "IT"
  * @returns 
  */
-function findPublicActivities(list, language) {
+function filterPublicActivities(list, language) {
   // Filter activities by language
   filtered_activities = filterActivities(list, {
     "Langue": language

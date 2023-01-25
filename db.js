@@ -36,8 +36,8 @@ function fetchPromisesData(promises_values) {
     // @todo TEMP
     scolarActivities = []
 
+    // Complete each editions with details form its corresponding activity
     if(nonScolarActivities != undefined && nonScolarEditions != undefined) {
-        // Get all editions and append details from the corresponding activity
         nonScolarEditionsDetailed = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
 
         // Simplified the list with only useful keys
@@ -51,6 +51,7 @@ function fetchPromisesData(promises_values) {
         console.log(values)
     }
 
+    // Check public activities data
     if(publicActivities != undefined) {
         console.log("Public activities get from API")
         console.log(publicActivities)
