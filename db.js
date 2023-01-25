@@ -25,7 +25,7 @@ async function fetchData(range) {
 
 nonScolarActivities_promise = fetchData("Extra-scolaire - Activités!A1:J101")
 nonScolarEditions_promise = fetchData("Extra-scolaire - Éditions!A1:I201")
-publicActivities_promise = fetchData("Grand public - Activités!A1:G51")
+publicActivities_promise = fetchData("Grand public - Activités!A1:H51")
 
 function fetchPromisesData(promises_values) {
     // Get received data
@@ -41,7 +41,7 @@ function fetchPromisesData(promises_values) {
         nonScolarEditionsDetailed = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
 
         // Simplified the list with only useful keys
-        nonScolarEditionsDetailed = filterKeys(nonScolarEditionsDetailed, ["ID", ACTIVITY_NAME_COLUMN, "Age max", "Age min", "Format", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscriptions", "Remarques"])
+        nonScolarEditionsDetailed = filterKeys(nonScolarEditionsDetailed, ["ID", ACTIVITY_NAME_COLUMN, "Statut", "Age max", "Age min", "Format", "Canton", "Genre", "Langue", "Lieu", "Dates", "Description", "ImgSrc", "Inscriptions", "Remarques"])
 
         console.log("Non-scolar activities get from API")
         console.log(nonScolarEditionsDetailed)

@@ -151,7 +151,7 @@ function filterNonScolartActivities(list, language, where, age, gender) {
 
   // Filter activities by language and canton
   filtered_activities = filterActivities(list, {
-    "Langue": language, "Canton": where
+    "Langue": language, "Canton": where, "Statut": "Disponible"
   })
 
   console.log("For language and canton: " + language + " " + where)
@@ -178,7 +178,8 @@ function filterNonScolartActivities(list, language, where, age, gender) {
 function filterPublicActivities(list, language) {
   // Filter activities by language
   filtered_activities = filterActivities(list, {
-    "Langue": language
+    "Langue": language,
+    "Statut": "Disponible"
   })
 
   console.log("For language " + language)
