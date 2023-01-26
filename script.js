@@ -81,6 +81,13 @@ function updatePage() {
     } else {
         hidePreviousButton()
     }
+
+    // Update filters button visibility
+    if (search_status["page"] == 5) {
+        showFiltersButton()
+    } else {
+        hideFiltersButton()
+    }
 }
 
 /**

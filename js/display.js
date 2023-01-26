@@ -140,3 +140,12 @@ function showPreviousButton() {
 function hidePreviousButton() {
     $("#previousButton").fadeOut('slow');
 }
+
+function showFiltersButton() {
+    $("#filtersButton").fadeIn('slow');
+}
+
+
+function hideFiltersButton() {
+    $("#filtersButton").fadeOut('slow');
+}

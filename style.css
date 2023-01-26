@@ -141,14 +141,14 @@ div{
 /*
  *  Filter button
  */
- #filterButton {  
+ #filtersButton {  
   position: fixed;
   bottom: 1em;
   right: 1em;
   z-index: 50;
 }
 
-#filterButton img {
+#filtersButton img {
   height: 2.5em; 
 }
 .filterTitle {
