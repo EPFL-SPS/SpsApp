@@ -1,3 +1,74 @@
+/**
+ * Toggle page visibility to show it
+ */
+function displayPage(pageIndex, marginLeft="0%") {
+    pageId = "#" + pages[pageIndex]
+    $(pageId).css({display: "block", marginLeft : marginLeft})
+}
+
+/**
+ * Toggle page visibility to hide it
+ */
+function hidePage(pageIndex) {
+    pageId = "#" + pages[pageIndex]
+    $(pageId).css({display: "none"})
+}
+
+/**
+ * Slide in a page from the right
+ * @param {number} pageIndex Page index according to pages global array
+*/
+function slideInPage(pageIndex) {
+    $(window).scrollTop(0)
+    
+    // console.log("Slide in page " + pageIndex)
+
+    // Ensure page is visible outside of viewport to slide it in
+    displayPage(pageIndex, "100%")
+
+    // Slide in page
+    pageId = "#" + pages[pageIndex]
+    $(pageId).animate({
+        marginLeft: "0%"
+    }, transisionDuration);
+
+    // Hide previous pages once slided in
+    setTimeout(function() {
+        for(let i = search_status["page"] - 1; i >= 0; i--) {
+            hidePage(i)
+        }
+    }, transisionDuration)
+}
+
+/**
+ * Slide out a page to the right
+ * @param {number} pageIndex Page index according to pages global array
+ */
+function slideOutPage(pageIndex) {
+    $(window).scrollTop(0)
+
+    // console.log("Slide out page " + pageIndex)
+
+    // Ensure previous page is visible in order to see it after sliding out
+    if (pageIndex > 0) {
+        displayPage(pageIndex - 1, "0%")
+    }
+
+    // Ensure curent page is visible inside of viewport to slide it out
+    displayPage(pageIndex, "0%")
+
+    // Slide out page
+    pageId = "#" + pages[pageIndex]
+    $(pageId).animate({
+        marginLeft: "100%"
+    }, transisionDuration);
+
+    // Hide page once slided out
+    setTimeout(function() {
+        hidePage(pageIndex)
+    }, transisionDuration)
+}
+
 function displayActivitiesCards(activities) {
     // Generate cards from results
     let animationDelay = 0.6
@@ -59,4 +130,13 @@ function displayPublicActivitiesCards(activities, animationDelay) {
 function hideLoader() {
     // Hide element with jquery
     $("#loader").fadeOut('slow');
+}
+
+function showPreviousButton() {
+    $("#previousButton").fadeIn('slow');
+}
+
+
+function hidePreviousButton() {
+    $("#previousButton").fadeOut('slow');
 }

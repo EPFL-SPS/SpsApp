@@ -30,6 +30,8 @@ function updatePage() {
         console.log("Load status from hash")
         console.log(document.location.hash)
         console.log(search_status)
+
+        updateFilterMenu(search_status)
     }
 
     console.log("Display page " + search_status["page"] + " from current page " + currentPage)
@@ -58,8 +60,8 @@ function updatePage() {
         case 3: // Age
             delete search_status['age']
 
-            age = $("#question_age-val").val()
-            $('#age-val').html(age);
+            age = $("#question_age-input").val()
+            $('#question_age-val').html(age);
 
             break
         case 4: // Gender
@@ -73,11 +75,11 @@ function updatePage() {
 
     updateHash()
 
-    // Update preivous button visibility
+    // Update previous button visibility
     if (search_status["page"] > 0) {
-        $("#previousButton").css({visibility: "visible"})
+        showPreviousButton()
     } else {
-        $("#previousButton").css({visibility: "hidden"})
+        hidePreviousButton()
     }
 }
 
@@ -105,77 +107,6 @@ function decrementPage() {
     search_status["page"]--
 
     updateHash()
-}
-
-/**
- * Toggle page visibility to show it
- */
-function displayPage(pageIndex, marginLeft="0%") {
-    pageId = "#" + pages[pageIndex]
-    $(pageId).css({display: "block", marginLeft : marginLeft})
-}
-
-/**
- * Toggle page visibility to hide it
- */
-function hidePage(pageIndex) {
-    pageId = "#" + pages[pageIndex]
-    $(pageId).css({display: "none"})
-}
-
-/**
- * Slide in a page from the right
- * @param {number} pageIndex Page index according to pages global array
-*/
-function slideInPage(pageIndex) {
-    $(window).scrollTop(0)
-    
-    // console.log("Slide in page " + pageIndex)
-
-    // Ensure page is visible outside of viewport to slide it in
-    displayPage(pageIndex, "100%")
-
-    // Slide in page
-    pageId = "#" + pages[pageIndex]
-    $(pageId).animate({
-        marginLeft: "0%"
-    }, transisionDuration);
-
-    // Hide previous pages once slided in
-    setTimeout(function() {
-        for(let i = search_status["page"] - 1; i >= 0; i--) {
-            hidePage(i)
-        }
-    }, transisionDuration)
-}
-
-/**
- * Slide out a page to the right
- * @param {number} pageIndex Page index according to pages global array
- */
-function slideOutPage(pageIndex) {
-    $(window).scrollTop(0)
-
-    // console.log("Slide out page " + pageIndex)
-
-    // Ensure previous page is visible in order to see it after sliding out
-    if (pageIndex > 0) {
-        displayPage(pageIndex - 1, "0%")
-    }
-
-    // Ensure curent page is visible inside of viewport to slide it out
-    displayPage(pageIndex, "0%")
-
-    // Slide out page
-    pageId = "#" + pages[pageIndex]
-    $(pageId).animate({
-        marginLeft: "100%"
-    }, transisionDuration);
-
-    // Hide page once slided out
-    setTimeout(function() {
-        hidePage(pageIndex)
-    }, transisionDuration)
 }
 
 /**
@@ -221,14 +152,14 @@ $('.where-btnChoice').on('click', function(event) {
  *   QUESTION - AGE
  */
 // Update age value during user interraction
-$('#question_age-val').on('input', function change(e){
+$('#question_age-input').on('input', function change(e){
     age = $(this).val()
-    $('#age-val').html(age);
+    $('#question_age-val').html(age);
 }); 
 
 // Save age value and go to the next question
 $('#question_age-next').on('click', function(event) {
-    age = $('#question_age-val').val()  
+    age = $('#question_age-input').val()  
     search_status["age"] = age
 
     incrementPage()

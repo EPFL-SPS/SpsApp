@@ -124,11 +124,11 @@ div{
 }
 
 /*
- *  Return button
+ *  Previous button
  */
 #previousButton {
   position: fixed;
-  visibility: hidden;
+  display: none;
   bottom: 1em;
   left: 1em;
   z-index: 50;
@@ -136,4 +136,21 @@ div{
 
 #previousButton img {
   height: 2.5em; 
+}
+
+/*
+ *  Filter button
+ */
+ #filterButton {  
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  z-index: 50;
+}
+
+#filterButton img {
+  height: 2.5em; 
+}
+.filterTitle {
+  margin-top: 1em;
 }
