@@ -143,6 +143,7 @@ div{
  */
  #filtersButton {  
   position: fixed;
+  display: none;
   bottom: 1em;
   right: 1em;
   z-index: 50;
