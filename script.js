@@ -215,8 +215,8 @@ function showResults() {
         unique_activities = groupSameActivities(filtered_activities)
         console.log(unique_activities)
 
-        analyseEditions(unique_activities)
-        
+        // analyseEditions(unique_activities)
+
 
         // Public activities processing
         public_activities = filterPublicActivities(activities["public"], "FR")
@@ -228,31 +228,31 @@ function showResults() {
     })
 }
 
-function analyseEditions(editions) {
-    console.log("Analyse editions")
-    console.log(editions)
+// function analyseEditions(editions) {
+//     console.log("Analyse editions")
+//     console.log(editions)
 
-    ret = {
-        activity: {
-            name: editions[0][ACTIVITY_NAME_COLUMN],
-            description: editions[0]["Description"],
-            age_max: editions[0]["Age max"],
-            age_min: editions[0]["Age min"],
-            gender: editions[0]["Genre"],
-            language: editions[0]["Langue"],
-        }
-    }
+//     ret = {
+//         activity: {
+//             name: editions[0][ACTIVITY_NAME_COLUMN],
+//             description: editions[0]["Description"],
+//             age_max: editions[0]["Age max"],
+//             age_min: editions[0]["Age min"],
+//             gender: editions[0]["Genre"],
+//             language: editions[0]["Langue"],
+//         }
+//     }
 
-    editions.forEach(function(ed) {
-        ret[ed["ID"]] = {}
+//     editions.forEach(function(ed) {
+//         ret[ed["ID"]] = {}
 
-        Object.keys(ed).forEach(key => {
-            ret[ed["ID"]]["Lieu"] = ed["Lieu"]
-            ret[ed["ID"]]["Canton"] = ed["Canton"]
-            ret[ed["ID"]]["Dates"] = ed["Dates"]
-        })
+//         Object.keys(ed).forEach(key => {
+//             ret[ed["ID"]]["Lieu"] = ed["Lieu"]
+//             ret[ed["ID"]]["Canton"] = ed["Canton"]
+//             ret[ed["ID"]]["Dates"] = ed["Dates"]
+//         })
 
-    })
+//     })
 
-    console.log(ret)
-}
+//     console.log(ret)
+// }
