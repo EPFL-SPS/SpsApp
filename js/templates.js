@@ -1,4 +1,4 @@
-var cardTemplate = (title, description, more, imgSrc, animationDelay, buttonText="Détails", buttonLink="https://sps.epfl.ch/") => `
+var cardTemplate = (title, description, leftText="", rightText="", imgSrc="default.jpg", animationDelay=0, buttonText="Détails", buttonLink="https://sps.epfl.ch/") => `
 <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 d-flex animate slide" style=\"animation-delay: ${animationDelay}s;\">
     <div class="card border-light mb-4 shadow" style="width: 100%">
         <div class="card-header p-0" style="height: 150px">
@@ -11,11 +11,11 @@ var cardTemplate = (title, description, more, imgSrc, animationDelay, buttonText
         </div>
          <div class="card-footer text-muted">
                 <div class="d-flex justify-content-between">
-                    <div class="btn-group">
-                    <!-- Add link that will open in a new tab -->
+                    <!--<div class="btn-group">
                         <a href="${buttonLink}" target="_blank"><button type="button" class="btn btn-sm btn-dark">${buttonText}</button></a>
-                    </div>
-                    <small class="text-muted">${more}</small>
+                    </div>-->
+                    <small class="text-muted">${leftText}</small>
+                    <small class="text-muted">${rightText}</small>
                 </div>  
             </div>
     </div>
