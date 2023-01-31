@@ -83,12 +83,14 @@ function displayActivitiesCards(activities) {
             // console.log("Activity " + ed[ACTIVITY_NAME_COLUMN] + " has following editions")
             // console.log(editions)
 
-            card = cardTemplate(
-                title=ed[ACTIVITY_NAME_COLUMN],
-                description=truncateString(ed["Description"], 150), leftText=ed["Format"],
-                rightText="", 
-                imgSrc=ed["ImgSrc"] ? ed["ImgSrc"] + ".jpg" : "default.jpg",
-                animationDelay=animationDelay);
+            card = cardTemplate({
+                "title":ed[ACTIVITY_NAME_COLUMN],
+                "description":truncateString(ed["Description"], 150),
+                "leftText":ed["Format"],
+                "rightText":"", 
+                "imgSrc":ed["ImgSrc"] ? ed["ImgSrc"] + ".jpg" : "default.jpg",
+                "animationDelay":animationDelay
+            });
             container.append(card)
 
             animationDelay += 0.1
@@ -100,10 +102,11 @@ function displayActivitiesCards(activities) {
     } else {
         // If no activity is found, display a default card
         // @todo Handle language
-        card = cardTemplate(
-            title="Aucune activité extrascolaire trouvée pour ces filtres",
-            description="Visitez le site du SPS pour voir toutes les activités", 
-            animationDelay=animationDelay);
+        card = cardTemplate({
+            "title": "Aucune activité publique trouvée pour ces filtres",
+            "description": "Visitez le site du SPS pour voir toutes les activités",
+            "animationDelay": animationDelay
+        });
         container.append(card)
     }
 
@@ -121,13 +124,14 @@ function displayPublicActivitiesCards(activities, animationDelay) {
     if (activities.length > 0) {
         activities.forEach(function(activity) { 
 
-            card = cardTemplate(
-                title=activity[ACTIVITY_NAME_COLUMN],
-                description=truncateString(activity["Description"], 150),
-                rightText=activity["Lieu"],
-                leftText=activity["Date"],
-                imgSrc=activity["ImgSrc"] ? activity["ImgSrc"] + ".jpg" : "default.jpg",
-                animationDelay=animationDelay);
+            card = cardTemplate({
+                "title":activity[ACTIVITY_NAME_COLUMN],
+                "description":truncateString(activity["Description"], 150),
+                "rightText":activity["Lieu"],
+                "leftText":activity["Date"],
+                "imgSrc": activity["ImgSrc"],
+                "animationDelay":animationDelay
+            });
             container.append(card)
 
             animationDelay += 0.1
@@ -135,10 +139,11 @@ function displayPublicActivitiesCards(activities, animationDelay) {
     } else {
         // If no activity is found, display a default card
         // @todo Handle language
-        card = cardTemplate(
-            title="Aucune activité publique trouvée pour ces filtres",
-            description="Visitez le site du SPS pour voir toutes les activités",
-            animationDelay=animationDelay);
+        card = cardTemplate({
+            "title": "Aucune activité publique trouvée pour ces filtres",
+            "description": "Visitez le site du SPS pour voir toutes les activités",
+            "animationDelay": animationDelay
+        });
         container.append(card)
     }
 
