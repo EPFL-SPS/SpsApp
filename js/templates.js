@@ -7,8 +7,6 @@ function cardTemplate (args = {}) {
         "rightText": "",
         "imgSrc": "",
         "animationDelay": 0,
-        "buttonText": "Détails",
-        "buttonLink": "https://sps.epfl.ch/"
     }
 
     v = {}
@@ -34,11 +32,8 @@ function cardTemplate (args = {}) {
         footer = 
 `<div class="card-footer text-muted">
     <div class="d-flex justify-content-between">
-    <!--<div class="btn-group">
-        <a href="${v['buttonLink']}" target="_blank"><button type="button" class="btn btn-sm btn-dark">${v['buttonText']}</button></a>
-        </div>-->
         <small class="text-muted">${v['leftText']}</small>
-    <small class="text-muted">${v['rightText']}</small>
+        <small class="text-muted">${v['rightText']}</small>
     </div>  
 </div>`
     }
@@ -60,4 +55,37 @@ function cardTemplate (args = {}) {
 `;
 }
 
-var publicTitle = "<div class=\"public-title animate slide\" style=\"margin-top: 25px;\"><h1 class=\"results-h1\">Activités grand public</h1></div>"
+var publicTitle = `
+<div class="public-title animate slide" style="margin-top: 25px;">
+    <h1 class="results-h1" lang="fr">Activités grand public</h1>
+    <h1 class="results-h1" lang="de">Aktivitäten für das breite Publikum</h1>
+</div>`
+
+/**
+ * 
+ * @param {*} currentLang Current lang abreviation
+ * @returns 
+ */
+function languagesMenu_template(currentLang){
+    li = ""
+
+    Object.entries(SUPPORTED_LANGUAGES).forEach(([abrev, icon]) => {
+        if (abrev != currentLang) {
+            li += languagesMenuLi_template(abrev, icon)
+        }
+    })
+
+    return `
+<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    ${SUPPORTED_LANGUAGES[currentLang]}
+</button>
+<ul class="dropdown-menu" style="min-width: auto;">
+    ${li}
+</ul>
+`
+}
+
+var languagesMenuLi_template = (value, icon) => `
+<li><button class="dropdown-item btn-langChoice" value="${value}" type="button">${icon}</button></li>
+`;
+

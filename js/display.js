@@ -103,8 +103,8 @@ function displayActivitiesCards(activities) {
         // If no activity is found, display a default card
         // @todo Handle language
         card = cardTemplate({
-            "title": "Aucune activité publique trouvée pour ces filtres",
-            "description": "Visitez le site du SPS pour voir toutes les activités",
+            "title": TRAD("NO_ACTIVITY_CARD_TITLE"),
+            "description": TRAD("NO_ACTIVITY_CARD_CONTENT"),
             "animationDelay": animationDelay
         });
         container.append(card)
@@ -140,13 +140,27 @@ function displayPublicActivitiesCards(activities, animationDelay) {
         // If no activity is found, display a default card
         // @todo Handle language
         card = cardTemplate({
-            "title": "Aucune activité publique trouvée pour ces filtres",
-            "description": "Visitez le site du SPS pour voir toutes les activités",
+            "title": TRAD("NO_ACTIVITY_CARD_TITLE"),
+            "description": TRAD("NO_ACTIVITY_CARD_CONTENT"),
             "animationDelay": animationDelay
         });
         container.append(card)
     }
+}
 
+function displayLanguagesMenu(currentLanguage) {
+    $("#languagesMenu").html(languagesMenu_template(currentLanguage))
+
+    // Add event listener
+    $('.btn-langChoice').on('click', function(event) {
+        event.preventDefault()
+
+        let lang = $(this).attr('value')
+
+        search_status["lang"]= lang
+
+        updateHash()
+    })
 }
 
 function hideLoader() {

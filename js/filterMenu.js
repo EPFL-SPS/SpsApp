@@ -1,6 +1,4 @@
 function updateFilterMenu(search_status) {
-    console.log(search_status)
-
     if(search_status["who"]) {
         activateButton("filters_who", search_status["who"])
     }
@@ -15,19 +13,22 @@ function updateFilterMenu(search_status) {
 
     if(search_status["age"]) {
         $('#filters_age-input').val(search_status["age"])
-        $('#filters_age-val').html(search_status["age"]);
+        $('.filters_age-val').html(search_status["age"]);
     }
 }
 
-function activateButton(buttonGroupId, value) {
-    el = $(`#${buttonGroupId}`)
+function activateButton(buttonGroupClass, value) {
+    el = $(`.${buttonGroupClass}`)
+    console.log("-" * 15)
+    console.log(buttonGroupClass)
+    console.log(value)
     btn = el.find(`button[value="${value}"]`)
     btn.addClass("active");
     btn.attr("aria-pressed", "true");
 }
 
-function deactivateButton(buttonGroupId, value) {
-    el = $(`#${buttonGroupId}`)
+function deactivateButton(buttonGroupClass, value) {
+    el = $(`.${buttonGroupClass}`)
     btn = el.find(`button[value="${value}"]`)
     btn.removeClass("active");
     btn.attr("aria-pressed", "false");
@@ -98,7 +99,7 @@ $('.filters-where-btnChoice').on('click', function(event) {
 // Update age value during user interraction
 $('#filters_age-input').on('input', function change(e){
     age = $(this).val()
-    $('#filters_age-val').html(age);  
+    $('.filters_age-val').html(age);  
     search_status["age"] = age
 
     updateHash()

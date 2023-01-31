@@ -9,25 +9,25 @@ const ACTIVITY_NAME_COLUMN = "Activité";
  * @returns {array[{ACTIVITY_NAME_COLUMN: name, ...}]} with all parents keys containing details on the activity
  */
 function addDetailsToEditions(editions, activities) {
-  // Go through all the editions
-  for (let i = 0; i < editions.length; i++) {
-    // Get the name of the edition 
-    let keyToMatchValue = editions[i][ACTIVITY_NAME_COLUMN];
-    // Now go through all the activities
-    for (let j = 0; j < activities.length; j++) {
-      // Find the corresponding parent activity for the edition
-      if (activities[j][ACTIVITY_NAME_COLUMN] === keyToMatchValue) {
-        // Add details from the parent activity to the edition array
-        for (let newKey in activities[j]) {
-          if (!editions[i].hasOwnProperty(newKey) || editions[i][newKey] === null) {
-            editions[i][newKey] = activities[j][newKey];
-          }
+    // Go through all the editions
+    for (let i = 0; i < editions.length; i++) {
+        // Get the name of the edition 
+        let keyToMatchValue = editions[i][ACTIVITY_NAME_COLUMN];
+        // Now go through all the activities
+        for (let j = 0; j < activities.length; j++) {
+            // Find the corresponding parent activity for the edition
+            if (activities[j][ACTIVITY_NAME_COLUMN] === keyToMatchValue) {
+                // Add details from the parent activity to the edition array
+                for (let newKey in activities[j]) {
+                    if (!editions[i].hasOwnProperty(newKey) || editions[i][newKey] === null) {
+                        editions[i][newKey] = activities[j][newKey];
+                    }
+                }
+            }
         }
-      }
     }
-  }
-  // Return editions array with details
-  return editions;
+    // Return editions array with details
+    return editions;
 }
 
 /**
@@ -38,21 +38,21 @@ function addDetailsToEditions(editions, activities) {
  * @returns {[...]} Only activity that correspond to the filters
  */
 function filterActivities(jsonArray, filters) {
-  return jsonArray.filter(function(item) {
-    let match = true;
-    for (let key in filters) {
-      // If the filter is undefined or null, skip it
-      if (!filters[key]) {
-        return true
-      }
+    return jsonArray.filter(function(item) {
+        let match = true;
+        for (let key in filters) {
+            // If the filter is undefined or null, skip it
+            if (!filters[key]) {
+                return true
+            }
 
-      if (item[key] !== filters[key]) {
-        match = false;
-        break;
-      }
-    }
-    return match;
-  });
+            if (item[key] !== filters[key]) {
+                match = false;
+                break;
+            }
+        }
+        return match;
+    });
 }
 
 /**
@@ -62,16 +62,16 @@ function filterActivities(jsonArray, filters) {
  * @returns {[...]} Only activity that correspond to that age
  */
 function filterActivities_age(jsonArray, age) {
-  if (!age) {
-    return jsonArray
-  }
+    if (!age) {
+        return jsonArray
+    }
 
-  return jsonArray.filter(function(entry) {
-    min = parseInt(entry["Age min"])
-    max = parseInt(entry["Age max"])
-    ret =  min <= age && max >= age ;
-    return ret;
-  });
+    return jsonArray.filter(function(entry) {
+        min = parseInt(entry["Age min"])
+        max = parseInt(entry["Age max"])
+        ret =  min <= age && max >= age ;
+        return ret;
+    });
 }
 
 /**
@@ -81,13 +81,13 @@ function filterActivities_age(jsonArray, age) {
  * @returns {[...]} Only activity that correspond to that gender
  */
 function filterActivities_gender(jsonArray, gender) {
-  if (!gender || gender == "Mixte") {
-    return jsonArray
-  }
+    if (!gender || gender == "Mixte") {
+        return jsonArray
+    }
 
-  return jsonArray.filter(function(entry) {
-    return entry["Genre"] == "Mixte" || entry["Genre"] == gender;
-  });
+    return jsonArray.filter(function(entry) {
+        return entry["Genre"] == "Mixte" || entry["Genre"] == gender;
+    });
 }
 
 
@@ -97,25 +97,25 @@ function filterActivities_gender(jsonArray, gender) {
  * @returns 
  */
 function groupSameActivities(jsonArray) {
-  let result = [];
-  jsonArray.forEach(function(entry) {
-    let value = entry[ACTIVITY_NAME_COLUMN];
-    let found = false;
-    result.forEach(function(group) {
-      if (group[ACTIVITY_NAME_COLUMN] === value) {
-        group.values.push(entry);
-        found = true;
-      }
-    });
+    let result = [];
+    jsonArray.forEach(function(entry) {
+        let value = entry[ACTIVITY_NAME_COLUMN];
+        let found = false;
+        result.forEach(function(group) {
+            if (group[ACTIVITY_NAME_COLUMN] === value) {
+                group.values.push(entry);
+                found = true;
+            }
+        });
 
-    if (!found) {
-      var obj = {};
-      obj[ACTIVITY_NAME_COLUMN] = value;
-      obj["values"] = [entry];
-      result.push(obj);
-    }
-  });
-  return result;
+        if (!found) {
+            var obj = {};
+            obj[ACTIVITY_NAME_COLUMN] = value;
+            obj["values"] = [entry];
+            result.push(obj);
+        }
+    });
+    return result;
 }
 
 /**
@@ -125,15 +125,15 @@ function groupSameActivities(jsonArray) {
  * @returns jsonArray with only the required keys 
  */
 function filterKeys(jsonArray, keysToKeep) {
-  return jsonArray.map(function(item) {
-    let filteredItem = {};
-    for (let i = 0; i < keysToKeep.length; i++) {
-      if (item.hasOwnProperty(keysToKeep[i])) {
-        filteredItem[keysToKeep[i]] = item[keysToKeep[i]];
-      }
-    }
-    return filteredItem;
-  });
+    return jsonArray.map(function(item) {
+        let filteredItem = {};
+        for (let i = 0; i < keysToKeep.length; i++) {
+            if (item.hasOwnProperty(keysToKeep[i])) {
+                filteredItem[keysToKeep[i]] = item[keysToKeep[i]];
+            }
+        }
+        return filteredItem;
+    });
 }
 
 /**
@@ -146,44 +146,46 @@ function filterKeys(jsonArray, keysToKeep) {
  * @returns 
  */
 function filterNonScolartActivities(list, language, where, age, gender) {
-  console.log("All activities")
-  console.log(list)
+    console.log("All activities")
+    console.log(list)
 
-  // Filter activities by language and canton
-  filtered_activities = filterActivities(list, {
-    "Langue": language, "Canton": where, "Statut": "Disponible"
-  })
+    
+    // Filter activities by language and canton
+    language = language.toUpperCase()
+    let filtered_activities = filterActivities(list, {
+        "Langue": language, "Canton": where, "Statut": "Disponible"
+    })
 
-  console.log("For language and canton: " + language + " " + where)
-  console.log(filtered_activities)
+    console.log("For language and canton: " + language + " " + where)
+    console.log(filtered_activities)
 
-  // Filter age
-  filtered_activities = filterActivities_age(filtered_activities, age)
-  console.log("For age: " + age)
-  console.log(filtered_activities)
+    // Filter age
+    filtered_activities = filterActivities_age(filtered_activities, age)
+    console.log("For age: " + age)
+    console.log(filtered_activities)
 
-  // Filter gender
-  filtered_activities = filterActivities_gender(filtered_activities, gender)
-  console.log("For gender: " + gender)
-  console.log(filtered_activities)
+    // Filter gender
+    filtered_activities = filterActivities_gender(filtered_activities, gender)
+    console.log("For gender: " + gender)
+    console.log(filtered_activities)
 
-  return filtered_activities
+    return filtered_activities
 }
 
 /**
  * Find public activities according to filters
- * @param {str} language "FR", "DE", "IT"
+ * @param {str} language "FR", "DE"
  * @returns 
  */
 function filterPublicActivities(list, language) {
-  // Filter activities by language
-  filtered_activities = filterActivities(list, {
-    "Langue": language,
-    "Statut": "Disponible"
-  })
+    // Filter activities by language
+    filtered_activities = filterActivities(list, {
+        "Langue": language.toUpperCase(),
+        "Statut": "Disponible"
+    })
 
-  console.log("For language " + language)
-  console.log(filtered_activities)
+    console.log("For language " + language)
+    console.log(filtered_activities)
 
-  return filtered_activities
+    return filtered_activities
 }
