@@ -88,7 +88,7 @@ function displayActivitiesCards(activities) {
                 "description":truncateString(ed["Description"], 150),
                 "leftText":ed["Format"],
                 "rightText":"", 
-                "imgSrc":ed["ImgSrc"] ? ed["ImgSrc"] + ".jpg" : "default.jpg",
+                "imgSrc":ed["ImgSrc"],
                 "animationDelay":animationDelay
             });
             container.append(card)
@@ -125,12 +125,12 @@ function displayPublicActivitiesCards(activities, animationDelay) {
         activities.forEach(function(activity) { 
 
             card = cardTemplate({
-                "title":activity[ACTIVITY_NAME_COLUMN],
-                "description":truncateString(activity["Description"], 150),
-                "rightText":activity["Lieu"],
-                "leftText":activity["Date"],
+                "title": activity[ACTIVITY_NAME_COLUMN],
+                "description": truncateString(activity["Description"], 150),
+                "leftText": activity["Lieu"],
+                "rightText": activity["Date"],
                 "imgSrc": activity["ImgSrc"],
-                "animationDelay":animationDelay
+                "animationDelay": animationDelay
             });
             container.append(card)
 

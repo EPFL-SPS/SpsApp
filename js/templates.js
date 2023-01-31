@@ -5,7 +5,7 @@ function cardTemplate (args = {}) {
         "description": "Lorem ipsum",
         "leftText": "",
         "rightText": "",
-        "imgSrc": "default",
+        "imgSrc": "",
         "animationDelay": 0,
         "buttonText": "Détails",
         "buttonLink": "https://sps.epfl.ch/"
@@ -13,6 +13,7 @@ function cardTemplate (args = {}) {
 
     v = {}
 
+    // Get values from args, or use default values
     Object.entries(defaultValues).forEach(([key, value]) => {
         if (args[key] != undefined) {
             v[key] = args[key]
@@ -21,12 +22,27 @@ function cardTemplate (args = {}) {
         }
     });
 
-    if (!v["imgSrc"]) {
-        v["imgSrc"] = defaultValues["imgSrc"]
-    } else {
+    // Add extension to image name to find the correct file
+    if (v["imgSrc"]) {
         v["imgSrc"] += ".jpg"
+    } else {
+        v["imgSrc"] = "default.jpg"
     }
-    
+
+    footer = ""
+    if (v["leftText"] || v["rightText"]) {
+        footer = 
+`<div class="card-footer text-muted">
+    <div class="d-flex justify-content-between">
+    <!--<div class="btn-group">
+        <a href="${v['buttonLink']}" target="_blank"><button type="button" class="btn btn-sm btn-dark">${v['buttonText']}</button></a>
+        </div>-->
+        <small class="text-muted">${v['leftText']}</small>
+    <small class="text-muted">${v['rightText']}</small>
+    </div>  
+</div>`
+    }
+
     return `
 <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 d-flex animate slide" style=\"animation-delay: ${v['animationDelay']}s;\">
     <div class="card border-light mb-4 shadow" style="width: 100%">
@@ -38,15 +54,7 @@ function cardTemplate (args = {}) {
             <h1 class="card-h1">${v['title']}</h1>
             <p class="card-text">${v['description']}</p>
         </div>
-         <div class="card-footer text-muted">
-                <div class="d-flex justify-content-between">
-                    <!--<div class="btn-group">
-                        <a href="${v['buttonLink']}" target="_blank"><button type="button" class="btn btn-sm btn-dark">${v['buttonText']}</button></a>
-                    </div>-->
-                    <small class="text-muted">${v['leftText']}</small>
-                    <small class="text-muted">${v['rightText']}</small>
-                </div>  
-            </div>
+        ${footer}
     </div>
 </div>
 `;
