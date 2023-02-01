@@ -33,6 +33,9 @@ function updateLanguage(requiredLanguage) {
     if (SUPPORTED_LANGUAGES.hasOwnProperty(requiredLanguage)) {
         currentLanguage = requiredLanguage
     }
+
+    setLangStyles(currentLanguage);
+
     return currentLanguage
 }
 
@@ -53,10 +56,6 @@ function setStyles(styles) {
         style.appendChild(document.createTextNode(styles));
     }
     document.getElementsByTagName('head')[0].appendChild(style);
-}
-
-function setLang() {
-    setLangStyles(currentLanguage);
 }
 
 function setLangStyles(lang) {

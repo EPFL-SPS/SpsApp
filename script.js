@@ -1,10 +1,8 @@
-let transisionDuration = 650;
 
-currentPage = 0
+var search_status = {}
+var currentPage = 0
 
-let search_status = {
-    "page": 0
-}
+var transisionDuration = 650;
 
 // Pages (div) to load, order has meaning
 const pages = ["page0", "page1", "page2", "page3", "page4", "results"]
@@ -30,15 +28,11 @@ function updatePage() {
         console.log("Load status from hash")
         console.log(document.location.hash)
 
-        updateFilterMenu(search_status)
     }
 
     // Set language
     search_status['lang'] = updateLanguage(search_status['lang'])
-    setLang(currentLanguage)
-    displayLanguagesMenu(currentLanguage)
-
-    updateHash()
+    displayLanguagesMenu(search_status['lang'])
 
     // Display current page
     console.log("Display page " + search_status["page"] + " from current page " + currentPage)
@@ -77,6 +71,7 @@ function updatePage() {
         case 5: // Results
             // Load results on the last page
             showResults()
+            updateFilterMenu(search_status)
             break
     }
 
