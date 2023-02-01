@@ -30,9 +30,11 @@ function updatePage() {
 
     }
 
-    // Set language
-    search_status['lang'] = updateLanguage(search_status['lang'])
-    displayLanguagesMenu(search_status['lang'])
+    // Set language (return default language if undefined)
+    lang = updateLanguage(search_status['lang'])
+    search_status['lang'] = lang
+    displayLanguagesMenu(lang)
+    udpdateHomeLink(lang)
 
     // Display current page
     console.log("Display page " + search_status["page"] + " from current page " + currentPage)
@@ -41,6 +43,8 @@ function updatePage() {
         slideOutPage(currentPage)
     } else if (currentPage < search_status["page"]) {
         slideInPage(search_status["page"])
+    } else if (search_status["page"] == undefined) {
+        search_status["page"] = 0
     }
     currentPage = search_status["page"]
 
@@ -48,8 +52,7 @@ function updatePage() {
     switch(parseInt(currentPage)) {
         case 0:
             // Reset search if on first page
-            search_status = {"lang": lang, "page": 0}
-
+            search_status = {"lang": search_status['lang'], "page": 0}
             break
         // Remove filters from future pages otherwise
         case 1: // Who
@@ -75,6 +78,7 @@ function updatePage() {
             break
     }
 
+    // Update hash in url according to search_status
     updateHash()
 
     // Update previous button visibility
@@ -139,7 +143,7 @@ function showResults() {
         console.log(search_status)
 
         if (search_status["who"] =="parent") {
-            filtered_activities = filterNonScolartActivities(
+            filtered_activities = filterNonScolarActivities(
                 activities["nonScolar"], 
                 search_status["lang"],
                 search_status["where"],

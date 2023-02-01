@@ -163,6 +163,11 @@ function displayLanguagesMenu(currentLanguage) {
     })
 }
 
+function udpdateHomeLink(currentLanguage) {
+    // @todo Add language support #lang=currentLanguage
+    $("#EPFL_logo > a").attr("href", "index.html")
+}
+
 function hideLoader() {
     // Hide element with jquery
     $("#loader").fadeOut('slow');

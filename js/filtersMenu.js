@@ -4,7 +4,7 @@ function updateFilterMenu(search_status) {
     }
 
     if(search_status["where"]) {
-        activateButton("filters_where", search_status["where"])
+        activateButton("filters_where", search_status["where"].toUpperCase())
     }
 
     if(search_status["gender"]) {
@@ -19,9 +19,6 @@ function updateFilterMenu(search_status) {
 
 function activateButton(buttonGroupClass, value) {
     el = $(`.${buttonGroupClass}`)
-    console.log("-" * 15)
-    console.log(buttonGroupClass)
-    console.log(value)
     btn = el.find(`button[value="${value}"]`)
     btn.addClass("active");
     btn.attr("aria-pressed", "true");

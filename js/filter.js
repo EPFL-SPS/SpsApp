@@ -62,14 +62,36 @@ function filterActivities(jsonArray, filters) {
  * @returns {[...]} Only activity that correspond to that age
  */
 function filterActivities_age(jsonArray, age) {
-    if (!age) {
+    return filterActivities_range(jsonArray, age, "Age min", "Age max")
+}
+
+/**
+ * Filter activities for a given harmos level
+ * @param {[...]} jsonArray containing all the activities
+ * @param {number} level Harmos level to filter
+ * @returns {[...]} Only activity that correspond to that level
+ */
+function filterActivities_level(jsonArray, level) {
+    return filterActivities_range(jsonArray, level, "H min", "H max")
+}
+
+/**
+ * Filter activities in a given range
+ * @param {[...]} jsonArray containing all the activities
+ * @param {number} value Value to filter
+ * @param {str} minKey Key of the entry for the min value
+ * @param {str} maxKey Key of the entry for the max value
+ * @returns {[...]} Only activity that correspond to that age
+ */
+function filterActivities_range(jsonArray, value, minKey, maxKey) {
+    if (!value) {
         return jsonArray
     }
 
     return jsonArray.filter(function(entry) {
-        min = parseInt(entry["Age min"])
-        max = parseInt(entry["Age max"])
-        ret =  min <= age && max >= age ;
+        min = parseInt(entry[minKey])
+        max = parseInt(entry[maxKey])
+        ret =  min <= value && max >= value ;
         return ret;
     });
 }
@@ -137,21 +159,22 @@ function filterKeys(jsonArray, keysToKeep) {
 }
 
 /**
- * Find scolar or non-scolar activities according to filters
+ * Find non-scolar activities according to filters
+ * @param {str} list Activities list
  * @param {str} language "FR", "DE", "IT"
- * @param {str} who "parent", "teacher"
- * @param {str} where canton abreviation
+ * @param {str} where Canton abreviation
  * @param {number} age Child age 
  * @param {str} gender "Garçon", "Fille"
  * @returns 
  */
-function filterNonScolartActivities(list, language, where, age, gender) {
+function filterNonScolarActivities(list, language, where, age, gender) {
     console.log("All activities")
     console.log(list)
 
     
     // Filter activities by language and canton
     language = language.toUpperCase()
+    where = where.toUpperCase()
     let filtered_activities = filterActivities(list, {
         "Langue": language, "Canton": where, "Statut": "Disponible"
     })
@@ -167,6 +190,35 @@ function filterNonScolartActivities(list, language, where, age, gender) {
     // Filter gender
     filtered_activities = filterActivities_gender(filtered_activities, gender)
     console.log("For gender: " + gender)
+    console.log(filtered_activities)
+
+    return filtered_activities
+}
+
+/**
+ * Find scolar activities according to filters
+ * @param {str} list Activities list
+ * @param {str} language "FR", "DE", "IT"
+ * @param {number} level Harmos level 
+ * @returns 
+ */
+function filterScolarActivities(list, language, level) {
+    console.log("All activities")
+    console.log(list)
+
+    
+    // Filter activities by language
+    language = language.toUpperCase()
+    let filtered_activities = filterActivities(list, {
+        "Langue": language, "Statut": "Disponible"
+    })
+
+    console.log("For language: " + language)
+    console.log(filtered_activities)
+
+    // Filter level
+    filtered_activities = filterActivities_age(filtered_activities, level)
+    console.log("For level: " + age + "H")
     console.log(filtered_activities)
 
     return filtered_activities

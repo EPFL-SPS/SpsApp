@@ -37,6 +37,8 @@ function parseParms(search) {
  */
 function updateHash() {
     if (search_status) {
+        console.log("Update hash")
+        console.log(search_status)
         hash = $.param(search_status)
         document.location.hash = hash
     }
