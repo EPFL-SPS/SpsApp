@@ -59,12 +59,12 @@ function updatePage() {
             break
         case 2: // Where
 
-            if (search_status['where']) {   // where is defined, we are coming back from page 3
+            if (search_status['where']) {   // "where" is defined, we are coming back from page 3
                 delete search_status['where']
 
                 // @todo Handle that we are supposed to show page 1 if teacher 
 
-            } else {    // where is not defined, we are coming from page 1 (who)
+            } else {    // "where" is not defined, we are coming from page 1 (who)
                 // If user is a teacher, we don't need to ask location
                 // language will be used as a filter
                 if (search_status['who'] == "teacher") {
@@ -192,11 +192,13 @@ function showResults() {
                 search_status["where"],
                 search_status["age"],
                 gender)
-        } else {
+        } else if (search_status["who"] =="teacher") {
             filtered_activities = filterScolarActivities(
                 activities["scolar"], 
                 search_status["lang"],
                 search_status["level"])
+        } else {
+            filtered_activities = []
         }
 
         // Group same activities
