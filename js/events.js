@@ -1,4 +1,16 @@
 /**
+ * Logo click
+ */
+$("#EPFL_logo").on('click', function(event) {
+    event.preventDefault()
+    search_status = {
+        'lang': search_status['lang']
+    }
+    updateHash()
+    window.location.reload();
+})
+
+/**
  * Previous button action
  */
 $("#previousButton").on('click', function(event) {
@@ -39,7 +51,7 @@ $('.where-btnChoice').on('click', function(event) {
 })
 
 /*
- *   QUESTION - AGE
+ *   QUESTION - LEVEL/AGE
  */
 // Update age value during user interraction
 $('#question_age-input').on('input', function change(e){
@@ -47,10 +59,22 @@ $('#question_age-input').on('input', function change(e){
     $('.question_age-val').html(age);
 })
 
-// Save age value and go to the next question
+// Update level value during user interraction
+$('#question_level-input').on('input', function change(e){
+    level = $(this).val()
+    updateLevelInputValue(level, search_status['lang'])
+})
+
+// Save age or level value and go to the next question
 $('.age-btnNext').on('click', function(event) {
-    age = $('#question_age-input').val()  
-    search_status["age"] = age
+    // Save level if user is a teacher, otherwise save age for parents
+    if (search_status['who'] == "teacher") {
+        level = $('#question_level-input').val()  
+        search_status["level"] = level
+    } else if (search_status['who'] == "parent") {
+        age = $('#question_age-input').val()  
+        search_status["age"] = age
+    }
 
     incrementPage()
 })

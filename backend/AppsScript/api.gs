@@ -1,3 +1,5 @@
+const spreadsheetId = '1GnVV3331x36aRqYSuNnlR4qPDdrDRhLvNV4WEyNZLAI';
+
 function _convertTable(table) {
     let data = [];
     let header = table[0];
@@ -12,11 +14,12 @@ function _convertTable(table) {
     return data
 }
 
-function _sendResponse(e, status_code, status, data) {
+function _sendResponse(e, status_code, range, status, data) {
   var response = {
       'status_code': status_code,
       'status': status,
-      'data': data
+      'data': data,
+      'request': range
   };
 
   return ContentService
@@ -26,13 +29,11 @@ function _sendResponse(e, status_code, status, data) {
 }
 
 function doGet(e) {
-  const spreadsheetId = '1GnVV3331x36aRqYSuNnlR4qPDdrDRhLvNV4WEyNZLAI';
-
   if(e) {
     var range = e.parameter.range
 
     if (range == undefined) {
-      return _sendResponse(e, 400, "Bad Request", "Specify range as request parameter")
+      return _sendResponse(e, 400, e.parameter.range, "Bad Request", "Specify range as request parameter")
     }
 
     try {
@@ -41,13 +42,13 @@ function doGet(e) {
 
         console.log(values)
         
-        return _sendResponse(e, 200, "OK", _convertTable(values))
+        return _sendResponse(e, 200, e.parameter.range, "OK", _convertTable(values))
         
       } catch (err) {
         // TODO Handle Values.get() exception from Sheet API
         console.log(err.message);
 
-        return _sendResponse(e, 500, "Internal Server Error", err.message)
+        return _sendResponse(e, 500, e.parameter.range, "Internal Server Error", err.message)
     }
   }
 }

@@ -69,6 +69,26 @@ function slideOutPage(pageIndex) {
     }, transisionDuration)
 }
 
+/**
+ * @param {number} level Harmos level
+ * @param {string} lang DE, FR
+ * @param {*} level 
+ */
+function updateLevelInputValue(level, lang){
+    // Update level letter for german version
+    if (lang == "de") {
+        if (level > 8) {
+            $('.question_level-val').html(level - 8);
+            $('#question_level-letter').html("S")
+        } else {
+            $('.question_level-val').html(level - 2);
+            $('#question_level-letter').html("P")
+        }
+    } else {    // for "fr" or others, use Harmos level
+        $('.question_level-val').html(level);
+    }
+}
+
 function displayActivitiesCards(activities) {
     // Generate cards from results
     let animationDelay = 0.6
@@ -101,7 +121,6 @@ function displayActivitiesCards(activities) {
         })
     } else {
         // If no activity is found, display a default card
-        // @todo Handle language
         card = cardTemplate({
             "title": TRAD("NO_ACTIVITY_CARD_TITLE"),
             "description": TRAD("NO_ACTIVITY_CARD_CONTENT"),
@@ -138,7 +157,6 @@ function displayPublicActivitiesCards(activities, animationDelay) {
         })
     } else {
         // If no activity is found, display a default card
-        // @todo Handle language
         card = cardTemplate({
             "title": TRAD("NO_ACTIVITY_CARD_TITLE"),
             "description": TRAD("NO_ACTIVITY_CARD_CONTENT"),
@@ -163,11 +181,6 @@ function displayLanguagesMenu(currentLanguage) {
     })
 }
 
-function udpdateHomeLink(currentLanguage) {
-    // @todo Add language support #lang=currentLanguage
-    $("#EPFL_logo > a").attr("href", "index.html")
-}
-
 function hideLoader() {
     // Hide element with jquery
     $("#loader").fadeOut('slow');
@@ -185,7 +198,6 @@ function hidePreviousButton() {
 function showFiltersButton() {
     $("#filtersButton").fadeIn('slow');
 }
-
 
 function hideFiltersButton() {
     $("#filtersButton").fadeOut('slow');

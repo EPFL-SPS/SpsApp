@@ -168,28 +168,33 @@ function filterKeys(jsonArray, keysToKeep) {
  * @returns 
  */
 function filterNonScolarActivities(list, language, where, age, gender) {
-    console.log("All activities")
+    console.log("Filter non-scolar activities")
     console.log(list)
 
-    
     // Filter activities by language and canton
-    language = language.toUpperCase()
-    where = where.toUpperCase()
+    if (language) {
+       language = language.toUpperCase()
+    }
+
+    if (where) {
+        where = where.toUpperCase()
+    }
+
     let filtered_activities = filterActivities(list, {
         "Langue": language, "Canton": where, "Statut": "Disponible"
     })
 
-    console.log("For language and canton: " + language + " " + where)
+    console.log("\tFor language and canton: " + language + " " + where)
     console.log(filtered_activities)
 
     // Filter age
     filtered_activities = filterActivities_age(filtered_activities, age)
-    console.log("For age: " + age)
+    console.log("\tFor age: " + age)
     console.log(filtered_activities)
 
     // Filter gender
     filtered_activities = filterActivities_gender(filtered_activities, gender)
-    console.log("For gender: " + gender)
+    console.log("\tFor gender: " + gender)
     console.log(filtered_activities)
 
     return filtered_activities
@@ -203,22 +208,21 @@ function filterNonScolarActivities(list, language, where, age, gender) {
  * @returns 
  */
 function filterScolarActivities(list, language, level) {
-    console.log("All activities")
+    console.log("Filter scolar activities")
     console.log(list)
 
-    
     // Filter activities by language
     language = language.toUpperCase()
     let filtered_activities = filterActivities(list, {
         "Langue": language, "Statut": "Disponible"
     })
 
-    console.log("For language: " + language)
+    console.log("\tFor language: " + language)
     console.log(filtered_activities)
 
     // Filter level
-    filtered_activities = filterActivities_age(filtered_activities, level)
-    console.log("For level: " + age + "H")
+    filtered_activities = filterActivities_level(filtered_activities, level)
+    console.log("\tFor level: " + level)
     console.log(filtered_activities)
 
     return filtered_activities
@@ -230,13 +234,16 @@ function filterScolarActivities(list, language, level) {
  * @returns 
  */
 function filterPublicActivities(list, language) {
+    console.log("Filter public activities")
+    console.log(list)
+
     // Filter activities by language
     filtered_activities = filterActivities(list, {
         "Langue": language.toUpperCase(),
         "Statut": "Disponible"
     })
 
-    console.log("For language " + language)
+    console.log("\tFor language " + language)
     console.log(filtered_activities)
 
     return filtered_activities

@@ -34,7 +34,6 @@ function updatePage() {
     lang = updateLanguage(search_status['lang'])
     search_status['lang'] = lang
     displayLanguagesMenu(lang)
-    udpdateHomeLink(lang)
 
     // Display current page
     console.log("Display page " + search_status["page"] + " from current page " + currentPage)
@@ -59,17 +58,56 @@ function updatePage() {
             delete search_status['who']
             break
         case 2: // Where
-            delete search_status['where']
+
+            if (search_status['where']) {   // where is defined, we are coming back from page 3
+                delete search_status['where']
+
+                // @todo Handle that we are supposed to show page 1 if teacher 
+
+            } else {    // where is not defined, we are coming from page 1 (who)
+                // If user is a teacher, we don't need to ask location
+                // language will be used as a filter
+                if (search_status['who'] == "teacher") {
+                    incrementPage()
+                }
+            }
+            
             break
-        case 3: // Age
+        case 3: // Age/Harmos level
             delete search_status['age']
 
+            // Update age according to slider
             age = $("#question_age-input").val()
             $('.question_age-val').html(age);
 
+            // Update level according to slider
+            level = $("#question_level-input").val()
+            updateLevelInputValue(level, search_status['lang'])
+
+            // Show corresponding form depending on who is the user
+            if (search_status['who'] == "parent") {
+                $('#question_age-div').show()
+                $('#question_level-div').hide()
+            } else if (search_status['who'] == "teacher") {
+                $('#question_age-div').hide()
+                $('#question_level-div').show()
+            }
+
             break
         case 4: // Gender
-            delete search_status['gender']
+
+            if (search_status['gender']) {   // gender is defined, we are coming back from page 5
+                delete search_status['gender']
+
+                // @todo Handle that we are supposed to show page 3 if teacher 
+
+            } else {    // gender is not defined, we are coming from page 3 (level)
+                // If user is a teacher, we don't need to ask gender
+                if (search_status['who'] == "teacher") {
+                    incrementPage()
+                }
+            }
+
             break
         case 5: // Results
             // Load results on the last page
@@ -126,7 +164,12 @@ function decrementPage() {
  *   RESULTS
  */
 function showResults() {
-    Promise.all([nonScolarActivities_promise, nonScolarEditions_promise, publicActivities_promise]).then((values) => {
+    Promise.all([
+        nonScolarActivities_promise, 
+        nonScolarEditions_promise, 
+        scolarActivities_promise,
+        publicActivities_promise
+    ]).then((values) => {
         // Complete each editions with details form its corresponding activity
         activities = fetchPromisesData(values)
 
@@ -139,7 +182,7 @@ function showResults() {
         }
 
         // Find activities corresponding to search criteria
-        console.log("Filter activities with the following filters")
+        console.log("Looking for activities for the following filters")
         console.log(search_status)
 
         if (search_status["who"] =="parent") {
@@ -150,7 +193,10 @@ function showResults() {
                 search_status["age"],
                 gender)
         } else {
-            alert("Teacher not supported")
+            filtered_activities = filterScolarActivities(
+                activities["scolar"], 
+                search_status["lang"],
+                search_status["level"])
         }
 
         // Group same activities
@@ -159,7 +205,6 @@ function showResults() {
         console.log(unique_activities)
 
         // analyseEditions(unique_activities)
-
 
         // Public activities processing
         public_activities = filterPublicActivities(activities["public"], search_status["lang"])
