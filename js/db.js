@@ -16,8 +16,16 @@ async function fetchData(range) {
         method: "GET",
         dataType: "jsonp",
         error: function(response){
-            alert("Impossible de récupérer les activités du SPS - Votre navigateur ne supporte pas cette application. Google Chrome, Edge ou Safari sont recommandés.");
             console.log(response)
+            if (response.status == "404") {
+                console.error("Vérifiez l'url du script App Script et que celui-ci est correctement déployé")
+                alert("Impossible de récupérer les activités du SPS - Le serveur ne répond pas - Veuillez réessayer plus tard")
+            } else if (response.status == 500) {
+                alert("Impossible de récupérer les activités du SPS - Erreur interne - Veuillez réessayer plus tard")
+            }
+
+            alert("Impossible de récupérer les activités du SPS - Erreur interne")
+            
             return undefined
         }
     })
@@ -29,8 +37,6 @@ scolarActivities_promise = fetchData("Scolaire - Activités!A1:K101")
 publicActivities_promise = fetchData("Grand public - Activités!A1:H51")
 
 function fetchPromisesData(promises_values) {
-    console.log(promises_values)
-
     // Get received data
     nonScolarActivities = parseApiResponse(promises_values[0])
     nonScolarEditions = parseApiResponse(promises_values[1])
@@ -47,9 +53,9 @@ function fetchPromisesData(promises_values) {
         console.log("Non-scolar activities get from API")
         console.log(nonScolarEditionsDetailed)
     } else {
-        nonScolairActivities = []
+        nonScolarEditionsDetailed = []
         console.error("Error with API response for non-scolar activities")
-        console.log(values)
+        console.log(promises_values)
     }
 
     // Check scolar activities data
@@ -59,7 +65,7 @@ function fetchPromisesData(promises_values) {
     } else {
         scolarActivities = []
         console.error("Error with API response for scolar activities")
-        console.log(values)
+        console.log(promises_values)
     }
 
     // Check public activities data
@@ -69,7 +75,7 @@ function fetchPromisesData(promises_values) {
     } else {
         publicActivities = []
         console.error("Error with API response for pulic activities")
-        console.log(values)
+        console.log(promises_values)
     }
 
     return {
