@@ -16,16 +16,23 @@ async function fetchData(range) {
         method: "GET",
         dataType: "jsonp",
         error: function(response){
-            console.log(response)
+            errorMessage = "Erreur inconue"
             if (response.status == "404") {
+                
+                if(detectBrowser() == "firefox") {
+                    errorMessage = "Votre navigateur ne supporte pas cette application. Google Chrome, Edge ou Safari sont recommandés."
+                } else {
+                    errorMessage = "Veuillez réessayer plus tard"
+                }
+
                 console.error("Vérifiez l'url du script App Script et que celui-ci est correctement déployé")
-                alert("Impossible de récupérer les activités du SPS - Le serveur ne répond pas - Veuillez réessayer plus tard")
+
             } else if (response.status == 500) {
-                alert("Impossible de récupérer les activités du SPS - Erreur interne - Veuillez réessayer plus tard")
+                error = "Erreur interne du serveur"
             }
 
-            alert("Impossible de récupérer les activités du SPS - Erreur interne")
-            
+            alert("Impossible de récupérer les activités du SPS - " + errorMessage)
+
             return undefined
         }
     })
