@@ -28,7 +28,9 @@ function cardTemplate (args = {}) {
     }
 
     footer = ""
-    if (v["leftText"] || v["rightText"]) {
+    // If there is at least a left or right text, display the footer
+    if (v["leftText"] + v["rightText"]) {
+        console.log(footer)
         footer = 
 `<div class="card-footer text-muted">
     <div class="d-flex justify-content-between">

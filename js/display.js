@@ -107,7 +107,7 @@ function displayActivitiesCards(activities) {
                 "title":ed[ACTIVITY_NAME_COLUMN],
                 "description":truncateString(ed["Description"], 150),
                 "leftText":ed["Format"],
-                "rightText":"", 
+                "rightText":ed["Dates"], 
                 "imgSrc":ed["ImgSrc"],
                 "animationDelay":animationDelay
             });
