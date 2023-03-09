@@ -152,6 +152,21 @@ div{
 #filtersButton img {
   height: 2.5em; 
 }
+
 .filterTitle {
   margin-top: 1em;
+}
+
+/**
+ *  Figcaption
+ */
+figcaption {
+  position: absolute;
+  top: 0.3em;
+  right: 0.6em;
+}
+
+figcaption i {
+  font-size: 1.5rem;
+  color: white;
 }

@@ -7,9 +7,13 @@ const DEFAULT_LANGUAGE = "fr"
 
 var currentLanguage = DEFAULT_LANGUAGE
 
-function TRAD(key) {
-    if(LANG_DICT[currentLanguage].hasOwnProperty(key)) {
-        return LANG_DICT[currentLanguage][key]
+function TRAD(key, language) {
+    if (language == undefined) {
+        language = currentLanguage
+    }
+
+    if(LANG_DICT[language].hasOwnProperty(key)) {
+        return LANG_DICT[language][key]
     } else if(LANG_DICT[DEFAULT_LANGUAGE].hasOwnProperty(key)) {
         return LANG_DICT[DEFAULT_LANGUAGE][key]
     } else {
@@ -20,11 +24,13 @@ function TRAD(key) {
 const LANG_DICT = { 
     "fr": {
         "NO_ACTIVITY_CARD_TITLE": "Aucune activité trouvée pour ces filtres",
-        "NO_ACTIVITY_CARD_CONTENT": "Visitez le site du SPS pour voir toutes les activités"
+        "NO_ACTIVITY_CARD_CONTENT": "Visitez le site du SPS pour voir toutes les activités",
+        "PUBLIC_ACTIVITIES_TITLE": "Activités grand public"
     },
     "de": {
         "NO_ACTIVITY_CARD_TITLE": "Keine Aktivitäten für diese Filter gefunden",
-        "NO_ACTIVITY_CARD_CONTENT": "Besuchen Sie die SPS Website, um alle Aktivitäten zu sehen"
+        "NO_ACTIVITY_CARD_CONTENT": "Besuchen Sie die SPS Website, um alle Aktivitäten zu sehen",
+        "PUBLIC_ACTIVITIES_TITLE": "Aktivitäten für das breite Publikum"
     }
 }
 

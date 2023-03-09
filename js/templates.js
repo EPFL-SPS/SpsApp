@@ -7,6 +7,7 @@ function cardTemplate (args = {}) {
         "rightText": "",
         "imgSrc": "",
         "animationDelay": 0,
+        "notes": ""
     }
 
     v = {}
@@ -53,7 +54,15 @@ function cardTemplate (args = {}) {
     <div class="card border-light mb-4 shadow" style="width: 100%">
         <div class="card-header p-0" style="height: 150px">
             <img class="bd-placeholder-img card-img-top img-fluid" style="height: 100%; object-fit: cover" src="${v['imgSrc']}"></img>
+            
+            <!--<figcaption>
+                <i class="bi-exclamation-circle-fill"></i>
+            </figcaption>-->
         </div>
+
+        <!--<div class="card-img-overlay">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div> -->
 
         <div class="card-body">
             <h1 class="card-h1">${v['title']}</h1>
@@ -67,8 +76,8 @@ function cardTemplate (args = {}) {
 
 var publicTitle = `
 <div class="public-title animate slide" style="margin-top: 25px;">
-    <h1 class="results-h1" lang="fr">Activités grand public</h1>
-    <h1 class="results-h1" lang="de">Aktivitäten für das breite Publikum</h1>
+    <h1 class="results-h1" lang="fr">${TRAD("PUBLIC_ACTIVITIES_TITLE", "fr")}</h1>
+    <h1 class="results-h1" lang="de">${TRAD("PUBLIC_ACTIVITIES_TITLE", "de")}</h1>
 </div>`
 
 /**
