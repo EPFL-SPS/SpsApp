@@ -40,8 +40,8 @@ function cardTemplate (args = {}) {
     footer = ""
     // If there is at least a left or right text, display the footer
     if (v["leftText"] + v["rightText"]) {
-        footer = 
-`<div class="card-footer text-muted">
+        footer = `
+<div class="card-footer text-muted">
     <div class="d-flex justify-content-between">
         <small class="text-muted">${v['leftText']}</small>
         <small class="text-muted">${v['rightText']}</small>
@@ -49,15 +49,20 @@ function cardTemplate (args = {}) {
 </div>`
     }
 
+    figcaption = ""
+    if (v["notes"]) {
+        figcaption = `
+<figcaption>
+    <i class="bi-exclamation-circle-fill notes-activity" notes="${v["notes"]}"></i>
+</figcaption>`
+    }
+
     return `
 <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 d-flex animate slide" style=\"animation-delay: ${v['animationDelay']}s;\">
     <div class="card border-light mb-4 shadow" style="width: 100%">
         <div class="card-header p-0" style="height: 150px">
             <img class="bd-placeholder-img card-img-top img-fluid" style="height: 100%; object-fit: cover" src="${v['imgSrc']}"></img>
-            
-            <!--<figcaption>
-                <i class="bi-exclamation-circle-fill"></i>
-            </figcaption>-->
+            ${figcaption}
         </div>
 
         <!--<div class="card-img-overlay">

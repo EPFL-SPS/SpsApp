@@ -109,7 +109,8 @@ function displayActivitiesCards(activities, footerTextKey) {
                 "leftText": ed[footerTextKey["left"]],
                 "rightText": ed[footerTextKey["right"]], 
                 "imgSrc": ed["ImgSrc"],
-                "animationDelay": animationDelay
+                "animationDelay": animationDelay,
+                "notes": ed["Remarques"]
             });
             container.append(card)
 
@@ -128,6 +129,13 @@ function displayActivitiesCards(activities, footerTextKey) {
         });
         container.append(card)
     }
+
+    // Add event listener for notes icon
+    $('.notes-activity').on('click', function(event) {
+        event.preventDefault()
+        let note = $(this).attr('notes')
+        alert(note)
+    })
 
     return animationDelay
 }
