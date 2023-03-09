@@ -39,8 +39,8 @@ async function fetchData(range) {
 }
 
 nonScolarActivities_promise = fetchData("Extra-scolaire - Activités!A1:J101")
-nonScolarEditions_promise = fetchData("Extra-scolaire - Éditions!A1:I201")
-scolarActivities_promise = fetchData("Scolaire - Activités!A1:K101")
+nonScolarEditions_promise = fetchData("Extra-scolaire - Éditions!A1:F201")
+scolarActivities_promise = fetchData("Scolaire - Activités!A1:J101")
 publicActivities_promise = fetchData("Grand public - Activités!A1:H51")
 
 function fetchPromisesData(promises_values) {
