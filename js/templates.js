@@ -20,11 +20,23 @@ function cardTemplate (args = {}) {
         }
     });
 
+    localThumbPath = "assets/thumbs/"
+
     // Add extension to image name to find the correct file
     if (v["imgSrc"]) {
-        v["imgSrc"] += ".jpg"
+        // if imgSrc is a link
+        console.log(v["imgSrc"])
+        console.log(v["imgSrc"].includes("http"))
+        console.log(v["imgSrc"].includes("https"))
+        if (v["imgSrc"].includes("http")) {
+            // If it's a link, picture is stored online. Don't add extension
+        } else {
+            // If not, picture is stored locally. Add extension and path
+            v["imgSrc"] = localThumbPath + v["imgSrc"] + ".jpg"
+        }
     } else {
-        v["imgSrc"] = "default.jpg"
+        // Default picture if picture not specified
+        v["imgSrc"] = localThumbPath + "default.jpg"
     }
 
     footer = ""
@@ -44,7 +56,7 @@ function cardTemplate (args = {}) {
 <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 d-flex animate slide" style=\"animation-delay: ${v['animationDelay']}s;\">
     <div class="card border-light mb-4 shadow" style="width: 100%">
         <div class="card-header p-0" style="height: 150px">
-            <img class="bd-placeholder-img card-img-top img-fluid" style="height: 100%; object-fit: cover" src="assets/thumbs/${v['imgSrc']}"></img>
+            <img class="bd-placeholder-img card-img-top img-fluid" style="height: 100%; object-fit: cover" src="${v['imgSrc']}"></img>
         </div>
 
         <div class="card-body">
