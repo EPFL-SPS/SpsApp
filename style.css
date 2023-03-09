@@ -36,10 +36,11 @@ div{
   display: block;
 }
 
-#question_age {
+#question_age, #question_level {
   width: 20em;
   max-width: 70%;
 }
+
 
 .results-h1 {
   color: #191919;
