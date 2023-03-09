@@ -89,7 +89,7 @@ function updateLevelInputValue(level, lang){
     }
 }
 
-function displayActivitiesCards(activities) {
+function displayActivitiesCards(activities, footerTextKey) {
     // Generate cards from results
     let animationDelay = 0.6
 
@@ -104,12 +104,12 @@ function displayActivitiesCards(activities) {
             // console.log(editions)
 
             card = cardTemplate({
-                "title":ed[ACTIVITY_NAME_COLUMN],
-                "description":truncateString(ed["Description"], 150),
-                "leftText":ed["Format"],
-                "rightText":ed["Dates"], 
-                "imgSrc":ed["ImgSrc"],
-                "animationDelay":animationDelay
+                "title": ed[ACTIVITY_NAME_COLUMN],
+                "description": truncateString(ed["Description"], 150),
+                "leftText": ed[footerTextKey["left"]],
+                "rightText": ed[footerTextKey["right"]], 
+                "imgSrc": ed["ImgSrc"],
+                "animationDelay": animationDelay
             });
             container.append(card)
 
@@ -147,7 +147,7 @@ function displayPublicActivitiesCards(activities, animationDelay) {
                 "title": activity[ACTIVITY_NAME_COLUMN],
                 "description": truncateString(activity["Description"], 150),
                 "leftText": activity["Lieu"],
-                "rightText": activity["Date"],
+                "rightText": activity["Dates"],
                 "imgSrc": activity["ImgSrc"],
                 "animationDelay": animationDelay
             });

@@ -25,9 +25,6 @@ function cardTemplate (args = {}) {
     // Add extension to image name to find the correct file
     if (v["imgSrc"]) {
         // if imgSrc is a link
-        console.log(v["imgSrc"])
-        console.log(v["imgSrc"].includes("http"))
-        console.log(v["imgSrc"].includes("https"))
         if (v["imgSrc"].includes("http")) {
             // If it's a link, picture is stored online. Don't add extension
         } else {
@@ -42,7 +39,6 @@ function cardTemplate (args = {}) {
     footer = ""
     // If there is at least a left or right text, display the footer
     if (v["leftText"] + v["rightText"]) {
-        console.log(footer)
         footer = 
 `<div class="card-footer text-muted">
     <div class="d-flex justify-content-between">

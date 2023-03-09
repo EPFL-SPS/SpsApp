@@ -185,6 +185,11 @@ function showResults() {
         console.log("Looking for activities for the following filters")
         console.log(search_status)
 
+        footerTextKey = {
+            "left": "",
+            "right": ""
+        }
+
         if (search_status["who"] =="parent") {
             filtered_activities = filterNonScolarActivities(
                 activities["nonScolar"], 
@@ -192,11 +197,18 @@ function showResults() {
                 search_status["where"],
                 search_status["age"],
                 gender)
+            // For extra scolar activities, display format and time period
+            footerTextKey["left"] = "Format"
+            footerTextKey["right"] = "Période"
+
         } else if (search_status["who"] =="teacher") {
             filtered_activities = filterScolarActivities(
                 activities["scolar"], 
                 search_status["lang"],
                 search_status["level"])
+            // For scolar activities, display format and location
+            footerTextKey["left"] = "Format"
+            footerTextKey["right"] = "Lieu"
         } else {
             filtered_activities = []
         }
@@ -213,7 +225,7 @@ function showResults() {
 
         // Display results
         hideLoader()
-        displayActivitiesCards(unique_activities)
+        displayActivitiesCards(unique_activities, footerTextKey)
         displayPublicActivitiesCards(public_activities)
     })
 }

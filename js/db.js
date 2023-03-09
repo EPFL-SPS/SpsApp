@@ -55,7 +55,7 @@ function fetchPromisesData(promises_values) {
         nonScolarEditionsDetailed = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
 
         // Simplified the list with only useful keys
-        nonScolarEditionsDetailed = filterKeys(nonScolarEditionsDetailed, ["ID", ACTIVITY_NAME_COLUMN, "Statut", "Age max", "Age min", "Format", "Canton", "Genre", "Langue", "Dates", "Description", "ImgSrc", "Inscriptions", "Remarques"])
+        nonScolarEditionsDetailed = filterKeys(nonScolarEditionsDetailed, ["ID", ACTIVITY_NAME_COLUMN, "Statut", "Canton", "Période", "Genre", "Langue", "Age min", "Age max", "Format", "ImgSrc", "Description", "Remarques"])
 
         console.log("Non-scolar activities get from API")
         console.log(nonScolarEditionsDetailed)
