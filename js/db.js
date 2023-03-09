@@ -15,6 +15,7 @@ async function fetchData(range) {
         url: baseScriptUrl + "?range=" + range,
         method: "GET",
         dataType: "jsonp",
+        // @todo Better error handling
         error: function(response){
             errorMessage = "Erreur inconue"
             if (response.status == "404") {

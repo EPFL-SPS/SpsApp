@@ -48,6 +48,7 @@ function updatePage() {
     currentPage = search_status["page"]
 
     // Execute page specific code
+    console.log("Execute page specific code for page " + currentPage)
     switch(parseInt(currentPage)) {
         case 0:
             // Reset search if on first page
@@ -95,7 +96,6 @@ function updatePage() {
 
             break
         case 4: // Gender
-
             if (search_status['gender']) {   // gender is defined, we are coming back from page 5
                 delete search_status['gender']
 
