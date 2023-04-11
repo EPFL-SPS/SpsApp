@@ -34,10 +34,10 @@ Les activités sont répertoriées sur un Google Sheet.
 
 Pour les activités extra-scolaires, la logique est la suivante :
 - Les activités extra-scolaires sont répertoriées dans une feuille `Extra-scolaire - Activités`. Chacune d'entre elle a un nom, une description, une image d'illustration et un format. Les activités sont identifiées par un public cible (age minimum et maximum, genre et langue) qui servira pour les filtres.
-- Pour qu'une activité extra-scolaire apparaisse dans les résultats de recherche, il doit exister une édition qui corresponde. Pour ce faire, la feuille `Extra-scolaire - Éditions` liste les éditions de chaque activité dans les différents cantons. En plus des informations propres à son activité mère, une édition contient une information sur la période à laquelle elle a lieu. A noter que seules les éditions indiquées comme `Disponible` seront affichées.
+- **Pour qu'une activité extra-scolaire apparaisse dans les résultats de recherche, il doit exister une édition qui corresponde.** Pour ce faire, la feuille `Extra-scolaire - Éditions` liste les éditions de chaque activité dans les différents cantons. En plus des informations propres à son activité mère, une édition contient une information sur la période à laquelle elle a lieu. A noter que seules les éditions indiquées comme `Disponible` seront affichées.
 - La colonne `Remarque`, autant pour les activités que les éditions, premet d'ajouter une information complémentaire qui sera affichée dans une pop-up au clic sur un résultat de recherche.
 
-En plus des activités extra-scolaires, une feuille `Scolaire - Activités` liste les activités scolaires. Son fonctionnement est similaires aux activités extra-scolaires hormis que le public cible est défini par le niveau scolaire et la langue de l'activité. 
+En plus des activités extra-scolaires, une feuille `Scolaire - Activités` liste les activités scolaires. Son fonctionnement est similaire aux activités extra-scolaires hormis que le public cible est défini par le niveau scolaire et la langue de l'activité. 
 
 De même, une feuille `Grand public - Activités` liste les évènements grand public qui sont quant à eux uniquement filtrés en fonction de la langue de l'utilisateur. 
 
@@ -74,16 +74,20 @@ Pour héberger le site en ligne, il a été décidé d'utiliser Netlify. C'est u
 Netlify met à disposition une URL qui permet d'accéder au site: [https://spsapp.netlify.app](https://spsapp.netlify.app), c'est sur cette URL qu'est redirigé le lien court [go.epfl.ch/spsapp](https://go.epfl.ch/spsapp)
 
 # Code Javascript
-Le site a été développé en Javascript, il utilise JQuery pour simplifier l'utilisation du langage. Boostrap a été utilisé pour faciliter la mise en page.
+Le site a été développé en Javascript, il utilise JQuery pour simplifier l'utilisation du langage et Boostrap pour faciliter la mise en page.
 
 ## Structure du code
 Le code Javascript est divisé en plusieurs fichiers. Le script principal est à la racine du site et les autres fichiers sont dans le dossier [/js](/js):
-- [script.js](./js/script.js) Script principal exécuté au chargement du site, gère la logique des pages et l'affichage des résultats
+- [script.js](./script.js) Script principal exécuté au chargement du site, gère la logique des pages et l'affichage des résultats
 - [db.js](./js/db.js) Contient le code pour récupérer les listes d'activités grâce à l'API
 - [display.js](./js/display.js) Contient les fonctions liées à l'affichage des pages du site, des résultats et des différents éléments graphiques (menus des langues/filtres, boutons, ...)
 - [events.js](./js/events.js) Contient les codes des évènements liés aux interactions de l'utilisateur pendant qu'il remplit le questionnaire
-- [filters.js](./js/filters.js) Contient les fonctions de filtrage des résultats en fonction des réponses de l'utilisateur
+- [filter.js](./js/filter.js) Contient les fonctions de filtrage des résultats en fonction des réponses de l'utilisateur
 - [filtersMenu.js](./js/filtersMenu.js) Contient le code relatif au menu des filtres accessible sur la page des résultats
 - [language.js](./js/language.js) Contient le code qui gère la logique de changement de langue sur le site et la traduction des éléments 
 - [templates.js](./js/templates.js) Contient les différents templates HTML et les fonctions pour les remplir avec des données
 - [utils.js](./js/utils.js) Contient des fonctions utilitaires utilisées globalement
+
+## Contact
+
+* **Jonathan Michel** - [jonathanmichel](https://github.com/jonathanmichel) 
