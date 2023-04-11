@@ -33,9 +33,9 @@ A noter que sur la première page, l'utilisateur peut changer de langue (en haut
 Les activités sont répertoriées sur un Google Sheet.
 
 Pour les activités extra-scolaires, la logique est la suivante :
-- Les activités extra-scolaires sont répertoriées dans une feuille `Extra-scolaire - Activités`. Chacune d'entre elle a un nom, une description, une image d'illustration et un format. Les activités sont identifiées par un public cible (age minimum et maximum, genre et langue) qui servira pour les filtres.
+- Les activités extra-scolaires sont répertoriées dans une feuille `Extra-scolaire - Activités`. Chacune d'entre elle a un nom, une description, une image d'illustration et un format. Les activités sont identifiées par un public cible (âge minimum et maximum, genre et langue) qui servira pour les filtres.
 - **Pour qu'une activité extra-scolaire apparaisse dans les résultats de recherche, il doit exister une édition qui corresponde.** Pour ce faire, la feuille `Extra-scolaire - Éditions` liste les éditions de chaque activité dans les différents cantons. En plus des informations propres à son activité mère, une édition contient une information sur la période à laquelle elle a lieu. A noter que seules les éditions indiquées comme `Disponible` seront affichées.
-- La colonne `Remarque`, autant pour les activités que les éditions, premet d'ajouter une information complémentaire qui sera affichée dans une pop-up au clic sur un résultat de recherche.
+- La colonne `Remarque`, autant pour les activités que les éditions, permet d'ajouter une information complémentaire qui sera affichée dans une pop-up au clic sur un résultat de recherche.
 
 En plus des activités extra-scolaires, une feuille `Scolaire - Activités` liste les activités scolaires. Son fonctionnement est similaire aux activités extra-scolaires hormis que le public cible est défini par le niveau scolaire et la langue de l'activité. 
 
