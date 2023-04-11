@@ -83,7 +83,7 @@ function updatePage() {
 
             // Update level according to slider
             level = $("#question_level-input").val()
-            updateLevelInputValue(level, search_status['lang'])
+            updateLevelInputValue(level, search_status['lang'], ".question_level-val", "#question_level-letter")
 
             // Show corresponding form depending on who is the user
             if (search_status['who'] == "parent") {

@@ -4,7 +4,7 @@
 
 Site internet qui présente les activités du Service de promotion des sciences (SPS) de l'EPFL.
 
-[Découvrir le site](go.epfl.ch/spsapp)
+[Découvrir le site](https://go.epfl.ch/spsapp)
 
 ![Screenshot](doc/results_screenshot.png)
 
