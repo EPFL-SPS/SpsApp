@@ -1,5 +1,3 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1667d3c1-027d-46fd-aaaa-bcafbe38350f/deploy-status)](https://app.netlify.com/sites/spsapp/deploys)
-
 # SPS App
 
 > Découvrir le site sur  [go.epfl.ch/spsapp](https://go.epfl.ch/spsapp)
@@ -60,18 +58,16 @@ Pour récupérer la liste des activités et leurs images, l'ordinateur/tablette 
 
 Pour faire le lien entre le Google Sheets et le site, une API a été développée. Concrètement, elle permet au site de faire une requête en Javascript pour récupérer les différentes listes d'activités. Cette API a été faite avec [Google Apps Script](https://developers.google.com/apps-script?hl=fr), il s'agit d'un outil intégré à Google Sheets qui permet de développer du code pour parcourir les données d'un classeur. Ce code utilise l'[API de Google Sheets](https://developers.google.com/sheets/api/guides/concepts?hl=fr).
 
-Le code développée pour l'API est dans le dossier [/backend/AppsScript/api.gs](/backend/AppsScript/api.gs). Une fois déployée, Apps Script met à disposition une URL (spécifée dans [db.js](./js/db.js)) qui permet d'appeler l'API développée. 
+Le code développée pour l'API est dans le dossier [/backend/AppsScript/api.gs](/backend/AppsScript/api.gs). Une fois déployée, Apps Script met à disposition une URL (spécifiée dans [db.js](./js/db.js)) qui permet d'appeler l'API développée. 
 
 ## Hébergement du site en ligne
 Le code du site est stocké sur le GitHub du SPS.
 
 > Repository SPS App sur GitHub [go.epfl.ch/spsapp_github](https://go.epfl.ch/spsapp_github)
 
-Pour héberger le site en ligne, il a été décidé d'utiliser Netlify. C'est un service qui permet d'héberger des sites statiques et de les déployer automatiquement à chaque modification sur GitHub.
+Pour héberger le site, il a été choisi d'utiliser GitHub Pages. Il s'agit d'un service proposé par GitHub qui permet de publier un site web statique à partir d'un repository. Il va simplement prendre la dernière version du code et la publier en ligne.
 
-> Déploiements du site sur Netlify [go.epfl.ch/spsapp_netlify](https://go.epfl.ch/spsapp_netlify)
-
-Netlify met à disposition une URL qui permet d'accéder au site: [https://spsapp.netlify.app](https://spsapp.netlify.app), c'est sur cette URL qu'est redirigé le lien court [go.epfl.ch/spsapp](https://go.epfl.ch/spsapp)
+Le lien court [go.epfl.ch/spsapp](https://go.epfl.ch/spsapp) pointe vers celui mise à disposition par GitHub pages [epfl-sps.github.io/SpsApp](https://epfl-sps.github.io/SpsApp) et permet ainsi d'accéder au site depuis n'importe quel ordinateur connecté à internet.
 
 # Code Javascript
 Le site a été développé en Javascript, il utilise JQuery pour simplifier l'utilisation du langage et Boostrap pour faciliter la mise en page.
