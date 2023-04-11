@@ -19,6 +19,7 @@
         <a href="index.html"><img alt="EPFL Logo" height="50" src="assets/img/EPFL_Logo_Digital_RGB_PROD.png"></img></a>
     </div>
 
+    <!-- page 0 - home -->
     <div class="page visible-page" id="page0">
         <div class="dropdown-center" id="languagesMenu" style="text-align: right; padding: 15px;">
             
@@ -36,8 +37,9 @@
             <button value="parent" type="button" class="intro-btn btn btn-dark btn-lg" lang="de">Los geht's!</button>
         </div>
 
-    </div> <!-- page 0 - who -->
-
+    </div>
+    
+    <!-- page 1 - who -->
     <div class="page" id="page1">
         <div class="question">
             <h1 class="question-h1" lang="fr">Vous êtes</h1>
@@ -51,8 +53,9 @@
             <button value="parent" type="button" class="who-btnChoice btn btn-dark btn-lg">ein Elternteil</button>
             <button value="teacher" type="button" class="who-btnChoice btn btn-dark btn-lg">eine Lehrperson</button>
         </div>
-    </div> <!-- page 1 - where -->
-
+    </div>
+    
+    <!-- page 2 - where -->
     <div class="page" id="page2">
         <div>
             <h1 class="question-h1" class="question" lang="fr">Vous venez du canton de</h1>
@@ -82,8 +85,9 @@
         </div>
 
         <h2 class="question-h2" lang="de">... mehr Kantone demnächst</h2>
-    </div> <!-- page 2 - age/level -->
-
+    </div>
+    
+    <!-- page 3 - age/level -->
     <div class="page" id="page3">
         <!-- Age form for parents -->
         <div id="question_age-div" style="display: none;">
@@ -111,11 +115,9 @@
 
         <div lang="fr"><button type="button" class="btn btn-dark btn-lg age-btnNext">Suivant</button></div>
         <div lang="de"><button type="button" class="btn btn-dark btn-lg age-btnNext">Weiter</button></div>
-
-
-
-    </div> <!-- page 3 - gender -->
-
+    </div>
+    
+    <!-- page 4 - gender -->
     <div class="page" id="page4">
         <h1 class="question-h1" lang="fr">Votre enfant est</h1>
         <h1 class="question-h1" lang="de">Ihr Kind ist</h1>
@@ -127,8 +129,9 @@
             <button value="girl" type="button" class="gender-btnChoice btn btn-dark btn-lg">ein Mädchen</button>
             <button value="boy" type="button" class="gender-btnChoice btn btn-dark btn-lg">ein Junge</button>
         </div>
-    </div> <!-- page4 - results-->
-
+    </div>
+    
+    <!-- page 5 - results-->
     <div class="page auto-height" id="results">
         <div style="margin-top: 25px;" lang="fr"><h1 class="results-h1">Ces activités pourraient vous plaire</h1></div>
         <div style="margin-top: 25px;" lang="de"><h1 class="results-h1">Diese Aktivitäten könnten Ihnen gefallen</h1></div>
@@ -164,7 +167,6 @@
         <a data-bs-toggle="offcanvas" href="#filterMenu" role="button" aria-controls="filterMenu"><img alt="show filters" src="assets/img/filter.png"></img></a>
     </div>
 
-   
     <!-- Filter menu -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="filterMenu" aria-labelledby="filterLabel">
         <div class="offcanvas-header">
@@ -173,71 +175,102 @@
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
+            <div class="btn-group filter_language" role="group">
+                <button value="fr" type="button" class="filter-language-btnChoice btn btn-dark btn-xs" >🇫🇷</button>
+                <button value="de" type="button" class="filter-language-btnChoice btn btn-dark btn-xs" >🇩🇪</button>
+            </div>
+
             <h4 class="filterTitle" lang="fr">Activités</h4>
             <h4 class="filterTitle" lang="de">Aktivitäten</h4>
             
-            <div class="btn-group filters_who" role="group" lang="fr">
-                <button value="parent" type="button" class="filters-who-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">extra-scolaires</button>
-                <button value="teacher" type="button" class="filters-who-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">scolaires</button>
+            <div class="btn-group filter_who" role="group" lang="fr">
+                <button value="parent" type="button" class="filter-who-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">extra-scolaires</button>
+                <button value="teacher" type="button" class="filter-who-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">scolaires</button>
             </div>
 
-            <div class="btn-group filters_who" role="group" lang="de">
-                <button value="parent" type="button" class="filters-who-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">außerschulisch</button>
-                <button value="teacher" type="button" class="filters-who-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">schulisch</button>
+            <div class="btn-group filter_who" role="group" lang="de">
+                <button value="parent" type="button" class="filter-who-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">außerschulisch</button>
+                <button value="teacher" type="button" class="filter-who-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">schulisch</button>
             </div>
 
-            <h4 class="filterTitle" lang="fr">Canton</h4>
-            <h4 class="filterTitle" lang="de">Kanton</h4>
+            <div id="filter_where-div">
+                <h4 class="filterTitle" lang="fr">Canton</h4>
+                <h4 class="filterTitle" lang="de">Kanton</h4>
 
-            <div class="filters_where" lang="fr">                
-                <div class="btn-group" role="groupe" style="width: 70%;">
-                    <button value="VD" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Vaud</button>
-                    <button value="FR" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Fribourg</button>
-                    <button value="NE" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Neuchâtel</button>
-                </div><br>
-                <div class="btn-group" role="groupe" style="width: 70%;">
-                    <button value="GE" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Genève</button>
-                    <button value="JU" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Jura</button>
-                    <button value="VS" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Valais</button>
-                    <button value="BE" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Berne</button>
+                <div class="filter_where" lang="fr">                
+                    <div class="btn-group" role="groupe" style="width: 70%;">
+                        <button value="VD" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Vaud</button>
+                        <button value="JU" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Jura</button>
+                        <button value="VS" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Valais</button>
+                        <button value="FR" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Fribourg</button>
+                    </div>
+                    <div class="btn-group" role="groupe" style="width: 70%;">
+                        <button value="BE" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Berne</button>
+                        <button value="GE" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Genève</button>
+                        <button value="NE" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Neuchâtel</button>
+                    </div>
+                </div>
+
+                <div class="filter_where" lang="de">
+                    <div class="btn-group" role="groupe" style="width: 70%;">
+                        <button value="BS" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Basel-Stadt</button>
+                        <button value="BL" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Baselland</button>
+                    </div>
+                    <div class="btn-group" role="groupe" style="width: 70%;">
+                        <button value="LU" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Luzern</button>
+                        <button value="SO" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Solothurn</button>
+                    </div>
+                    <div class="btn-group" role="groupe" style="width: 70%;">
+                        <button value="FR" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Freiburg</button>
+                        <button value="SH" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Schaffhausen</button>
+                    </div>
+                    <div class="btn-group" role="groupe" style="width: 70%;">
+                        <button value="VS" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Wallis</button>
+                        <button value="BR" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Bern</button>
+                        <button value="ZG" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Zug</button>
+                        <button value="ZH" type="button" class="filter-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Zürich</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="filters_where" lang="de">                
-                <div class="btn-group" role="groupe" style="width: 70%;">
-                    <button value="VD" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Vaud</button>
-                    <button value="FR" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Fribourg</button>
-                    <button value="NE" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Neuchâtel</button>
-                </div><br>
-                <div class="btn-group" role="groupe" style="width: 70%;">
-                    <button value="GE" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Genève</button>
-                    <button value="JU" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Jura</button>
-                    <button value="VS" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Valais</button>
-                    <button value="BE" type="button" class="filters-where-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Berne</button>
+            <div id="filter_age-div">
+                <h4 class="filterTitle" lang="fr">Age</h4>
+                <h4 class="filterTitle" lang="de">Alter</h4>
+                
+                <h6 lang="fr"><span class="filter_age-val">12</span> ans</h2>
+                <h6 lang="de"><span class="filter_age-val">12</span> Jahre alt</h2>
+                    
+                <div id="filter_age" class="btn-group" role="group">
+                    <input id="filter_age-input" type="range" class="form-range" min="6" max="16" value="12" step="1">
                 </div>
             </div>
 
-            <h4 class="filterTitle" lang="fr">Age</h4>
-            <h4 class="filterTitle" lang="de">Alter</h4>
+            <div id="filter_level-div">
+                <h4 class="filterTitle" lang="fr">Niveau</h4>
+                <h4 class="filterTitle" lang="de">Stufe</h4>
+                
+                <h6 lang="fr"><span class="filter_level-val">12</span>H</h2>
+                <h6 lang="de"><span class="filter_level-val">12</span><span id="filter_level-letter">P</span></h2>
+                    
+                <div id="filter_level" class="btn-group" role="group">
+                    <input id="filter_level-input" type="range" class="form-range" min="5" max="11" value="9" step="1">
 
-            <h6 lang="fr"><span class="filters_age-val">12</span> ans</h2>
-            <h6 lang="de"><span class="filters_age-val">12</span> Jahre alt</h2>
-
-            <div id="filters_age" class="btn-group" role="group">
-                <input id="filters_age-input" type="range" class="form-range" min="6" max="16" value="12" step="1">
+                </div>
             </div>
 
-            <h4 class="filterTitle" lang="fr">Genre</h4>
-            <h4 class="filterTitle" lang="de">Geschlecht</h4>
+            <div id="filter_gender-div">
+                <h4 class="filterTitle" lang="fr">Genre</h4>
+                <h4 class="filterTitle" lang="de">Geschlecht</h4>
 
-            <div class="btn-group filters_gender" role="group" lang="fr">
-                <button value="girl" type="button" class="filters-gender-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">fille</button>
-                <button value="boy" type="button" class="filters-gender-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">garçon</button>
-            </div>
+                <div class="btn-group filter_gender" role="group" lang="fr">
+                    <button value="girl" type="button" class="filter-gender-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">fille</button>
+                    <button value="boy" type="button" class="filter-gender-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">garçon</button>
+                </div>
 
-            <div class="btn-group filters_gender" role="group" lang="de">
-                <button value="girl" type="button" class="filters-gender-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Mädchen</button>
-                <button value="boy" type="button" class="filters-gender-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Junge</button>
+                <div class="btn-group filter_gender" role="group" lang="de">
+                    <button value="girl" type="button" class="filter-gender-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Mädchen</button>
+                    <button value="boy" type="button" class="filter-gender-btnChoice btn btn-dark btn-xs" data-bs-toggle="button">Junge</button>
+                </div>
             </div>
 
         </div>

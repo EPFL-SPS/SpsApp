@@ -70,22 +70,23 @@ function slideOutPage(pageIndex) {
 }
 
 /**
+ * Update level value and letter according to language
  * @param {number} level Harmos level
  * @param {string} lang DE, FR
  * @param {*} level 
  */
-function updateLevelInputValue(level, lang){
+function updateLevelInputValue(level, lang, levelValueSelector, levelLetterSelector){
     // Update level letter for german version
     if (lang == "de") {
         if (level > 8) {
-            $('.question_level-val').html(level - 8);
-            $('#question_level-letter').html("S")
+            $(levelValueSelector).html(level - 8);
+            $(levelLetterSelector).html("S")
         } else {
-            $('.question_level-val').html(level - 2);
-            $('#question_level-letter').html("P")
+            $(levelValueSelector).html(level - 2);
+            $(levelLetterSelector).html("P")
         }
     } else {    // for "fr" or others, use Harmos level
-        $('.question_level-val').html(level);
+        $(levelValueSelector).html(level);
     }
 }
 
@@ -115,10 +116,6 @@ function displayActivitiesCards(activities, footerTextKey) {
             container.append(card)
 
             animationDelay += 0.1
-
-            // if (ed[ACTIVITY_NAME_COLUMN] == "Coding club des filles") {
-            //     analyseEditions(editions)
-            // }
         })
     } else {
         // If no activity is found, display a default card

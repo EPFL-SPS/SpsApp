@@ -62,7 +62,7 @@ $('#question_age-input').on('input', function change(e){
 // Update level value during user interraction
 $('#question_level-input').on('input', function change(e){
     level = $(this).val()
-    updateLevelInputValue(level, search_status['lang'])
+    updateLevelInputValue(level, search_status['lang'], ".question_level-val", "#question_level-letter")
 })
 
 // Save age or level value and go to the next question

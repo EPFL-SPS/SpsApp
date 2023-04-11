@@ -1,14 +1,11 @@
+// Script of the App Script API that provides activities data
 baseScriptUrl = 'https://script.google.com/macros/s/AKfycbyRl1vZHOTxK-tR92IC-hp-zneOBx93WR39d1lmcgRD8sc17j7-4c5JpCRK3Y0xceBnGA/exec'
 
-function parseApiResponse(response) {
-    if (response.status_code == 200) {
-        return response.data
-    } else {
-        console.error("Error while fetching data from Google Sheets: " + response.status_code + " - " + response.data)
-        return undefined
-    }
-}
-
+/**
+ * Fetch data from Apps Script API
+ * @param {*} range Google Sheet range to get data from
+ * @returns Promise
+ */
 async function fetchData(range) {
     return await jQuery.ajax({
         crossDomain: true,
@@ -39,6 +36,21 @@ async function fetchData(range) {
     })
 }
 
+/**
+ * Parse API response once data has been fetched
+ * @param {*} response 
+ * @returns 
+ */
+function parseApiResponse(response) {
+    if (response.status_code == 200) {
+        return response.data
+    } else {
+        console.error("Error while fetching data from Google Sheets: " + response.status_code + " - " + response.data)
+        return undefined
+    }
+}
+
+// Create promises for API calls
 nonScolarActivities_promise = fetchData("Extra-scolaire - Activités!A1:J101")
 nonScolarEditions_promise = fetchData("Extra-scolaire - Éditions!A1:F201")
 scolarActivities_promise = fetchData("Scolaire - Activités!A1:J101")
@@ -56,7 +68,9 @@ function fetchPromisesData(promises_values) {
         nonScolarEditionsDetailed = addDetailsToEditions(nonScolarEditions, nonScolarActivities)
 
         // Simplified the list with only useful keys
-        nonScolarEditionsDetailed = filterKeys(nonScolarEditionsDetailed, ["ID", ACTIVITY_NAME_COLUMN, "Statut", "Canton", "Période", "Genre", "Langue", "Age min", "Age max", "Format", "ImgSrc", "Description", "Remarques"])
+        nonScolarEditionsDetailed = filterKeys(nonScolarEditionsDetailed,
+            ["ID", ACTIVITY_NAME_COLUMN, "Statut", "Canton", "Période", "Genre", 
+            "Langue", "Age min", "Age max", "Format", "ImgSrc", "Description", "Remarques"])
 
         console.log("Non-scolar activities get from API")
         console.log(nonScolarEditionsDetailed)
