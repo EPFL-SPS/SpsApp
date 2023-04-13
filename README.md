@@ -69,10 +69,13 @@ Pour héberger le site, il a été choisi d'utiliser GitHub Pages. Il s'agit d'u
 
 Le lien court [go.epfl.ch/spsapp](https://go.epfl.ch/spsapp) pointe vers celui mise à disposition par GitHub pages [epfl-sps.github.io/SpsApp](https://epfl-sps.github.io/SpsApp) et permet ainsi d'accéder au site depuis n'importe quel ordinateur connecté à internet.
 
-# Code Javascript
-Le site a été développé en Javascript, il utilise JQuery pour simplifier l'utilisation du langage et Boostrap pour faciliter la mise en page.
+# Architecture du code
 
-## Structure du code
+Le site a été développé en HTML/CSS. Le fichier [index.html](/index.html) est le seul fichier HTML, il contient les différentes pages du site. Le framework CSS [Bootstrap](https://getbootstrap.com/) est utilisé pour simplifier la mise en page et un fichier [style.css](/style.css) contient les quelques configurations CSS spécifiques au site.
+
+## Code Javascript
+La librairie [JQuery](https://jquery.com/) est utilisée pour simplifier l'utilisation de Javascript.
+
 Le code Javascript est divisé en plusieurs fichiers. Le script principal est à la racine du site et les autres fichiers sont dans le dossier [/js](/js):
 - [script.js](./script.js) Script principal exécuté au chargement du site, gère la logique des pages et l'affichage des résultats
 - [db.js](./js/db.js) Contient le code pour récupérer les listes d'activités grâce à l'API
