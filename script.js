@@ -63,7 +63,7 @@ function updatePage() {
             if (search_status['where']) {   // "where" is defined, we are coming back from page 3
                 delete search_status['where']
 
-                // @todo Handle that we are supposed to show page 1 if teacher 
+                // @todo Bug - Handle that we are supposed to show page 1 if teacher 
 
             } else {    // "where" is not defined, we are coming from page 1 (who)
                 // If user is a teacher, we don't need to ask location
@@ -99,7 +99,7 @@ function updatePage() {
             if (search_status['gender']) {   // gender is defined, we are coming back from page 5
                 delete search_status['gender']
 
-                // @todo Handle that we are supposed to show page 3 if teacher 
+                // @todo Bug - Handle that we are supposed to show page 3 if teacher 
 
             } else {    // gender is not defined, we are coming from page 3 (level)
                 // If user is a teacher, we don't need to ask gender

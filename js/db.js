@@ -73,9 +73,8 @@ function fetchPromisesData(promises_values) {
             SHEET_HEADERS["GENDER"], SHEET_HEADERS["LANGUAGE"], SHEET_HEADERS["MIN_AGE"], SHEET_HEADERS["MAX_AGE"],
             SHEET_HEADERS["FORMAT"], SHEET_HEADERS["IMG_SRC"], SHEET_HEADERS["DESCR"], SHEET_HEADERS["NOTES"]])
         
-        // @todo Temp
-        allCantons = cantonsList(nonScolarEditionsDetailed)
-        console.log(allCantons)
+        // @todo We can get all cantons by language. Has to be used to dynamically generate cantons buttons for page 2 and filter menu
+        // allCantons = cantonsList(nonScolarEditionsDetailed)
 
         console.log("Non-scolar activities get from API")
         console.log(nonScolarEditionsDetailed)

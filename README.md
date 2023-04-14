@@ -86,8 +86,14 @@ Le code Javascript est divisé en plusieurs fichiers. Le script principal est à
 - [templates.js](./js/templates.js) Contient les différents templates HTML et les fonctions pour les remplir avec des données
 - [utils.js](./js/utils.js) Contient des fonctions utilitaires utilisées globalement
 
-### Développement futurs
-- [ ] A ce jour, si des activités sont ajoutées dans un nouveau canton, il faudra ajouter manuellement un bouton sur la page 2 et dans le menu des filtres
+### Développements futurs
+- [ ] Dans la version actuelle si des activités sont ajoutées dans un nouveau canton, il faut ajouter manuellement un bouton sur la page 2 et dans le menu des filtres. Il faudrait implémenter une solution qui génère les boutons automatiquement en fonction des cantons où le SPS propose des activités (surtout pour les cantons suisses-allemands).
+- [ ] Lorsque les filtres sont désactivés (aucun canton/age/genre sélectionné), il faudrait ajouter une pop-up sur chaque résultats d'activité avec les détails de ses différents éditions.
+- [ ] Si sur le Google Sheet des remarques sont ajoutées pour l'activité et pour l'édition, seulement la remarque de l'édition est affichée. Il faudrait afficher les deux remarques dans la pop-up.
+- [ ] Ajouter un bouton QR code sur chaque résultat pour permettre aux utilisateurs de scanner le code et d'obtenir les informations de l'activité sur le site du SPS.
+- [ ] Ajouter un bouton QR code pour permettre aux utilisateurs de s'abonner à la newsletter.
+- [ ] Traduire le site en italien.
+- [ ] Il y a un bug lorsqu'un.e enseignant.e revient en arrière dans le questionnaire, cliquer sur le logo EPFL pour recommencer à zéro dans ce cas.
 
 ## Contact
 
