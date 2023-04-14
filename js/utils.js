@@ -6,9 +6,9 @@
 function truncateString(str, num) {
     if (str) {
         if (str.length > num) {
-        let truncatedString = str.slice(0, num);
-        let lastSpaceIndex = truncatedString.lastIndexOf(" ");
-        truncatedString = truncatedString.slice(0, lastSpaceIndex);
+        let truncatedString = str.slice(0, num)
+        let lastSpaceIndex = truncatedString.lastIndexOf(" ")
+        truncatedString = truncatedString.slice(0, lastSpaceIndex)
         return truncatedString + "...";
         } else {
         return str;
@@ -26,8 +26,8 @@ function parseParms(search) {
     result = {}
     search = search.replace('#', '')
     search.split('&').forEach(item => {
-        result[item.split('=')[0]] = decodeURIComponent(item.split('=')[1]);
-    });
+        result[item.split('=')[0]] = decodeURIComponent(item.split('=')[1])
+    })
     return result
 }
 

@@ -2,7 +2,7 @@
 var search_status = {}
 var currentPage = 0
 
-var transisionDuration = 650;
+var transisionDuration = 650
 
 // Pages (div) to load, order has meaning
 const pages = ["page0", "page1", "page2", "page3", "page4", "results"]
@@ -12,11 +12,11 @@ const pages = ["page0", "page1", "page2", "page3", "page4", "results"]
  */
 $(document).ready(function() {
     updatePage()
-});
+})
 
 $(window).on('hashchange',function(){
     updatePage()
-});
+})
 
 /**
  * Generate and display page according to hash
@@ -79,7 +79,7 @@ function updatePage() {
 
             // Update age according to slider
             age = $("#question_age-input").val()
-            $('.question_age-val').html(age);
+            $('.question_age-val').html(age)
 
             // Update level according to slider
             level = $("#question_level-input").val()

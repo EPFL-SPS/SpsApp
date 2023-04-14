@@ -19,7 +19,7 @@ function cardTemplate (args = {}) {
         } else {
             v[key] = value
         }
-    });
+    })
 
     localThumbPath = "assets/thumbs/"
 

@@ -30,7 +30,7 @@ function slideInPage(pageIndex) {
     pageId = "#" + pages[pageIndex]
     $(pageId).animate({
         marginLeft: "0%"
-    }, transisionDuration);
+    }, transisionDuration)
 
     // Hide previous pages once slided in
     setTimeout(function() {
@@ -61,7 +61,7 @@ function slideOutPage(pageIndex) {
     pageId = "#" + pages[pageIndex]
     $(pageId).animate({
         marginLeft: "100%"
-    }, transisionDuration);
+    }, transisionDuration)
 
     // Hide page once slided out
     setTimeout(function() {
@@ -79,14 +79,14 @@ function updateLevelInputValue(level, lang, levelValueSelector, levelLetterSelec
     // Update level letter for german version
     if (lang == "de") {
         if (level > 8) {
-            $(levelValueSelector).html(level - 8);
+            $(levelValueSelector).html(level - 8)
             $(levelLetterSelector).html("S")
         } else {
-            $(levelValueSelector).html(level - 2);
+            $(levelValueSelector).html(level - 2)
             $(levelLetterSelector).html("P")
         }
     } else {    // for "fr" or others, use Harmos level
-        $(levelValueSelector).html(level);
+        $(levelValueSelector).html(level)
     }
 }
 
@@ -112,7 +112,7 @@ function displayActivitiesCards(activities, footerTextKey) {
                 "imgSrc": ed[SHEET_HEADERS["IMG_SRC"]],
                 "animationDelay": animationDelay,
                 "notes": ed[SHEET_HEADERS["NOTES"]]
-            });
+            })
             container.append(card)
 
             animationDelay += 0.1
@@ -123,7 +123,7 @@ function displayActivitiesCards(activities, footerTextKey) {
             "title": TRAD("NO_ACTIVITY_CARD_TITLE"),
             "description": TRAD("NO_ACTIVITY_CARD_CONTENT"),
             "animationDelay": animationDelay
-        });
+        })
         container.append(card)
     }
 
@@ -140,7 +140,7 @@ function displayActivitiesCards(activities, footerTextKey) {
 function displayPublicActivitiesCards(activities, animationDelay) {
     // Remove public title if it already exists. And insert it again one time
     $(".public-title").remove()
-    $(publicTitle).insertAfter("#activities-container");
+    $(publicTitle).insertAfter("#activities-container")
 
     // Generate cards from public activities
     container = $("#public-activities-div")
@@ -155,7 +155,7 @@ function displayPublicActivitiesCards(activities, animationDelay) {
                 "rightText": activity[SHEET_HEADERS["DATES"]],
                 "imgSrc": activity[SHEET_HEADERS["IMG_SRC"]],
                 "animationDelay": animationDelay
-            });
+            })
             container.append(card)
 
             animationDelay += 0.1
@@ -166,7 +166,7 @@ function displayPublicActivitiesCards(activities, animationDelay) {
             "title": TRAD("NO_ACTIVITY_CARD_TITLE"),
             "description": TRAD("NO_ACTIVITY_CARD_CONTENT"),
             "animationDelay": animationDelay
-        });
+        })
         container.append(card)
     }
 }
@@ -188,22 +188,22 @@ function displayLanguagesMenu(currentLanguage) {
 
 function hideLoader() {
     // Hide element with jquery
-    $("#loader").fadeOut('slow');
+    $("#loader").fadeOut('slow')
 }
 
 function showPreviousButton() {
-    $("#previousButton").fadeIn('slow');
+    $("#previousButton").fadeIn('slow')
 }
 
 
 function hidePreviousButton() {
-    $("#previousButton").fadeOut('slow');
+    $("#previousButton").fadeOut('slow')
 }
 
 function showFiltersButton() {
-    $("#filtersButton").fadeIn('slow');
+    $("#filtersButton").fadeIn('slow')
 }
 
 function hideFiltersButton() {
-    $("#filtersButton").fadeOut('slow');
+    $("#filtersButton").fadeOut('slow')
 }

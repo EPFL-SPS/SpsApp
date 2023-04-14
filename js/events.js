@@ -7,7 +7,7 @@ $("#EPFL_logo").on('click', function(event) {
         'lang': search_status['lang']
     }
     updateHash()
-    window.location.reload();
+    window.location.reload()
 })
 
 /**
@@ -56,7 +56,7 @@ $('.where-btnChoice').on('click', function(event) {
 // Update age value during user interraction
 $('#question_age-input').on('input', function change(e){
     age = $(this).val()
-    $('.question_age-val').html(age);
+    $('.question_age-val').html(age)
 })
 
 // Update level value during user interraction

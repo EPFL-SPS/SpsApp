@@ -128,39 +128,39 @@ function updateLanguage(requiredLanguage) {
         currentLanguage = requiredLanguage
     }
 
-    setLangStyles(currentLanguage);
+    setLangStyles(currentLanguage)
 
     return currentLanguage
 }
 
 function setStyles(styles) {
     var elementId = '__lang_styles';
-    var element = document.getElementById(elementId);
+    var element = document.getElementById(elementId)
     if (element) {
-        element.remove();
+        element.remove()
     }
     
-    let style = document.createElement('style');
+    let style = document.createElement('style')
     style.id = elementId;
     style.type = 'text/css';
     
     if (style.styleSheet) {
         style.styleSheet.cssText = styles;
     } else {
-        style.appendChild(document.createTextNode(styles));
+        style.appendChild(document.createTextNode(styles))
     }
-    document.getElementsByTagName('head')[0].appendChild(style);
+    document.getElementsByTagName('head')[0].appendChild(style)
 }
 
 function setLangStyles(lang) {
-    document.documentElement.setAttribute("lang", lang);
+    document.documentElement.setAttribute("lang", lang)
 
     let styles = 
     Object.keys(SUPPORTED_LANGUAGES).filter(function (l) {
         return l != lang;
     }).map(function (l) {
         return ':lang('+ l +') { display: none; }';
-    }).join(' ');
+    }).join(' ')
 
-    setStyles(styles);
+    setStyles(styles)
 }

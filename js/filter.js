@@ -76,7 +76,7 @@ function filterActivities(jsonArray, filters) {
             }
         }
         return match;
-    });
+    })
 }
 
 /**
@@ -117,7 +117,7 @@ function filterActivities_range(jsonArray, value, minKey, maxKey) {
         max = parseInt(entry[maxKey])
         ret =  min <= value && max >= value ;
         return ret;
-    });
+    })
 }
 
 /**
@@ -133,7 +133,7 @@ function filterActivities_gender(jsonArray, gender) {
 
     return jsonArray.filter(function(entry) {
         return entry[SHEET_HEADERS["GENDER"]] == SHEET_VALUES["BOTH_GENDER"] || entry[SHEET_HEADERS["GENDER"]] == gender;
-    });
+    })
 }
 
 
@@ -149,18 +149,18 @@ function groupSameActivities(jsonArray) {
         let found = false;
         result.forEach(function(group) {
             if (group[SHEET_HEADERS["NAME"]] === value) {
-                group.values.push(entry);
+                group.values.push(entry)
                 found = true;
             }
-        });
+        })
 
         if (!found) {
             var obj = {};
             obj[SHEET_HEADERS["NAME"]] = value;
             obj["values"] = [entry];
-            result.push(obj);
+            result.push(obj)
         }
-    });
+    })
     return result;
 }
 
@@ -179,7 +179,7 @@ function filterKeys(jsonArray, keysToKeep) {
             }
         }
         return filteredItem;
-    });
+    })
 }
 
 /**
@@ -296,7 +296,7 @@ function cantonsList(nonScolarActivities) {
         }
 
         cantons[lang].add(activity[SHEET_HEADERS["CANTON"]])
-    });
+    })
 
     // Convert set to array
     for (const lang in cantons) {
