@@ -8,7 +8,7 @@ Le site est accessible en deux langues (français/allemand) et présente les act
 
 ![Screenshot](doc/results_screenshot.png)
 
-# Utilisation
+## Utilisation
 Au démarrage, l'utilisateur est invité à répondre à des questions.
 
 En fonction de s'il s'agit d'un parent ou d'un.e enseignant.e les informations demandées varient. 
@@ -25,7 +25,7 @@ Un bouton `Retour` (en bas à gauche) permet de revenir en arrière.
 
 A noter que sur la première page, l'utilisateur peut changer de langue (en haut à droite).
 
-# Modifier la liste des activités
+## Modifier la liste des activités
 > Google Sheets - Liste des activités (accessible par toutes les personnes de l'organisation SPS) [go.epfl.ch/spsapp_sheets](https://go.epfl.ch/spsapp_sheets)
 
 Les activités sont répertoriées sur un Google Sheet.
@@ -39,8 +39,7 @@ En plus des activités extra-scolaires, une feuille `Scolaire - Activités` list
 
 De même, une feuille `Grand public - Activités` liste les évènements grand public qui sont quant à eux uniquement filtrés en fonction de la langue de l'utilisateur. 
 
-
-# Fonctionnement technique
+## Fonctionnement technique
 
 La site internet a été pensé comme un site statique qui ne nécessite pas de serveur. Il peut simplement être lancé en local en ouvrant le fichier [index.html](/index.html) dans un navigateur.
 
@@ -48,19 +47,19 @@ Pour récupérer la liste des activités et leurs images, l'ordinateur/tablette 
 
 > A noter que le site est également hébergé en ligne pour faciliter son utilisation, se référer aux chapitres ci-dessous pour plus de détails. 
 
-## Architecture générale
+### Architecture générale
 
 > Les explications détaillées pour chaque bloc sont présentées plus bas
 
 ![Architecture](doc/architecture.png)
 
-## SPS App API
+### SPS App API
 
 Pour faire le lien entre le Google Sheets et le site, une API a été développée. Concrètement, elle permet au site de faire une requête en Javascript pour récupérer les différentes listes d'activités. Cette API a été faite avec [Google Apps Script](https://developers.google.com/apps-script?hl=fr), il s'agit d'un outil intégré à Google Sheets qui permet de développer du code pour parcourir les données d'un classeur. Ce code utilise l'[API de Google Sheets](https://developers.google.com/sheets/api/guides/concepts?hl=fr).
 
 Le code développée pour l'API est dans le dossier [/backend/AppsScript/api.gs](/backend/AppsScript/api.gs). Une fois déployée, Apps Script met à disposition une URL (spécifiée dans [db.js](./js/db.js)) qui permet d'appeler l'API développée. 
 
-## Hébergement du site en ligne
+### Hébergement du site en ligne
 Le code du site est stocké sur le GitHub du SPS.
 
 > Repository SPS App sur GitHub [go.epfl.ch/spsapp_github](https://go.epfl.ch/spsapp_github)
@@ -69,11 +68,11 @@ Pour héberger le site, il a été choisi d'utiliser GitHub Pages. Il s'agit d'u
 
 Le lien court [go.epfl.ch/spsapp](https://go.epfl.ch/spsapp) pointe vers celui mise à disposition par GitHub pages [epfl-sps.github.io/SpsApp](https://epfl-sps.github.io/SpsApp) et permet ainsi d'accéder au site depuis n'importe quel ordinateur connecté à internet.
 
-# Architecture du code
+### Architecture du code
 
 Le site a été développé en HTML/CSS. Le fichier [index.html](/index.html) est le seul fichier HTML, il contient les différentes pages du site. Le framework CSS [Bootstrap](https://getbootstrap.com/) est utilisé pour simplifier la mise en page et un fichier [style.css](/style.css) contient les quelques configurations CSS spécifiques au site.
 
-## Code Javascript
+#### Code Javascript
 La librairie [JQuery](https://jquery.com/) est utilisée pour simplifier l'utilisation de Javascript.
 
 Le code Javascript est divisé en plusieurs fichiers. Le script principal est à la racine du site et les autres fichiers sont dans le dossier [/js](/js):
@@ -86,6 +85,9 @@ Le code Javascript est divisé en plusieurs fichiers. Le script principal est à
 - [language.js](./js/language.js) Contient le code qui gère la logique de changement de langue sur le site et la traduction des éléments 
 - [templates.js](./js/templates.js) Contient les différents templates HTML et les fonctions pour les remplir avec des données
 - [utils.js](./js/utils.js) Contient des fonctions utilitaires utilisées globalement
+
+### Développement futurs
+- [ ] A ce jour, si des activités sont ajoutées dans un nouveau canton, il faudra ajouter manuellement un bouton sur la page 2 et dans le menu des filtres
 
 ## Contact
 
