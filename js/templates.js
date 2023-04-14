@@ -53,7 +53,7 @@ function cardTemplate (args = {}) {
     if (v["notes"]) {
         figcaption = `
 <figcaption>
-    <i class="bi-exclamation-circle-fill notes-activity" notes="${v["notes"]}"></i>
+    <i class="bi-info-circle-fill notes-activity" notes="${v["notes"]}"></i>
 </figcaption>`
     }
 
@@ -64,10 +64,6 @@ function cardTemplate (args = {}) {
             <img class="bd-placeholder-img card-img-top img-fluid" style="height: 100%; object-fit: cover" src="${v['imgSrc']}"></img>
             ${figcaption}
         </div>
-
-        <!--<div class="card-img-overlay">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div> -->
 
         <div class="card-body">
             <h1 class="card-h1">${v['title']}</h1>
