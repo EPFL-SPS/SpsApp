@@ -142,6 +142,8 @@ $('.filter-who-btnChoice').on('click', function(event) {
             delete search_status["level"]
         } else if (who == "teacher") {
             delete search_status["age"]
+            delete search_status["where"]
+            delete search_status["gender"]
         }
 
         search_status["who"] = who
