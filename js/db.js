@@ -69,8 +69,13 @@ function fetchPromisesData(promises_values) {
 
         // Simplified the list with only useful keys
         nonScolarEditionsDetailed = filterKeys(nonScolarEditionsDetailed,
-            ["ID", ACTIVITY_NAME_COLUMN, "Statut", "Canton", "Période", "Genre", 
-            "Langue", "Age min", "Age max", "Format", "ImgSrc", "Description", "Remarques"])
+            ["ID", SHEET_HEADERS["NAME"], SHEET_HEADERS["STATUS"], SHEET_HEADERS["CANTON"], SHEET_HEADERS["PERIOD"],
+            SHEET_HEADERS["GENDER"], SHEET_HEADERS["LANGUAGE"], SHEET_HEADERS["MIN_AGE"], SHEET_HEADERS["MAX_AGE"],
+            SHEET_HEADERS["FORMAT"], SHEET_HEADERS["IMG_SRC"], SHEET_HEADERS["DESCR"], SHEET_HEADERS["NOTES"]])
+        
+        // @todo Temp
+        allCantons = cantonsList(nonScolarEditionsDetailed)
+        console.log(allCantons)
 
         console.log("Non-scolar activities get from API")
         console.log(nonScolarEditionsDetailed)

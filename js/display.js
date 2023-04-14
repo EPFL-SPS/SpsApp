@@ -101,17 +101,17 @@ function displayActivitiesCards(activities, footerTextKey) {
             editions = activity["values"]
             ed = editions[0]
             
-            // console.log("Activity " + ed[ACTIVITY_NAME_COLUMN] + " has following editions")
+            // console.log("Activity " + ed[SHEET_HEADERS["NAME"]] + " has following editions")
             // console.log(editions)
 
             card = cardTemplate({
-                "title": ed[ACTIVITY_NAME_COLUMN],
-                "description": truncateString(ed["Description"], 150),
+                "title": ed[SHEET_HEADERS["NAME"]],
+                "description": truncateString(ed[SHEET_HEADERS["DESCR"]], 150),
                 "leftText": ed[footerTextKey["left"]],
                 "rightText": ed[footerTextKey["right"]], 
-                "imgSrc": ed["ImgSrc"],
+                "imgSrc": ed[SHEET_HEADERS["IMG_SRC"]],
                 "animationDelay": animationDelay,
-                "notes": ed["Remarques"]
+                "notes": ed[SHEET_HEADERS["NOTES"]]
             });
             container.append(card)
 
@@ -149,11 +149,11 @@ function displayPublicActivitiesCards(activities, animationDelay) {
         activities.forEach(function(activity) { 
 
             card = cardTemplate({
-                "title": activity[ACTIVITY_NAME_COLUMN],
-                "description": truncateString(activity["Description"], 150),
-                "leftText": activity["Lieu"],
-                "rightText": activity["Dates"],
-                "imgSrc": activity["ImgSrc"],
+                "title": activity[SHEET_HEADERS["NAME"]],
+                "description": truncateString(activity[SHEET_HEADERS["DESCR"]], 150),
+                "leftText": activity[SHEET_HEADERS["LOCATION"]],
+                "rightText": activity[SHEET_HEADERS["DATES"]],
+                "imgSrc": activity[SHEET_HEADERS["IMG_SRC"]],
                 "animationDelay": animationDelay
             });
             container.append(card)

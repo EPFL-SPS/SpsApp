@@ -173,12 +173,12 @@ function showResults() {
         // Complete each editions with details form its corresponding activity
         activities = fetchPromisesData(values)
 
-        // TEMP - Convert gender to french - Find a place to adapt keys
-        gender = "Mixte"
+        // Convert gender to values used in the Google Sheet (in our case French)
+        gender = SHEET_VALUES["BOTH_GENDER"]
         if (search_status["gender"] == "boy") {
-            gender = "Garçon"
+            gender = SHEET_VALUES["BOY"]
         } else if (search_status["gender"] == "girl") {
-            gender = "Fille"
+            gender = SHEET_VALUES["GIRL"]
         }
 
         // Find activities corresponding to search criteria
@@ -198,8 +198,8 @@ function showResults() {
                 search_status["age"],
                 gender)
             // For extra scolar activities, display format and time period
-            footerTextKey["left"] = "Format"
-            footerTextKey["right"] = "Période"
+            footerTextKey["left"] = SHEET_HEADERS["FORMAT"]
+            footerTextKey["right"] = SHEET_HEADERS["PERIOD"]
 
         } else if (search_status["who"] =="teacher") {
             filtered_activities = filterScolarActivities(
@@ -207,8 +207,8 @@ function showResults() {
                 search_status["lang"],
                 search_status["level"])
             // For scolar activities, display format and location
-            footerTextKey["left"] = "Format"
-            footerTextKey["right"] = "Lieu"
+            footerTextKey["left"] = SHEET_HEADERS["FORMAT"]
+            footerTextKey["right"] = SHEET_HEADERS["LOCATION"]
         } else {
             filtered_activities = []
         }

@@ -1,22 +1,46 @@
 // Define here column name used in the Google Sheets 
-const ACTIVITY_NAME_COLUMN = "Activité";
+const SHEET_HEADERS = {
+    "NAME": "Activité",
+    "MIN_AGE": "Age min",
+    "MAX_AGE": "Age max",
+    "MIN_LEVEL": "H min",
+    "MAX_LEVEL": "H max",
+    "GENDER": "Genre",
+    "CANTON": "Canton",
+    "LANGUAGE": "Langue",
+    "PERIOD": "Période",
+    "DATES": "Dates",
+    "STATUS": "Statut",
+    "FORMAT": "Format",
+    "IMG_SRC": "ImgSrc",
+    "DESCR": "Description",
+    "NOTES": "Remarques",
+    "LOCATION": "Lieu"
+}
+
+const SHEET_VALUES = {
+    "AVAILABLE": "Disponible",
+    "BOTH_GENDER": "Mixte",
+    "BOY": "Garçon",
+    "GIRL": "Fille",
+}
 
 /**
  * Complete an edition array with details from the parent activity by matching
  * its activity name
- * @param {array[{ACTIVITY_NAME_COLUMN: name, ...}]} editions List of editions 
- * @param {array[{ACTIVITY_NAME_COLUMN: name, ...}]} activities List of parent activity
- * @returns {array[{ACTIVITY_NAME_COLUMN: name, ...}]} with all parents keys containing details on the activity
+ * @param {array[{SHEET_HEADERS["NAME"]: name, ...}]} editions List of editions 
+ * @param {array[{SHEET_HEADERS["NAME"]: name, ...}]} activities List of parent activity
+ * @returns {array[{SHEET_HEADERS["NAME"]: name, ...}]} with all parents keys containing details on the activity
  */
 function addDetailsToEditions(editions, activities) {
     // Go through all the editions
     for (let i = 0; i < editions.length; i++) {
         // Get the name of the edition 
-        let keyToMatchValue = editions[i][ACTIVITY_NAME_COLUMN];
+        let keyToMatchValue = editions[i][SHEET_HEADERS["NAME"]];
         // Now go through all the activities
         for (let j = 0; j < activities.length; j++) {
             // Find the corresponding parent activity for the edition
-            if (activities[j][ACTIVITY_NAME_COLUMN] === keyToMatchValue) {
+            if (activities[j][SHEET_HEADERS["NAME"]] === keyToMatchValue) {
                 // Add details from the parent activity to the edition array
                 for (let newKey in activities[j]) {
                     if (!editions[i].hasOwnProperty(newKey) || editions[i][newKey] === null) {
@@ -62,7 +86,7 @@ function filterActivities(jsonArray, filters) {
  * @returns {[...]} Only activity that correspond to that age
  */
 function filterActivities_age(jsonArray, age) {
-    return filterActivities_range(jsonArray, age, "Age min", "Age max")
+    return filterActivities_range(jsonArray, age, SHEET_HEADERS["MIN_AGE"], SHEET_HEADERS["MAX_AGE"])
 }
 
 /**
@@ -72,7 +96,7 @@ function filterActivities_age(jsonArray, age) {
  * @returns {[...]} Only activity that correspond to that level
  */
 function filterActivities_level(jsonArray, level) {
-    return filterActivities_range(jsonArray, level, "H min", "H max")
+    return filterActivities_range(jsonArray, level, SHEET_HEADERS["MIN_LEVEL"], SHEET_HEADERS["MAX_LEVEL"])
 }
 
 /**
@@ -103,12 +127,12 @@ function filterActivities_range(jsonArray, value, minKey, maxKey) {
  * @returns {[...]} Only activity that correspond to that gender
  */
 function filterActivities_gender(jsonArray, gender) {
-    if (!gender || gender == "Mixte") {
+    if (!gender || gender == SHEET_VALUES["BOTH_GENDER"]) {
         return jsonArray
     }
 
     return jsonArray.filter(function(entry) {
-        return entry["Genre"] == "Mixte" || entry["Genre"] == gender;
+        return entry[SHEET_HEADERS["GENDER"]] == SHEET_VALUES["BOTH_GENDER"] || entry[SHEET_HEADERS["GENDER"]] == gender;
     });
 }
 
@@ -121,10 +145,10 @@ function filterActivities_gender(jsonArray, gender) {
 function groupSameActivities(jsonArray) {
     let result = [];
     jsonArray.forEach(function(entry) {
-        let value = entry[ACTIVITY_NAME_COLUMN];
+        let value = entry[SHEET_HEADERS["NAME"]];
         let found = false;
         result.forEach(function(group) {
-            if (group[ACTIVITY_NAME_COLUMN] === value) {
+            if (group[SHEET_HEADERS["NAME"]] === value) {
                 group.values.push(entry);
                 found = true;
             }
@@ -132,7 +156,7 @@ function groupSameActivities(jsonArray) {
 
         if (!found) {
             var obj = {};
-            obj[ACTIVITY_NAME_COLUMN] = value;
+            obj[SHEET_HEADERS["NAME"]] = value;
             obj["values"] = [entry];
             result.push(obj);
         }
@@ -180,9 +204,14 @@ function filterNonScolarActivities(list, language, where, age, gender) {
         where = where.toUpperCase()
     }
 
-    let filtered_activities = filterActivities(list, {
-        "Langue": language, "Canton": where, "Statut": "Disponible"
-    })
+    filter = {}
+    filter[SHEET_HEADERS["LANGUAGE"]] = language
+    filter[SHEET_HEADERS["CANTON"]] = where
+    filter[SHEET_HEADERS["STATUS"]] = SHEET_VALUES["AVAILABLE"]
+
+    console.log(filter)
+
+    let filtered_activities = filterActivities(list, filter)
 
     console.log("\tFor language and canton: " + language + " " + where)
     console.log(filtered_activities)
@@ -212,10 +241,11 @@ function filterScolarActivities(list, language, level) {
     console.log(list)
 
     // Filter activities by language
-    language = language.toUpperCase()
-    let filtered_activities = filterActivities(list, {
-        "Langue": language, "Statut": "Disponible"
-    })
+    filter = {}
+    filter[SHEET_HEADERS["LANGUAGE"]] = language.toUpperCase()
+    filter[SHEET_HEADERS["STATUS"]] = SHEET_VALUES["AVAILABLE"]
+
+    let filtered_activities = filterActivities(list, filter)
 
     console.log("\tFor language: " + language)
     console.log(filtered_activities)
@@ -238,13 +268,40 @@ function filterPublicActivities(list, language) {
     console.log(list)
 
     // Filter activities by language
-    filtered_activities = filterActivities(list, {
-        "Langue": language.toUpperCase(),
-        "Statut": "Disponible"
-    })
+    filter = {}
+    filter[SHEET_HEADERS["LANGUAGE"]] = language.toUpperCase()
+    filter[SHEET_HEADERS["STATUS"]] = SHEET_VALUES["AVAILABLE"]
+
+    filtered_activities = filterActivities(list, filter)
 
     console.log("\tFor language " + language)
     console.log(filtered_activities)
 
     return filtered_activities
+}
+
+/**
+ * Extract cantons list from activities for each language
+ * @param {*} nonScolarActivities List of activities, required to have "Langue" and "Canton" keys
+ * @returns Dict for each language with an array of cantons
+ */
+function cantonsList(nonScolarActivities) {
+    let cantons = {}
+
+    nonScolarActivities.forEach(function(activity) {
+        lang = activity[SHEET_HEADERS["LANGUAGE"]].toUpperCase()
+
+        if (cantons[lang] == undefined) {
+            cantons[lang] = new Set()
+        }
+
+        cantons[lang].add(activity[SHEET_HEADERS["CANTON"]])
+    });
+
+    // Convert set to array
+    for (const lang in cantons) {
+        cantons[lang] = Array.from(cantons[lang])
+    }
+
+    return cantons
 }
