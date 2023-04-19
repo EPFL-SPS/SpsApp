@@ -25,6 +25,25 @@ Un bouton `Retour` (en bas à gauche) permet de revenir en arrière.
 
 A noter que sur la première page, l'utilisateur peut changer de langue (en haut à droite).
 
+## Configuration des IPads pour un événement
+Deux IPads sont dédiés et préconfigurés pour l’utilisation de l’app pendant les événements : **IPAD14** et **IPAD15**
+
+Activer l’accès guidé pour empêcher l’utilisateur de quitter l’application:
+-	Déverrouiller l’IPad
+-	Lancer l’application « Firefox Klar » (et non pas Safari), un icone existe sur la page d’accueil
+-	Ouvrir « EPFL SPS App » qui apparaît dans les raccourcis ou aller sur https://go.epfl.ch/spsapp
+-	Une fois sur le site, appuyez trois fois sur le bouton principal de l’IPad. Une notification « Accès guidé activé » apparaît.
+-	La barre au sommet du navigateur est légèrement grisé et l’utilisateur ne peut plus cliquer dessus, l’IPad peut être utilisé pour les démos
+
+Pour sortir du mode « Accès guidé »,  
+-	Rappuyer trois fois sur le bouton principal de l’IPad et saisir le code qui a été choisi dans les paramètres du mode. Une interface s’ouvre, cliquer sur « Fin » au sommet à gauche. 
+-	C’est également dans ce menu qu’il est possible de redéfinir la zone tactile qui doit être bloquée ou de modifier les options pour mettre le verrouillage de l’IPad par exemple
+
+Si pour une raison, la manipulation ne fonctionne pas, vérifier dans les paramètres la configuration de l’accès Guidé :
+```
+Paramètres > Accessibilité > Accès Guidé : Activer, régler le code et définir la limite de verrouillage de l’écran sur « Jamais »
+```
+
 ## Modifier la liste des activités
 > Google Sheets - Liste des activités (accessible par toutes les personnes de l'organisation SPS) [go.epfl.ch/spsapp_sheets](https://go.epfl.ch/spsapp_sheets)
 
