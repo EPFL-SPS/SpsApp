@@ -93,8 +93,16 @@ div{
 
 .card-h1 {
   color:191919;
-  font-size: 1em;
+  font-size: 1.4em;
   font-weight: bold;
+}
+
+.card-text {
+  font-size: 1.1em;
+}
+
+.card-footer {
+  font-size: 1.1em;
 }
 
 .animate {
