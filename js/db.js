@@ -1,5 +1,5 @@
 // Script of the App Script API that provides activities data
-baseScriptUrl = 'https://script.google.com/macros/s/AKfycbzdVZkv9Skz-GEInz0i8d-KBR83eShBlGCDUkEuXT9_KkrYN5X5s-wsA1_7cd1A2Wgq/exec'
+baseScriptUrl = 'https://script.google.com/macros/s/AKfycbzElm2fBAnLwuDwpLAF6xP1_gRn8Cgm0iSsRddq2ZVhMvkWQnllUrjx07vwcUok3IKunA/exec'
 
 /**
  * Fetch data from Apps Script API
