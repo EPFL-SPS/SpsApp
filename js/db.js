@@ -52,10 +52,10 @@ function parseApiResponse(response) {
 }
 
 // Create promises for API calls
-nonScolarActivities_promise = fetchData("Extra-scolaire - Activités!A1:J101")
-nonScolarEditions_promise = fetchData("Extra-scolaire - Éditions!A1:F201")
-scolarActivities_promise = fetchData("Scolaire - Activités!A1:J101")
-publicActivities_promise = fetchData("Grand public - Activités!A1:H51")
+nonScolarActivities_promise = fetchData("Extra-scolaire - Activités!A1:I101")
+nonScolarEditions_promise = fetchData("Extra-scolaire - Éditions!A1:E201")
+scolarActivities_promise = fetchData("Scolaire - Activités!A1:I101")
+publicActivities_promise = fetchData("Grand public - Activités!A1:G51")
 
 function fetchPromisesData(promises_values) {
     // Get received data
@@ -70,7 +70,7 @@ function fetchPromisesData(promises_values) {
 
         // Simplified the list with only useful keys
         nonScolarEditionsDetailed = filterKeys(nonScolarEditionsDetailed,
-            ["ID", SHEET_HEADERS["NAME"], SHEET_HEADERS["STATUS"], SHEET_HEADERS["CANTON"], SHEET_HEADERS["PERIOD"],
+            [SHEET_HEADERS["NAME"], SHEET_HEADERS["STATUS"], SHEET_HEADERS["CANTON"], SHEET_HEADERS["PERIOD"],
             SHEET_HEADERS["GENDER"], SHEET_HEADERS["LANGUAGE"], SHEET_HEADERS["MIN_AGE"], SHEET_HEADERS["MAX_AGE"],
             SHEET_HEADERS["FORMAT"], SHEET_HEADERS["IMG_SRC"], SHEET_HEADERS["DESCR"], SHEET_HEADERS["NOTES"]])
         
