@@ -22,10 +22,10 @@ function _sendResponse(e, status_code, range, status, data) {
       'request': range
   };
 
+  // Regular JSON response
   return ContentService
-    .createTextOutput(e.parameter.callback + "(" + JSON.stringify(response)+ ")")
-    .setMimeType(ContentService.MimeType.JAVASCRIPT);
-
+    .createTextOutput(JSON.stringify(response))
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 function doGet(e) {

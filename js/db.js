@@ -1,40 +1,41 @@
 // Script of the App Script API that provides activities data
-baseScriptUrl = 'https://script.google.com/macros/s/AKfycbyRl1vZHOTxK-tR92IC-hp-zneOBx93WR39d1lmcgRD8sc17j7-4c5JpCRK3Y0xceBnGA/exec'
+baseScriptUrl = 'https://script.google.com/macros/s/AKfycbzdVZkv9Skz-GEInz0i8d-KBR83eShBlGCDUkEuXT9_KkrYN5X5s-wsA1_7cd1A2Wgq/exec'
 
 /**
  * Fetch data from Apps Script API
  * @param {*} range Google Sheet range to get data from
  * @returns Promise
  */
+
+
 async function fetchData(range) {
-    return await jQuery.ajax({
-        crossDomain: true,
-        url: baseScriptUrl + "?range=" + range,
-        method: "GET",
-        dataType: "jsonp",
-        // @todo Better error handling
-        error: function(response){
-            errorMessage = "Erreur inconue"
-            if (response.status == "404") {
-                
-                if(detectBrowser() == "firefox") {
-                    errorMessage = "Votre navigateur ne supporte pas cette application. Google Chrome, Edge ou Safari sont recommandés."
-                } else {
-                    errorMessage = "Veuillez réessayer plus tard"
-                }
-
-                console.error("Vérifiez l'url du script App Script et que celui-ci est correctement déployé")
-
-            } else if (response.status == 500) {
-                error = "Erreur interne du serveur"
+    try {
+        const response = await jQuery.ajax({
+            crossDomain: true,
+            url: baseScriptUrl + "?range=" + range,
+            method: "GET",
+            dataType: "json"
+        });
+        return response;
+    } catch (response) {
+        let errorMessage = "Erreur inconnue";
+        if (response.status == 404) {
+            if (detectBrowser() == "firefox") {
+                errorMessage = "Votre navigateur ne supporte pas cette application. Google Chrome, Edge ou Safari sont recommandés.";
+            } else {
+                errorMessage = "Veuillez réessayer plus tard.";
             }
-
-            alert("Impossible de récupérer les activités du SPS - " + errorMessage)
-
-            return undefined
+            console.error("Vérifiez l'URL du script App Script et que celui-ci est correctement déployé.");
+        } else if (response.status == 500) {
+            errorMessage = "Erreur interne du serveur.";
         }
-    })
+        alert("Impossible de récupérer les activités du SPS - " + errorMessage);
+        return undefined;
+    }
 }
+
+nonScolarActivities_promise = fetchData("Extra-scolaire - Activités!A1:J101")
+
 
 /**
  * Parse API response once data has been fetched
